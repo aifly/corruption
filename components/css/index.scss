@@ -1,0 +1,51 @@
+@import "../../assets/css/base.scss";
+
+.fly-index-page{
+	@include pos(a);
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+
+	.fly-2016{
+		width:5rem;
+		margin:1rem auto 0;
+	}
+
+	.fly-main-area{
+		@include pos(r);
+		.fly-figure{
+			position:static;
+			width:7rem;
+			margin:0 auto;
+		}
+		section{
+			@include pos(a);
+		}
+		.fly-70{
+			
+			width:4rem;
+			top:1rem;
+			left:3rem;
+		}
+		.fly-text{
+			top:3.5rem;
+			width:8rem;
+			left:1rem;
+		}
+		.fly-cards{
+			top:5.5rem;
+			width:7.2rem;
+			left:1.4rem;
+		}
+		
+	}
+
+	.fly-logo{
+		@include pos(a);
+		width:2rem;
+		bottom: .2rem;
+		left:4rem;
+	}
+
+}

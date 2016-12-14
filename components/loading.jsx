@@ -20,10 +20,6 @@ class FlyLoading  extends React.Component{
         }
         return <div className="fly-loading-C" style={style}>
             <canvas ref="loading"></canvas>
-            <div className="load-bg" ref="load-bg">
-                <div className="jump"></div>
-                <i></i><i></i><i></i><i></i><i></i>
-            </div>
         </div>
     }
     componentDidMount(){
@@ -110,7 +106,6 @@ class FlyLoading  extends React.Component{
             viewHeight = document.documentElement.clientHeight;
         this.refs['loading'].width = viewWidth;
         this.refs['loading'].height = viewHeight;
-        this.refs['load-bg'].style.left = (viewWidth - 320) /2 +'px';
         return{viewWidth,viewHeight};
     }
 }
