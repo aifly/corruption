@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 
 import  FlyLoading from './components/loading.jsx'; 
 import IndexApp from './components/index.jsx';
+import FlyGameView from './components/gameview.jsx';
 
 class App extends React.Component{
     constructor(option){
@@ -17,8 +18,10 @@ class App extends React.Component{
 
     render(){
         return <div>
-        	<IndexApp></IndexApp>
-            {/*<FlyLoading></FlyLoading>*/}
+            <FlyGameView></FlyGameView>
+            {/*
+            <IndexApp></IndexApp>
+            <FlyLoading></FlyLoading>*/}
         </div>
     }
 }
