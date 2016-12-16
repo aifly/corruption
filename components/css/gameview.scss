@@ -107,7 +107,35 @@
 			margin: .2rem;
 			box-sizing:border-box;
 			@include pos(r);
-			@include transition(.6s);
+			
+			
+			&:nth-of-type(3n+1){
+				@include transform(translate3d(2.6rem,-17rem,0))
+			}
+			&:nth-of-type(3n-1){
+				@include transform(translate3d(0,-17rem,0))
+			}
+			&:nth-of-type(3n){
+				@include transform(translate3d(-2.6rem,-17rem,0))
+			}
+			&.show{
+				@include transform(translate3d(0,0,0));
+				@include transition(.2s);
+			}
+			&.selected{
+				&:before{
+					content:'';
+					@include pos(a);
+					width:100%;
+					height:100%;
+					left:0;
+					top:0;z-index: 1000;
+					border:1px solid #49cefa;
+					@include br(2px);
+					box-sizing:border-box;
+					box-shadow:0 0  10px 2px rgba(73,206,250,1)
+				}
+			}
 			backface-visibility: hidden;
 			&.active{
 				@include transform(rotateY(180deg));
@@ -135,10 +163,69 @@
 		@include pos(a);
 		bottom:1.5rem;
 		color:#fff;
-		background:#ccc;
+		background:#999;
 		border:1px solid #fff;
 		@include br(15px);
 		left:3rem;
+	}
+	.g-tigger-list{
+		width:8rem;
+		height:1rem;
+		left:1rem;
+		@include pos(a);
+		bottom:.2rem;
+		@include displayBox(horizontal);
+		li{
+			width:1rem;
+			height:1rem;
+			background:#fff;
+			margin:0 .1rem;
+			@include br(4px);
+		}
+	}
+
+	.g-result{
+		@include pos(a);
+		width:8rem;
+		height:80vh;
+		top:10vh;
+		left:1rem;
+		.g-portrait{
+			
+			width:4rem;
+			@include pos(r);
+			margin:1.5rem auto .2rem;
+			.g-portrait-bg{
+				$size:2.83rem;
+				width:$size;
+				height:$size - .1;
+				@include pos(a);
+				@include br(60px);
+				border-bottom-left-radius: 46px;
+				border-bottom-right-radius: 40px;
+				left:.56rem;
+				top:.7rem;
+			}
+		}
+		.g-tigger-name{
+			width:100%;
+			text-align: center;
+			font-size: .5rem;
+		}
+		.g-tigger-info{
+			width:7rem;
+			height:100px;
+			margin:0 auto;
+			tr{
+				td{
+					&:nth-of-type(1){
+						width:1.8rem;
+					}
+					vertical-align: top;
+					font-size: .2rem;
+				}
+			}
+		}
 	}
 }
 
