@@ -12,4 +12,138 @@
 		left:0;
 		top:0;
 	}
+	.g-rule{
+		@include pos(a);
+		right:0;
+		top:.5rem;
+		background:rgba(255,255,255,.8);
+		font-size:.2rem;
+		padding:7px 10px;
+		border-bottom-left-radius: 14px;
+		border-top-left-radius: 14px;
+		text-align: center;
+	}
+
+	.g-rank{
+		@include displayBox(horizontal);
+		width:7rem;
+		margin:2rem auto 0;
+		color:#fff;
+		div{
+			&:nth-of-type(1){
+				span.g-big{
+					font-size:.6rem;
+					color:#00fffc;
+				}
+				margin-right:.5rem;
+			}
+			&:nth-of-type(2){
+				border:1px solid #a9a9a9;//395478
+				padding:1px 10px;
+				@include br(.8rem);
+				@include pos(r);
+				&:before{
+					content:'';
+					@include pos(a);
+					width:100%;
+					@include br(.8rem);
+					height:100%;
+					left:0;
+					top:0;
+					box-shadow:0 0 10px rgba(169,169,169,.8),0 0 10px rgba(169,169,169,.2) inset;
+				}
+
+			}
+
+		}
+		.g-ball{
+			width:.5rem;
+			display:inline-block;
+
+		}
+		.g-score{
+			font-size:.6rem;
+			color:#ffcc00;
+		}
+		.g-line{
+			display: inline-block;
+			@include transform(scaleX(.2));
+			@include pos(r);
+			top: -2px;
+		}
+		.g-text{
+			@include pos(r);
+			top: -2px;
+		}
+
+	}
+
+	.g-info{
+		width:6rem;
+		color:#fff;
+		background:rgba(255, 255,255,.3);
+		line-height:30px;
+		@include br(.3rem);
+		padding:0 1px;
+		text-align: center;
+		margin:.4rem auto;
+		@include pos(r);
+		img{
+			width:.6rem;
+			margin-top:.2rem;
+			@include pos(a);
+			@include animation(info 1s 4 ease-out alternate)
+		}
+	}
+	.g-cards-C{
+		width:7.8rem;
+		margin:0 auto;
+		@include transform3d();
+		.g-cards-item{
+			float: left;
+			width:2.2rem;
+			@include transform3d();
+			height:3.8rem;
+			margin: .2rem;
+			box-sizing:border-box;
+			@include pos(r);
+			@include transition(.6s);
+			backface-visibility: hidden;
+			&.active{
+				@include transform(rotateY(180deg));
+
+			}
+			&>div{
+				backface-visibility: hidden;
+				@include pos(a);
+				left:0;
+				top:0;
+				z-index:1;
+				&:nth-of-type(2){
+					z-index:0;
+					@include transform(translate3d(0,0,-1px) rotateY(180deg));
+				}
+			}
+		}
+	}
+
+	.g-choose-btn{
+		width:4rem;
+		height:30px;
+		line-height:30px;
+		text-align: center;
+		@include pos(a);
+		bottom:1.5rem;
+		color:#fff;
+		background:#ccc;
+		border:1px solid #fff;
+		@include br(15px);
+		left:3rem;
+	}
+}
+
+@-webkit-keyframes info {
+	to{
+		@include transform(translate3d(0,10px,0));
+	}
 }

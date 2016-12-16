@@ -2,10 +2,13 @@ import './assets/css/index.css';
 
 import  React from 'react';
 import ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import  FlyLoading from './components/loading.jsx'; 
 import IndexApp from './components/index.jsx';
 import FlyGameView from './components/gameview.jsx';
+
+injectTapEventPlugin();
 
 class App extends React.Component{
     constructor(option){
@@ -20,7 +23,8 @@ class App extends React.Component{
         return <div>
             <FlyGameView></FlyGameView>
             {/*
-            <IndexApp></IndexApp>
+
+             <IndexApp></IndexApp>
             <FlyLoading></FlyLoading>*/}
         </div>
     }

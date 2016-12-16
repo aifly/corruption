@@ -8,44 +8,161 @@
 	height:100%;
 
 	.fly-2016{
-		width:5rem;
-		margin:1rem auto 0;
+		@include pos(a);
+		width:3rem;
+		left:3.5rem;
+		bottom:2rem;
+
 	}
 
 	.fly-main-area{
 		@include pos(r);
 		.fly-figure{
-			position:static;
-			width:7rem;
-			margin:0 auto;
+			position:relative;
+			margin:8vh auto 0;
+			width:6rem;
+			height:85vh;
+			border:1px solid transparent;
+
+			.fly-card-C{
+				height:40vh;
+				width:3rem;
+				margin:-.5rem auto;
+				@include pos(r);
+				@include transform3d();
+				@for $i from 1 through 30 {
+					@if $i % 2 == 0{
+						img:nth-of-type(#{$i}){
+
+						}
+					}
+					@else {
+						img:nth-of-type(#{$i}){
+
+						}
+					}
+
+					figure:nth-of-type(#{$i}){
+						left:$i - 3px;
+					}
+
+
+				}
+				figure{
+					@include pos(a);
+					@include transition_transform(.2s);
+					top:0;
+
+					&.active{
+						@include transform(translate3d(90px,10px,140px));
+						z-index:2;
+					}
+					img{
+						width:3rem;
+					}
+					&:last-of-type{
+					}
+					.fly-tigger-ico{
+						@include pos(a);
+						top:1rem;
+						width:2rem;
+						@include br(10px);
+						height:1.5rem;
+						left:.5rem;
+					}
+					.fly-tigger-name{
+						@include pos(a);
+						top:3rem;
+						left:50%;
+						@include transform(translate3d(-50%,0,0));
+					}
+				}
+
+			}
+			.fly-tigger{
+				width:6rem;
+				margin:1rem auto;
+			}
+			.fly-begin-btn{
+				width:3rem;
+				height:1rem;
+				background:#c84803;
+				margin:0 auto;
+				line-height:1rem;
+				text-align: center;
+				color:#fff;
+				border:1px solid #fff;
+				@include br(10px);
+				@include pos(r);
+				@include transition(.05s);
+				&.active{
+					@include transform(scale(.95));
+					border-color:#c84803;
+					background: #fff;
+					color:#c84803;
+					&:before{
+						content:'';
+						width:100%;
+						height:100%;
+						@include pos(a);
+						left:0;
+						top:0;
+						@include br(10px);
+						box-shadow:0 0 10px #c84803;
+					}
+
+				}
+			}
 		}
-		section{
-			@include pos(a);
-		}
-		.fly-70{
-			
-			width:4rem;
-			top:1rem;
-			left:3rem;
-		}
-		.fly-text{
-			top:3.5rem;
-			width:8rem;
-			left:1rem;
-		}
-		.fly-cards{
-			top:5.5rem;
-			width:7.2rem;
-			left:1.4rem;
+		section {
+			//@include pos(a);
 		}
 		
 	}
 
 	.fly-logo{
 		@include pos(a);
-		width:2rem;
+		width:1.6rem;
 		bottom: .2rem;
-		left:4rem;
+		left:4.2rem;
+	}
+
+}
+
+
+@for $i from 1 through 10 {
+
+	@if $i % 2 == 0{
+		@-webkit-keyframes refreshCard-#{$i} {
+			0%{
+				@include transformOrigin(center center 0);
+				@include transform(translate3d(0,0,0));
+			}
+			50%{
+				@include transformOrigin(center center 0);
+				@include transform(translate3d(-$i - 40px,0,0) rotate(3deg));
+			}
+			100%{
+				@include transformOrigin(center center 0);
+				@include transform(translate3d(0,0,0));
+			}
+		}
+	}
+	@else{
+		@-webkit-keyframes refreshCard-#{$i} {
+			0%{
+				@include transformOrigin(center center 0);
+				@include transform(translate3d(0,0,0));
+			}
+			50%{
+				@include transformOrigin(center center 0);
+				@include transform(translate3d($i + 40px,0,0)  rotate(-3deg));
+			}
+			100%{
+				@include transformOrigin(center center 0);
+				@include transform(translate3d(0,0,0));
+			}
+		}
 	}
 
 }
