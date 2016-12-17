@@ -26,7 +26,6 @@ class App extends React.Component{
             obserable
         }
         return <div>
-            <FlyLoading {...data}></FlyLoading>
             <IndexApp {...data}></IndexApp>
             <FlyGameView {...data}></FlyGameView>
             <FlyResult {...data}></FlyResult>

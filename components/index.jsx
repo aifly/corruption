@@ -88,14 +88,13 @@ class IndexApp extends React.Component{
 		this.state.tiggerInfo.length = 10;
 		this.state.tiggerInfo.push({});
 		this.forceUpdate();
-
-		let {obserable} = this.props;
-		obserable.on('showIndexPage',()=>{
+		setTimeout(()=>{
 			this.refs['fly-index-page'].classList.remove('hide');
-			setTimeout(()=>{
-				this.refreshCards();//翻牌
-			},500)
-		});
+		},200)
+		setTimeout(()=>{
+
+			this.refreshCards();//翻牌
+		},500)
 	}
 	gameStart(){
 		this.setState({
