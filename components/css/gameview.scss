@@ -1,5 +1,37 @@
 @import "../../assets/css/base.scss";
 
+.g-message{
+	@include pos(a);
+	
+	height:30px;
+	line-height: 30px;
+	text-align: center;
+	left:50%;
+	padding:0 2px;
+	top:2rem;
+	color:#fff;
+	@include br(5px);
+	@include transform(translate3d(-50%,-4rem,0));
+	opacity:0;
+	@include transition(.2s);
+	&:before{
+		content:"";
+		@include pos(a);
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		box-shadow: 0 0 20px rgba(255,255,240,.4);
+		@include br(5px);
+
+	}
+	&.active{
+		@include transform(translate3d(-50%,0,0));
+		opacity:1;
+	}
+	background:#777;
+	z-index: 100000;
+}
 
 .fly-game-view-ui{
 	width:100%;
@@ -7,11 +39,19 @@
 	@include pos(a);
 	left:0;
 	top:0;
+	z-index: -1;
+	opacity:0;
+	@include transition(1s);
+	&.show{
+		z-index: 1;
+		opacity:1;
+	}
 	.g-top-bg{
 		@include pos(a);
 		left:0;
 		top:0;
 	}
+	
 	.g-rule{
 		@include pos(a);
 		right:0;
@@ -150,6 +190,23 @@
 				&:nth-of-type(2){
 					z-index:0;
 					@include transform(translate3d(0,0,-1px) rotateY(180deg));
+					img:nth-of-type(2){
+						@include pos(a);
+						left:15%;
+						top:20%;
+						width:70%;
+						@include transform(translate3d(0,-50%,0));
+					}
+					.g-portrait-img{
+						@include pos(a);
+						left:0;
+						top:50%;
+						width:2rem;
+						height:2rem;
+						@include br(50%);
+						@include transform(translate3d(0,-50%,0));
+						overflow:hidden;
+					}
 				}
 			}
 		}
@@ -167,6 +224,21 @@
 		border:1px solid #fff;
 		@include br(15px);
 		left:3rem;
+		
+		&.active{
+			@include transform(scale(.97));
+			
+			&:before{
+				content:"";
+				@include pos(a);
+				left:0;
+				top:0;
+				width:100%;
+				@include br(15px);
+				height:100%;
+				box-shadow: 0 0 20px rgba(255,255,255,.7);
+			}
+		}
 	}
 	.g-tigger-list{
 		width:8rem;
@@ -189,7 +261,25 @@
 		width:8rem;
 		height:80vh;
 		top:10vh;
-		left:1rem;
+		left:1rem;	
+		display:block;
+		.g-right{
+			width:1.8rem;
+			@include pos(a);
+			right:.6rem;
+			top:.1rem;
+			z-index: 10;
+		}
+		&.show{
+			
+		}
+		display:none;
+		//
+		.g-look{
+			@include pos(a);
+			width:100%;
+			bottom:1rem;
+		}
 		.g-portrait{
 			
 			width:4rem;
@@ -220,14 +310,21 @@
 				td{
 					&:nth-of-type(1){
 						width:1.8rem;
+						color:#222;
+						text-align: center;
+					}
+					&:nth-of-type(2){
+						color:#330000;
 					}
 					vertical-align: top;
 					font-size: .2rem;
 				}
 			}
 		}
+		
 	}
 }
+
 
 @-webkit-keyframes info {
 	to{

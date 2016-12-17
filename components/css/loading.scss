@@ -6,6 +6,21 @@
   top:0;
   width:100%;
   height:100%;
+  &.hide{
+  	@include transition(1s);
+  	opacity:0;
+  	z-index: -1;
+  }
 }
 
+.l-loading-scale{
+	@include pos(a);
+	top:50%;
+	color:#fff;
+	width:100vw;
+	font-size:.9rem;
+	font-family: Georgia;
+	text-align: center;
+	margin-top: .4rem;
+}
 

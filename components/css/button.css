@@ -1,0 +1,2 @@
+.g-next{width:4rem;height:30px;line-height:30px;text-align:center;margin:.4rem auto;border-radius:20px;border:1px solid #aaa;position:relative}.g-next:before{content:'';position:absolute;left:1.5%;width:97%;height:102%;border-radius:20px;border:1px solid #aaa;box-sizing:border-box;border-top:none;border-bottom:none}.g-next.active{-webkit-transform:scale(0.95);transform:scale(0.95)}.g-next.active:before{box-shadow:0 0 20px rgba(24,47,96,0.7),0 0 20px rgba(24,47,96,0.2) inset;left:0;border:none;width:100%}
+/*# sourceMappingURL=button.css.map */

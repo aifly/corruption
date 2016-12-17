@@ -7,21 +7,28 @@ import  Vector2 from './vector2';
 
 import  './css/loading.css';
 
+import {utilMethods,_$,$$} from '../assets/lib/utilMethod';
 
 class FlyLoading  extends React.Component{
 
     constructor(option){
         super(option);
+        this.state = {
+            scale:0,
+            done:false
+        }
     }
     render(){
         let style = {
             background:"url(./assets/images/loading-bg.jpg) no-repeat center center",
             backgroundSize:'cover'
         }
-        return <div className="fly-loading-C" style={style}>
+        return <div className={"fly-loading-C "+ (this.state.done?'hide':'')} ref='fly-loading-C' style={style}>
             <canvas ref="loading"></canvas>
+            <div className='l-loading-scale'>{this.state.scale}%</div>
         </div>
     }
+
     componentDidMount(){
 
        let {viewWidth,viewHeight} =  this.setSize();
@@ -85,7 +92,7 @@ class FlyLoading  extends React.Component{
         }
 
         var currentMap = 0;
-        setInterval(function(){
+        var t = setInterval(function(){
             cxt.clearRect(0, 0, c.width, c.height);
             drawAllWords();
             if (currentMap > 395) currentMap = 0;
@@ -100,7 +107,53 @@ class FlyLoading  extends React.Component{
             }
         },20)
 
+        this.loading(t);
+
     }
+
+    loading(t){
+
+         var arr = [
+            './assets/images/card.png',
+            './assets/images/figure.png',
+            './assets/images/gy-bg.png',
+            './assets/images/hu.png',
+            './assets/images/hu1.png',
+            './assets/images/hu-bg.png',
+            './assets/images/index-bg.jpg',
+            './assets/images/index-top.png',
+            './assets/images/loading-bg.jpg',
+            './assets/images/logo.png',
+            './assets/images/none.png',
+            './assets/images/board-bg.png',
+            './assets/images/hand.png',
+            './assets/images/paiming.png',
+            './assets/images/r-bg.jpg',
+            './assets/images/result-bg.png',
+            './assets/images/result-bg1.png',
+            './assets/images/right.png',
+            './assets/images/shadow.png',
+            './assets/images/user.png',
+            './assets/images/2016.png',
+
+
+        ];
+
+        let {obserable} = this.props;
+        utilMethods.loading(arr,(data)=>{
+
+            this.setState({
+                scale:data*100
+            });
+        },()=>{
+            this.setState({
+                done:true
+            });
+            obserable.trigger({type:'showIndexPage'})
+            setTimeout(()=>{clearInterval(t);},1000)
+        })
+    }
+
     setSize(){
         var viewWidth = document.documentElement.clientWidth,
             viewHeight = document.documentElement.clientHeight;

@@ -14,36 +14,7 @@ class IndexApp extends React.Component{
 			cardLen:10,
 			activeBtnClass:'',
 			tiggerInfo:[
-				{
-					url:'./assets/images/lh-1.jpg',
-					name:'邓崎琳'
-				},{
-					url:'./assets/images/lh-2.jpg',
-					name:'张乐斌'
-				},{
-					url:'./assets/images/lh-3.jpg',
-					name:'张力夫'
-				},{
-					url:'./assets/images/lh-4.jpg',
-					name:'张乐斌'
-				},{
-					url:'./assets/images/lh-5.jpg',
-					name:'邓崎琳'
-				},{
-					url:'./assets/images/lh-6.jpg',
-					name:'张乐斌'
-				},{
-					url:'./assets/images/lh-7.jpg',
-					name:'邓崎琳'
-				},{
-					url:'./assets/images/lh-8.jpg',
-					name:'张乐斌'
-				},{
-					url:'./assets/images/lh-9.jpg',
-					name:'邓崎琳'
-				},{
-
-				}
+				
 			]
 		};
 	}
@@ -53,7 +24,7 @@ class IndexApp extends React.Component{
             background:"url(./assets/images/shadow.png) no-repeat center center,url(./assets/images/loading-bg.jpg) no-repeat center center",
             backgroundSize:'cover'
         }
-		return <div style={style} className='fly-index-page'>
+		return <div style={style} className='fly-index-page hide' ref='fly-index-page'>
 			<div className='fly-2016'>
 				<img src='./assets/images/2016.png' data-src='./assets/images/2016.png'/>
 			</div>
@@ -112,11 +83,27 @@ class IndexApp extends React.Component{
 			activeBtnClass:'active'
 		});
 	}
+	componentDidMount() {
+		this.state.tiggerInfo = tiggerData;
+		this.state.tiggerInfo.length = 10;
+		this.state.tiggerInfo.push({});
+		this.forceUpdate();
+
+		let {obserable} = this.props;
+		obserable.on('showIndexPage',()=>{
+			this.refs['fly-index-page'].classList.remove('hide');
+			setTimeout(()=>{
+				this.refreshCards();//翻牌
+			},500)
+		});
+	}
 	gameStart(){
 		this.setState({
 			activeBtnClass:''
 		});
-
+		let {obserable} = this.props;
+		obserable.trigger({type:'startPlay'});
+		this.refs['fly-index-page'].classList.add('hide');
 
 	}
 	refreshCards(){
