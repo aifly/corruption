@@ -341,8 +341,9 @@ Vector2.rotate = function (p1, p2, theta) {
         	document.body.appendChild(s);
         	s.onload = function(){
         		document.querySelector('.fly-loading-C').classList.add('hide')
+        		clearInterval(t);
         	}
-        	clearInterval(t);
+        	
         });
 
      function  loading(arr, fn, fnEnd){
