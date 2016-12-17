@@ -339,8 +339,10 @@ Vector2.rotate = function (p1, p2, theta) {
         	var s = document.createElement('script');
         	s.src = './assets/js/index.js?t='+new Date().getTime();
         	document.body.appendChild(s);
+        	s.onload = function(){
+        		document.querySelector('.fly-loading-C').classList.add('hide')
+        	}
         	clearInterval(t);
-        	document.querySelector('.fly-loading-C').classList.add('hide')
         });
 
      function  loading(arr, fn, fnEnd){

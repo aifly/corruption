@@ -20,16 +20,18 @@ class FlyGameView extends React.Component {
 
       var cardsArr = [];
       for(var i =0;i<2;i++){
-         cardsArr.push(tiggerData[Math.random()*(tiggerData.length)|0]);
+        
+         cardsArr.push(tiggerData[Math.floor(Math.random()*(tiggerData.length-1))]);
          //cardsArr.push('none');
       }
       for(var i=0;i<4;i++){
          cardsArr.push('none');
       }
 
-      cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
+      //cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
 
-      this.cardsArr =cardsArr;
+      this.cardsArr = cardsArr;
+     // console.log(cardsArr)
 
 
       let style = {
@@ -164,9 +166,9 @@ class FlyGameView extends React.Component {
                    this.setState({
                       currentData:this.cardsArr[this.state.currentSelectCardIndex]
                     },()=>{
-
+                       // console.log(this.state.currentSelectCardIndex)
                         this.refs['g-result'] && (this.refs['g-result'].style.display = 'block');
-                          if(this.cardsArr[this.state.currentSelectCardIndex].url){
+                          if(this.cardsArr[this.state.currentSelectCardIndex] && this.cardsArr[this.state.currentSelectCardIndex].url){
                              
                              this.setState({//答对，得分+5 轮数+1
                                 score:this.state.score+5,
@@ -177,7 +179,8 @@ class FlyGameView extends React.Component {
 
                           }else{//没有选择到老虎
                               this.cardsArr.map((item,i)=>{
-                                  if(item.url){
+
+                                  if(item && item.url){
                                       this.state.rightTigger = i;
                                   }
                             });

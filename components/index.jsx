@@ -84,15 +84,12 @@ class IndexApp extends React.Component{
 		});
 	}
 	componentDidMount() {
-		this.state.tiggerInfo = tiggerData;
-		this.state.tiggerInfo.length = 10;
+		this.state.tiggerInfo = tiggerData.concat([]);
+		this.state.tiggerInfo.length >9 && (this.state.tiggerInfo.length = 9);
 		this.state.tiggerInfo.push({});
 		this.forceUpdate();
+		this.refs['fly-index-page'].classList.remove('hide');
 		setTimeout(()=>{
-			this.refs['fly-index-page'].classList.remove('hide');
-		},200)
-		setTimeout(()=>{
-
 			this.refreshCards();//翻牌
 		},500)
 	}
