@@ -334,7 +334,7 @@ Vector2.rotate = function (p1, p2, theta) {
 
         var scale = document.getElementById('l-loading-scale');
 		loading(arr,(data)=>{
-        	scale.innerHTML = data*100+'%';
+        	scale.innerHTML = (data*100 | 0)+'%';
         },()=>{
         	var s = document.createElement('script');
         	s.src = './assets/js/index.js';
