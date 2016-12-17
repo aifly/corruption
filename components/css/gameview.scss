@@ -256,13 +256,15 @@
 		}
 	}
 
+
 	.g-result{
 		@include pos(a);
 		width:8rem;
 		height:80vh;
 		top:10vh;
+		z-index: 100;
 		left:1rem;	
-		display:block;
+		@include transform(translate3d(0,0,10px));
 		.g-right{
 			width:1.8rem;
 			@include pos(a);
@@ -317,7 +319,6 @@
 						color:#330000;
 					}
 					vertical-align: top;
-					font-size: .2rem;
 				}
 			}
 		}

@@ -20,7 +20,7 @@ class FlyGameView extends React.Component {
 
       var cardsArr = [];
       for(var i =0;i<2;i++){
-         cardsArr.push(tiggerData[Math.random()*tiggerData.length|0]);
+         cardsArr.push(tiggerData[Math.random()*(tiggerData.length)|0]);
          //cardsArr.push('none');
       }
       for(var i=0;i<4;i++){
@@ -30,6 +30,7 @@ class FlyGameView extends React.Component {
       cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
 
       this.cardsArr =cardsArr;
+
 
       let style = {
           background: 'url(./assets/images/index-bg.jpg) no-repeat bottom center',
@@ -59,8 +60,8 @@ class FlyGameView extends React.Component {
                                 <div className=""><img src="./assets/images/card.png"/></div>
                                 <div className="back ">
                                   <img src="./assets/images/gy-bg.png"/>
-                                  {item.name && <div className='g-portrait-img' style={{background:'url('+item.url+') no-repeat center',backgroundSize:'cover'}}></div>}
-                                  {item.name && <img src="./assets/images/right.png"/>}
+                                  {item && item.name && <div className='g-portrait-img' style={{background:'url('+item.url+') no-repeat center',backgroundSize:'cover'}}></div>}
+                                  {item && item.name && <img src="./assets/images/right.png"/>}
                                 </div>
                             </li>
                  })}
@@ -119,8 +120,6 @@ class FlyGameView extends React.Component {
                  </div>
               </div>
               }
-
-             
           </div>
       );
   }
@@ -166,7 +165,7 @@ class FlyGameView extends React.Component {
                       currentData:this.cardsArr[this.state.currentSelectCardIndex]
                     },()=>{
 
-                        this.refs['g-result'].style.display = 'block';
+                        this.refs['g-result'] && (this.refs['g-result'].style.display = 'block');
                           if(this.cardsArr[this.state.currentSelectCardIndex].url){
                              
                              this.setState({//答对，得分+5 轮数+1
@@ -195,7 +194,7 @@ class FlyGameView extends React.Component {
       this.setState({
         currentData:this.cardsArr[this.state.rightTigger]
       },()=>{
-        this.refs['g-result'].style.display = 'block';
+        this.refs['g-result'] && (this.refs['g-result'].style.display = 'block');
       });
   }
 
