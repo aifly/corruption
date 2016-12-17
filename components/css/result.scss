@@ -51,7 +51,7 @@
 			color:#1f0b13;
 		}
 		p{
-			font-size: .2rem;
+			
 			width:70%;
 			margin:.2rem auto 0;
 			@include transform(scale(.9))
@@ -85,7 +85,6 @@
 			height:20px;
 			span{
 				display:inline-block;
-				font-size: .2rem;
 				@include pos(a);
 				left:-10px;
 				@include transform(scale(.8));
