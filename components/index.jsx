@@ -59,19 +59,6 @@ class IndexApp extends React.Component{
 						开始游戏
 					</section>
 				</section>
-				{
-					/*
-					 <section className='fly-70'>
-					 <img src='./assets/images/70.png' data-src='./assets/images/70.png'/>
-					 </section>
-					 <section className='fly-text'>
-					 <img src='./assets/images/text.png' data-src='./assets/images/text.png'/>
-					 </section>
-					 <section className='fly-cards'>
-					 <img src='./assets/images/cards.png' data-src='./assets/images/cards.png'/>
-					 </section>*/
-				}
-				
 			</section>
 			<section className='fly-logo'>
 				<img src='./assets/images/logo.png' data-src='./assets/images/logo.png'/>

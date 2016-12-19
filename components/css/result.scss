@@ -1,7 +1,7 @@
 @import '../../assets/css/base.scss';
 
 .r-main-ui{
-	@include pos(a);
+	@include pos(f);
 	left:0;
 	top:0;
 	width:100vw;
@@ -77,9 +77,10 @@
 		.r-tel{
 			margin:.3rem auto;
 			text-align: center;
+			input{height:24px;line-height: 24px;border:1px solid #eee;@include br(4px);padding-left:10px;}
 		}
 		.r-mark{
-			width:67%;
+			width:73%;
 			margin:0 auto;
 			@include pos(r);
 			height:20px;
@@ -100,7 +101,7 @@
 						background: #555b64;
 						line-height: 15px;
 						color:#fff;
-
+						top:3px;
 						text-align: center;
 						@include br(50%);
 						@include transform(scale(.8));

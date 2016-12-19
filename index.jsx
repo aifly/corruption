@@ -18,7 +18,7 @@ class App extends React.Component{
     }
 
     componentWillMount() {
-		document.querySelector('html').style.fontSize = document.documentElement.clientWidth / 10 + 'px';    		
+				
     }
 
     render(){

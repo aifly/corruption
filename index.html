@@ -5,16 +5,26 @@
     <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no'/>
     <title>2016年以来的反腐弹窗推送</title>
     <script>
-    	document.addEventListener('touchmove',function(e){e.preventDefault()})
+        document.querySelector('html').style.fontSize = document.documentElement.clientWidth / 10 + 'px';    
+        document.addEventListener('touchmove',function(e){e.preventDefault()})
     </script>
 
     <style>
     .fly-loading-C{position:absolute;left:0;top:0;width:100%;height:100%;
-    		background:url(./assets/images/loading-bg.jpg) no-repeat center center;
+            background:url(./assets/images/loading-bg.jpg) no-repeat center center;
             background-size:cover
         }
     .fly-loading-C.hide{-webkit-transition:1s;transition:1s;opacity:0;z-index:-1}
-    .l-loading-scale{position:absolute;top:50%;color:#fff;width:100vw;font-size:20px;font-family:Georgia;text-align:center;margin-top:.4rem}
+    .l-loading-scale{
+        position:absolute;top:50%;
+        color:#fff;
+        width:100%;
+        font-size:20px;
+        font-family:Georgia;
+        text-align:center;
+        margin-top:.4rem;
+        
+    }
     </style>
 </head>
 <body style="overflow: hidden;">
@@ -25,16 +35,16 @@
 </div>
 
 <div id="fly-main">
-
 </div>
 <script>
-	
-var Vector2 = function (x, y) {
+
+function Vector2(x, y) {
 
     this.x = x || 0;
     this.y = y || 0;
 
 };
+
 
 Vector2.prototype = {
   
@@ -227,11 +237,12 @@ Vector2.rotate = function (p1, p2, theta) {
     var R = [ [Math.cos(theta), -Math.sin(theta)],  [Math.sin(theta), Math.cos(theta)] ];
     return new Vector2(p2.x + R[0][0] * v.x + R[0][1] * v.y, p2.y + R[1][0] * v.x + R[1][1] * v.y);
 }
+
 </script>
 <script>
  !function(document){
 
-		 var  Word = function (text, fontSize, color, position) {
+        function Word(text, fontSize, color, position) {
             this.text = text;
             this.fontSize = fontSize;
             this.color = color;
@@ -291,8 +302,10 @@ Vector2.rotate = function (p1, p2, theta) {
         }
 
         var currentMap = 0;
-        var t = setInterval(function(){
 
+        var isStop = false;
+
+        function render(){
             cxt.clearRect(0, 0, c.width, c.height);
             drawAllWords();
             if (currentMap > 395) currentMap = 0;
@@ -305,8 +318,11 @@ Vector2.rotate = function (p1, p2, theta) {
 
                 text[parseInt(currentMap / 40) + 1].fontSize = currentMap % 40 + 20;
             }
+          !isStop &&  webkitRequestAnimationFrame(render);
+        }
 
-        },20);
+        webkitRequestAnimationFrame(render);
+         
 
          var arr = [
             './assets/images/card.png',
@@ -333,31 +349,32 @@ Vector2.rotate = function (p1, p2, theta) {
         ];
 
         var scale = document.getElementById('l-loading-scale');
-		loading(arr,(data)=>{
-        	scale.innerHTML = ((data*100 | 0)>90 ? 90 : (data*100 | 0))+'%';
-        },()=>{
-        	var s = document.createElement('script');
-        	s.src = './assets/js/index.js?t='+new Date().getTime();
-        	document.body.appendChild(s);
-        	s.onload = function(){
-        		scale.innerHTML = '100%';
-        		document.querySelector('.fly-loading-C').classList.add('hide')
-        		clearInterval(t);
-        	}
-        	
+
+        loading(arr,function(data){
+            scale.innerHTML = ((data*100 | 0)>90 ? 90 : (data*100 | 0))+'%';
+        },function(){
+            var s = document.createElement('script');
+           // s.src = 'http://localhost:3000/index.js';//'./assets/js/index.js?t='+new Date().getTime();
+            s.src = './assets/js/index.js?t='+new Date().getTime();
+            document.body.appendChild(s);
+            s.onload = function(){
+                scale.innerHTML = '100%';
+                document.querySelector('.fly-loading-C').classList.add('hide')
+                isStop =  true;
+            }
         });
 
      function  loading(arr, fn, fnEnd){
         var len = arr.length;
         var count = 0;
         var i = 0;
-        loadimg();
+        
         function loadimg() {
             if (i === len) {
                 return;
             }
             var img = new Image();
-            img.onload = img.onerror = ()=> {
+            img.onload = img.onerror = function(){
                 count++;
                 if (i < len - 1) {
                     i++;
@@ -369,22 +386,23 @@ Vector2.rotate = function (p1, p2, theta) {
             };
             img.src = arr[i];
         }
+       loadimg();
     }
 
- 	function setSize(){
- 		var viewWidth = document.documentElement.clientWidth,
+    function setSize(){
+        var viewWidth = document.documentElement.clientWidth,
             viewHeight = document.documentElement.clientHeight;
             var canvas = document.getElementById('loading');
         canvas.width = viewWidth;
         canvas.height = viewHeight;
         return{viewWidth:viewWidth,viewHeight:viewHeight};
- 	}
+    }
  }(document);
 </script>
-	<script src='./assets/js/data.js'></script>
-	<!-- <script src="./assets/js/index.js"></script> -->
+    <script src='./assets/js/data.js'></script>
+    <!-- <script src="./assets/js/index.js"></script> -->
 <!--
-	<script src="http://localhost:3000/index.js"></script>
+    <script src="http://localhost:3000/index.js"></script>
 
 -->
 

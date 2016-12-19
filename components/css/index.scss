@@ -6,6 +6,7 @@
 	top:0;
 	width:100%;
 	height:100%;
+
 	@include transition(1s);
 	&.hide{
 		opacity:0;
@@ -93,6 +94,7 @@
 				height:1rem;
 				background:#c84803;
 				margin:0 auto;
+				@include pos(r);
 				line-height:1rem;
 				text-align: center;
 				color:#fff;
@@ -169,5 +171,26 @@
 			}
 		}
 	}
+
+}
+
+
+@media all and (max-height:460px) {
+		.fly-index-page{
+			.fly-2016{
+				bottom:2rem;
+				z-index: 10;
+			}
+			.fly-main-area{
+				.fly-figure{
+					height:70vh;
+					.fly-begin-btn{
+						top:-1rem;
+					}	
+				}
+				
+			}
+
+		}
 
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {FlyPublicComponent} from './public.jsx';
 import './css/result.css';
 import FlyButton from './button.jsx';
-import {utilMethods,_$,$$} from '../assets/lib/utilMethod'
+import {utilMethods,_$,$$} from '../assets/lib/utilMethod';
 
 
 class FlyResult extends React.Component {
@@ -34,12 +34,12 @@ class FlyResult extends React.Component {
       			<h1></h1>
       			<h3>您一共翻出了{this.state.score/5}名违纪官员， </h3>
       			<p>共计获的得分</p>
-      			<div className='r-score-C'><span>{this.state.score}</span>分</div>
+      			<div className='r-score-C'><span>{this.state.score || 0}</span>分</div>
       			<div className='r-rank'>
       				<img src='./assets/images/paiming.png'/>
       			</div>
       			<div className='r-tel'>
-      				<input ref='phone' type='text' placeholder='留下您的手机号' />
+      				<input ref='phone' onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} type='text' placeholder='留下您的手机号' />
       			</div>
       			<div className='r-mark'>
       				<span>参与100名幸运抽奖活动</span>
@@ -49,11 +49,20 @@ class FlyResult extends React.Component {
       				<FlyButton clickHandler={this.sureShare.bind(this)} text='确定并分享'></FlyButton>
       			</div>
       			<div className='r-restart'>
-					<FlyButton clickHandler={this.restart.bind(this)} text='再玩一次' ico='./assets/images/fresh.png'></FlyButton>
+				    	<FlyButton clickHandler={this.restart.bind(this)} text='再玩一次' ico='./assets/images/fresh.png'></FlyButton>
       			</div>
       		</section>
       </div>
     );
+  }
+
+  onFocus(e){
+
+    return false;
+  }
+
+  onBlur(e){
+    return false;
   }
 
   sureShare(){//确定并分享、
@@ -90,7 +99,6 @@ class FlyResult extends React.Component {
   }
 
   componentDidMount() {
-  	
 
   	let {obserable} = this.props;
   	obserable.on('startResult',(data)=>{
