@@ -86,7 +86,8 @@ class FlyResult extends React.Component {
 		  },100);	
 	 },{
 	 	setscore:this.state.score,
-	 	setmobile:phone
+	 	setmobile:phone,
+    settype:0
 	 });
   }
 

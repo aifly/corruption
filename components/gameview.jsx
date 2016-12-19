@@ -201,8 +201,8 @@ class FlyGameView extends React.Component {
               });
           }
     },{
-
-    })
+      settype:0
+    });
 
   }
 
