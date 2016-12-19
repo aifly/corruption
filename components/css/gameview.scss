@@ -483,7 +483,7 @@
 			@include  transform3d();
 			@include transition_transform(1s);
 			&.active{
-				@include transform(rotateY(3600deg));
+				@include transform(rotateY(-360deg));
 				@include transitionTimingFunction(cubic-bezier(0, 1.05, 0.61, 0.97));
 			}
 			height:100%;
@@ -519,3 +519,14 @@
 	}
 }
 
+@media all and (max-height:460px) {
+	.fly-game-view-ui{
+		 .g-result{
+		 	height:88vh;
+		 	top:6vh;
+		 	&.active{
+
+		 	}
+		 }
+	}
+}
