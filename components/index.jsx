@@ -25,6 +25,7 @@ class IndexApp extends React.Component{
             backgroundSize:'cover'
         }
 		return <div style={style} className='fly-index-page hide' ref='fly-index-page'>
+			<audio ref='audio' src='./assets/music/doudizhu.mp3'></audio>
 			<div className='fly-2016'>
 				<img src='./assets/images/2016.png' data-src='./assets/images/2016.png'/>
 			</div>
@@ -78,7 +79,14 @@ class IndexApp extends React.Component{
 		this.refs['fly-index-page'].classList.remove('hide');
 		setTimeout(()=>{
 			this.refreshCards();//翻牌
-		},500)
+		},500);
+
+		var audio = this.refs['audio'];
+
+		this.bgLoopTimer = setInterval(()=>{
+				//audio.play();
+				this.refreshCards();//翻牌
+		},10000);
 	}
 	gameStart(){
 		this.setState({

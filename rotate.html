@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>数组旋转</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul{list-style:none;}
+        #box{
+            margin:100px auto;
+            border-left:1px solid #000;
+            border-top:1px solid #000;
+            position:relative;
+            
+        }
+            #box li {
+                box-sizing: border-box;
+                float: left;
+                border-right: 1px solid #000;
+                border-bottom: 1px solid #000;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: 50px;
+                -moz-transition: .4s;
+                -o-transition: .4s;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+    </style>
+</head>
+<body>
+    <ul id="box"></ul>
+    <div style="text-align:center;"><button style="width:60px;height:30px;" id="btn">旋转</button></div>
+    <script>
+        var row = 3;
+        var gridSize = 50;
+        var html = "";
+        var box = document.getElementById("box")
+        box.style.width = gridSize * row + "px";
+        box.style.height = gridSize * row + "px";
+        for (var i = 1; i <= row * row; i++) {
+            html += "<li style='width:" + gridSize + "px;height:" + gridSize + "px;background:#abdc" + (i > 9 ? 0 : i) + "f;'>" + i + "</li>";
+        }
+        box.innerHTML = html;
+
+        var btn = document.getElementById("btn");
+        var aLi = box.getElementsByTagName("li");
+         
+
+        for (var i = 0; i < row; i++) {//布局转换
+            for (var j = 0; j < row; j++) {
+                aLi[i * row + j].style.position = "absolute";
+                aLi[i * row + j].style.left = j * gridSize + "px";
+                aLi[i * row + j].style.top = i * gridSize + "px";
+            }
+        }
+
+        btn.onclick = function () {
+          
+            var iNow = 0;
+            var newArr = [];
+          
+            (function () {
+                if (iNow > row) {
+                    return;
+                }
+                iNow++;
+                var iCount = 0;
+                for (var i = row * row; i > 0; i--) {
+                    
+                    if (i % row === iNow) {
+                        aLi[i - 1].style.left = iCount * gridSize + "px";
+                        aLi[i - 1].style.top = (iNow - 1) * gridSize + "px";
+                        iCount++;
+                    }
+                }
+                arguments.callee();
+            })();
+
+            var iCount = 0;
+
+            for (var i = row * row; i > 0; i--) {
+                if (i % row === 0) {
+                    aLi[i - 1].style.left = iCount * gridSize + "px";
+                    aLi[i - 1].style.top = (iNow - 2) * gridSize + "px";
+                    iCount++;
+                }
+            }
+        };
+
+    </script>
+</body>
+</html>

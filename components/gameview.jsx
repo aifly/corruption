@@ -17,16 +17,7 @@ class FlyGameView extends React.Component {
       currentData:{},
       scoreClass:'',
       scoreData:[
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30},
-        {mobile:'159****1662',score:30}
+        
       ]
     }
   }
@@ -89,7 +80,7 @@ class FlyGameView extends React.Component {
               </div>
               <ul className="g-cards-C" ref='g-cards-C'>
                  {cardsArr.map((item,i)=>{
-                  return <li key={i} className={"g-cards-item " +  (this.state.currentSelectCardIndex === i ? 'selected show ':' show ')}  onTouchTap={this.selectedCard.bind(this,i)}>
+                  return <li key={i} className={"g-cards-item  " +  (this.state.currentSelectCardIndex === i ? 'selected show  active':' show active')}  onTouchTap={this.selectedCard.bind(this,i)}>
                                 <div className=""><img src="./assets/images/card.png"/></div>
                                 <div className="back ">
                                   <img src="./assets/images/gy-bg.png"/>

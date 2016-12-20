@@ -118,20 +118,38 @@
       .fly-index-page .fly-main-area .fly-figure .fly-tigger {
         width: 6rem;
         margin: 1rem auto; }
+@-webkit-keyframes bg {
+  0% {
+    background-position: -200px 0; }
+  100% {
+    background-position: 200px 0; } }
       .fly-index-page .fly-main-area .fly-figure .fly-begin-btn {
         width: 3rem;
         height: 1rem;
-        background: #c84803;
+        z-index: 2;
+        background: -webkit-linear-gradient(-30deg, rgba(255, 255, 255, 0) 40px, white 50px, white 60px, rgba(255, 255, 255, 0) 70px) -20px 0;
+        -webkit-background-clip: text;
+        -webkit-animation: bg linear 10s infinite;
         margin: 0 auto;
         position: relative;
         line-height: 1rem;
         text-align: center;
-        color: #fff;
-        border: 1px solid #fff;
+        color: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.6);
         border-radius: 10px;
         position: relative;
         -webkit-transition: 0.05s;
         transition: 0.05s; }
+        .fly-index-page .fly-main-area .fly-figure .fly-begin-btn:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background: rgba(200, 72, 3, 0.6);
+          z-index: -1;
+          border-radius: 10px; }
         .fly-index-page .fly-main-area .fly-figure .fly-begin-btn.active {
           -webkit-transform: scale(0.95);
           transform: scale(0.95);
