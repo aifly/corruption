@@ -8,6 +8,7 @@ import  FlyLoading from './components/loading.jsx';
 import IndexApp from './components/index.jsx';
 import FlyGameView from './components/gameview.jsx';
 import FlyResult from './components/result.jsx';
+import FlyRule from './components/rule.jsx';
 import Obserable from './assets/lib/obserable';
 var obserable = new Obserable();
 injectTapEventPlugin();
@@ -29,6 +30,7 @@ class App extends React.Component{
             <IndexApp {...data}></IndexApp>
             <FlyGameView {...data}></FlyGameView>
             <FlyResult {...data}></FlyResult>
+            <FlyRule {...data}></FlyRule>
             {/*
 
             <FlyGameView></FlyGameView>

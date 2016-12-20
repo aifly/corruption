@@ -2,6 +2,7 @@ import React from 'react';
 import {FlyPublicComponent} from './public.jsx';
 import './css/result.css';
 import FlyButton from './button.jsx';
+
 import {utilMethods,_$,$$} from '../assets/lib/utilMethod';
 
 
@@ -43,7 +44,7 @@ class FlyResult extends React.Component {
       			</div>
       			<div className='r-mark'>
       				<span>参与100名幸运抽奖活动</span>
-      				<span>获奖说明</span>
+      				<span onTouchTap={this.showRule.bind(this)}>获奖说明</span>
       			</div>
       			<div className='r-btn-group '>
       				<FlyButton clickHandler={this.sureShare.bind(this)} text='确定并分享'></FlyButton>
@@ -54,6 +55,11 @@ class FlyResult extends React.Component {
       		</section>
       </div>
     );
+  }
+
+  showRule(){
+    let {obserable} = this.props;
+    obserable.trigger({type:'openRule'});
   }
 
   onFocus(e){

@@ -72,26 +72,8 @@ class FlyGameView extends React.Component {
                   </div>
               </section>
               <img className='g-top-bg' src='./assets/images/index-top.png'/>
-              <div className="g-rule" onTouchTap={()=>{this.setState({ruleShow:true})}}>规则说明</div>
-              <div className='g-rule-C' style={{zIndex:this.state.ruleShow?999999:-1,opacity:this.state.ruleShow?1:0}}>
-                 <div className={'g-rule-container ' + (this.state.ruleShow?'active':'')}>
-                      <h2 className='g-rule-header'onTouchTap={()=>{this.setState({ruleShow:false})}}>&times;</h2>
-                      <div className='g-rule-body'>
-                        <h2 className='g-rule-title'>规则说明</h2>
-                        <h2 className='g-game-rule-t'><i>游戏规则:</i></h2>
-                        <div className='g-game-rule'>每组6轮，每轮都有2张“老虎牌”和4张空牌，用户抽中老虎牌计5分，没抽中不计分。</div>
-                        <div className='g-rule-line'></div>
-                        <h2 className='g-game-draw-title'><i>抽奖规则:</i></h2>
-                        <div className='g-game-draw-content'> 2016年12月25日从所有参加游戏的玩家中随机抽取100名</div>
-                        <div className='g-draw-items'>奖项如下:</div>
-                        <ul className='g-draw-list'>
-                            <li>一等奖1名：每位获奖用户各获得<span>iPhone6s 1个</span></li> 
-                            <li>二等奖3名：每位获奖用户各获得<span>赛睿键盘1个</span></li> 
-                            <li>三等奖5名：每位获奖用户各获得<span>硕美科耳机1个</span></li> 
-                        </ul>
-                      </div>
-                    </div>
-              </div>
+              <div className="g-rule" onTouchTap={this.showRule.bind(this)}>规则说明</div>
+             
               <div className="g-rank">
                   <div><span className="g-text">第</span> <span className="g-big">{'0'+this.state.iNow}</span> <span className="g-text">/ 6轮</span>
                   </div>
@@ -142,7 +124,7 @@ class FlyGameView extends React.Component {
                                 <tbody>
                                    <tr>
                                       <td>推送内容</td>
-                                      <td><a href='#'>{this.state.currentData.pushContent}</a></td>
+                                      <td><a href='#'>{this.state.currentData.pushContent.length>30?this.state.currentData.pushContent.substring(0,30)+'...':this.state.currentData.pushContent}</a></td>
                                    </tr>
                                    <tr>
                                       <td>时<span style={{opacity:0}}>时间</span>间</td>
@@ -150,7 +132,9 @@ class FlyGameView extends React.Component {
                                    </tr>
                                    <tr>
                                       <td>稿<span style={{opacity:0}}>时间</span>件</td>
-                                      <td><a href='#'>{this.state.currentData.file}</a></td>
+                                      <td><a href='#'>
+                                        {this.state.currentData.file.length>18?this.state.currentData.file.substring(0,18)+'...':this.state.currentData.file}
+                                      </a></td>
                                    </tr>
                                    <tr>
                                       <td>时<span style={{opacity:0}}>时间</span>间</td>
@@ -187,10 +171,12 @@ class FlyGameView extends React.Component {
       );
   }
 
+ showRule(){
+    let {obserable} = this.props;
+    obserable.trigger({type:'openRule'});
+  }
   showScore(){
-    this.setState({
-      
-    });
+    
     var s = this;
     utilMethods.post('http://api.zmiti.com/v2/user/get_user_score/',function(data){
           data = JSON.parse(data);
@@ -241,6 +227,8 @@ class FlyGameView extends React.Component {
     this.dealCard();
 
     let {obserable} = this.props;
+
+
 
     obserable.on('startPlay',()=>{
       this.refs['fly-game-view-ui'].classList.add('show');
