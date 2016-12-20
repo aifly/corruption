@@ -225,6 +225,7 @@
 	.g-cards-C{
 		width:7.8rem;
 		margin:0 auto;
+		@include pos(r);
 		@include transform3d();
 		.g-cards-item{
 			float: left;

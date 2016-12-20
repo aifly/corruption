@@ -23119,6 +23119,7 @@
 
 				obserable.trigger({ type: 'startPlay' });
 				this.refs['fly-index-page'].classList.add('hide');
+				clearInterval(this.bgLoopTimer);
 			}
 		}, {
 			key: 'refreshCards',
@@ -23246,6 +23247,7 @@
 	      score: 0, //当前的得分
 	      ruleShow: false,
 	      currentData: {},
+	      allCount: 5,
 	      scoreClass: '',
 	      scoreData: []
 	    };
@@ -23372,7 +23374,9 @@
 	            _react2['default'].createElement(
 	              'span',
 	              { className: 'g-text' },
-	              '/ 6轮'
+	              '/ ',
+	              this.state.allCount,
+	              '轮'
 	            )
 	          ),
 	          _react2['default'].createElement(
@@ -23439,7 +23443,7 @@
 	        ),
 	        _react2['default'].createElement(
 	          'ul',
-	          { className: 'g-tigger-list', ref: 'g-tigger-list' },
+	          { className: 'g-tigger-list', ref: 'g-tigger-list', onTouchTap: this.order.bind(this) },
 	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
 	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
 	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
@@ -23570,8 +23574,8 @@
 	                  )
 	                )
 	              ),
-	              this.state.iNow < 6 && _react2['default'].createElement(_buttonJsx2['default'], { clickHandler: this.nextRound.bind(this) }),
-	              this.state.iNow >= 6 && _react2['default'].createElement(_buttonJsx2['default'], { text: '确 定', clickHandler: this.redirectToResult.bind(this) })
+	              this.state.iNow < this.state.allCount && _react2['default'].createElement(_buttonJsx2['default'], { clickHandler: this.nextRound.bind(this) }),
+	              this.state.iNow >= this.state.allCount && _react2['default'].createElement(_buttonJsx2['default'], { text: '确 定', clickHandler: this.redirectToResult.bind(this) })
 	            ),
 	            _react2['default'].createElement('section', { className: 'g-back', style: { background: 'url(./assets/images/card.png) no-repeat center center', backgroundSize: 'contain' } })
 	          )
@@ -23659,13 +23663,169 @@
 	      });
 	    }
 	  }, {
+	    key: 'order',
+	    value: function order() {
+
+	      this.iNow = this.iNow === undefined ? 0 : this.iNow;
+	      var index = ++this.iNow % 6;
+
+	      // for(let i = 0 ; i < 6 ; i ++){
+	      //         var iNow = (index+i) > 5 ? index+i - 6  :index+i;
+	      //         var left = this.cardPosArr[iNow].left,
+	      //             top = this.cardPosArr[iNow].top;
+
+	      //         this.cardItems[i].style.left =  left +'px';
+	      //         this.cardItems[i].style.top =  top + 'px'  ;
+
+	      //     }
+	      switch (index) {
+	        case 0:
+	          for (var i = 0; i < 6; i++) {
+	            this.cardItems[i].style.left = this.cardPosArr[i].left + 'px';
+	            this.cardItems[i].style.top = this.cardPosArr[i].top + 'px';
+	          }
+
+	          break;
+	        case 1:
+
+	          this.cardItems[0].style.left = this.cardPosArr[1].left + 'px';
+	          this.cardItems[0].style.top = this.cardPosArr[1].top + 'px';
+
+	          this.cardItems[1].style.left = this.cardPosArr[2].left + 'px';
+	          this.cardItems[1].style.top = this.cardPosArr[2].top + 'px';
+
+	          this.cardItems[2].style.left = this.cardPosArr[5].left + 'px';
+	          this.cardItems[2].style.top = this.cardPosArr[5].top + 'px';
+
+	          this.cardItems[3].style.left = this.cardPosArr[0].left + 'px';
+	          this.cardItems[3].style.top = this.cardPosArr[0].top + 'px';
+
+	          this.cardItems[4].style.left = this.cardPosArr[3].left + 'px';
+	          this.cardItems[4].style.top = this.cardPosArr[3].top + 'px';
+
+	          this.cardItems[5].style.left = this.cardPosArr[4].left + 'px';
+	          this.cardItems[5].style.top = this.cardPosArr[4].top + 'px';
+
+	          break;
+	        case 2:
+
+	          this.cardItems[0].style.left = this.cardPosArr[2].left + 'px';
+	          this.cardItems[0].style.top = this.cardPosArr[2].top + 'px';
+
+	          this.cardItems[1].style.left = this.cardPosArr[5].left + 'px';
+	          this.cardItems[1].style.top = this.cardPosArr[5].top + 'px';
+
+	          this.cardItems[2].style.left = this.cardPosArr[4].left + 'px';
+	          this.cardItems[2].style.top = this.cardPosArr[4].top + 'px';
+
+	          this.cardItems[3].style.left = this.cardPosArr[1].left + 'px';
+	          this.cardItems[3].style.top = this.cardPosArr[1].top + 'px';
+
+	          this.cardItems[4].style.left = this.cardPosArr[0].left + 'px';
+	          this.cardItems[4].style.top = this.cardPosArr[0].top + 'px';
+
+	          this.cardItems[5].style.left = this.cardPosArr[3].left + 'px';
+	          this.cardItems[5].style.top = this.cardPosArr[3].top + 'px';
+
+	          break;
+	        case 3:
+	          this.cardItems[0].style.left = this.cardPosArr[5].left + 'px';
+	          this.cardItems[0].style.top = this.cardPosArr[5].top + 'px';
+
+	          this.cardItems[1].style.left = this.cardPosArr[4].left + 'px';
+	          this.cardItems[1].style.top = this.cardPosArr[4].top + 'px';
+
+	          this.cardItems[2].style.left = this.cardPosArr[3].left + 'px';
+	          this.cardItems[2].style.top = this.cardPosArr[3].top + 'px';
+
+	          this.cardItems[3].style.left = this.cardPosArr[2].left + 'px';
+	          this.cardItems[3].style.top = this.cardPosArr[2].top + 'px';
+
+	          this.cardItems[4].style.left = this.cardPosArr[1].left + 'px';
+	          this.cardItems[4].style.top = this.cardPosArr[1].top + 'px';
+
+	          this.cardItems[5].style.left = this.cardPosArr[0].left + 'px';
+	          this.cardItems[5].style.top = this.cardPosArr[0].top + 'px';
+	          break;
+	        case 4:
+	          this.cardItems[0].style.left = this.cardPosArr[4].left + 'px';
+	          this.cardItems[0].style.top = this.cardPosArr[4].top + 'px';
+
+	          this.cardItems[1].style.left = this.cardPosArr[3].left + 'px';
+	          this.cardItems[1].style.top = this.cardPosArr[3].top + 'px';
+
+	          this.cardItems[2].style.left = this.cardPosArr[0].left + 'px';
+	          this.cardItems[2].style.top = this.cardPosArr[0].top + 'px';
+
+	          this.cardItems[3].style.left = this.cardPosArr[5].left + 'px';
+	          this.cardItems[3].style.top = this.cardPosArr[5].top + 'px';
+
+	          this.cardItems[4].style.left = this.cardPosArr[2].left + 'px';
+	          this.cardItems[4].style.top = this.cardPosArr[2].top + 'px';
+
+	          this.cardItems[5].style.left = this.cardPosArr[1].left + 'px';
+	          this.cardItems[5].style.top = this.cardPosArr[1].top + 'px';
+	          break;
+	        case 5:
+	          this.cardItems[0].style.left = this.cardPosArr[3].left + 'px';
+	          this.cardItems[0].style.top = this.cardPosArr[3].top + 'px';
+
+	          this.cardItems[1].style.left = this.cardPosArr[0].left + 'px';
+	          this.cardItems[1].style.top = this.cardPosArr[0].top + 'px';
+
+	          this.cardItems[2].style.left = this.cardPosArr[1].left + 'px';
+	          this.cardItems[2].style.top = this.cardPosArr[1].top + 'px';
+
+	          this.cardItems[3].style.left = this.cardPosArr[4].left + 'px';
+	          this.cardItems[3].style.top = this.cardPosArr[4].top + 'px';
+
+	          this.cardItems[4].style.left = this.cardPosArr[5].left + 'px';
+	          this.cardItems[4].style.top = this.cardPosArr[5].top + 'px';
+
+	          this.cardItems[5].style.left = this.cardPosArr[2].left + 'px';
+	          this.cardItems[5].style.top = this.cardPosArr[2].top + 'px';
+	          break;
+
+	      }
+	    }
+	  }, {
+	    key: 'setLayout',
+	    value: function setLayout() {
+	      //布局转换。
+	      var cardItems = this.refs['g-cards-C'].querySelectorAll('li');
+	      this.cardItems = cardItems;
+	      this.cardPosArr = [];
+	      for (var i = 0; i < cardItems.length; i++) {
+	        cardItems[i].index = i;
+	        var left = cardItems[i].offsetLeft,
+	            top = cardItems[i].offsetTop;
+
+	        this.cardPosArr.push({
+	          left: left,
+	          top: top
+	        });
+
+	        cardItems[i].style.left = left + 'px';
+	        cardItems[i].style.top = top + 'px';
+	      }
+	      for (var i = 0; i < cardItems.length; i++) {
+	        cardItems[i].style.position = 'absolute';
+	        cardItems[i].style.margin = 0;
+	      }
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var _this3 = this;
 
 	      this.dealCard();
+	      this.setLayout();
 
 	      var obserable = this.props.obserable;
+
+	      /*setInterval(()=>{
+	          this.order();
+	      },200)*/
 
 	      obserable.on('startPlay', function () {
 	        _this3.refs['fly-game-view-ui'].classList.add('show');
@@ -23806,7 +23966,7 @@
 
 
 	// module
-	exports.push([module.id, ".g-message {\r\n  position: absolute;\r\n  height: 30px;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  left: 50%;\r\n  padding: 0 2px;\r\n  top: 2rem;\r\n  color: #fff;\r\n  border-radius: 5px;\r\n  -webkit-transform: translate3d(-50%, -4rem, 0);\r\n  transform: translate3d(-50%, -4rem, 0);\r\n  opacity: 0;\r\n  -webkit-transition: 0.2s;\r\n  transition: 0.2s;\r\n  background: #777;\r\n  z-index: 100000; }\r\n  .g-message:before {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-shadow: 0 0 20px rgba(255, 255, 240, 0.4);\r\n    border-radius: 5px; }\r\n  .g-message.active {\r\n    -webkit-transform: translate3d(-50%, 0, 0);\r\n    transform: translate3d(-50%, 0, 0);\r\n    opacity: 1; }\r\n\r\n.fly-game-view-ui {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  z-index: -1;\r\n  opacity: 0;\r\n  -webkit-transition: 1s;\r\n  transition: 1s; }\r\n  .fly-game-view-ui.show {\r\n    z-index: 1;\r\n    opacity: 1; }\r\n  .fly-game-view-ui .g-top-bg {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0; }\r\n  .fly-game-view-ui .fly-scrore-list {\r\n    opacity: 0;\r\n    -webkit-transform: translate3d(0, -100%, 0);\r\n    transform: translate3d(0, -100%, 0);\r\n    -webkit-transition: 0.3s;\r\n    transition: 0.3s;\r\n    position: fixed;\r\n    z-index: 9999;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    color: #fff;\r\n    height: 100%;\r\n    background: rgba(0, 0, 0, 0.9); }\r\n    .fly-game-view-ui .fly-scrore-list.active {\r\n      -webkit-transform: translate3d(0, 0, 0);\r\n      transform: translate3d(0, 0, 0);\r\n      opacity: 1; }\r\n    .fly-game-view-ui .fly-scrore-list h2 {\r\n      height: 30px;\r\n      line-height: 30px;\r\n      color: #Fff;\r\n      font-size: .8rem;\r\n      text-align: right;\r\n      padding-right: 10px; }\r\n    .fly-game-view-ui .fly-scrore-list h3 {\r\n      font-weight: normal;\r\n      text-align: center;\r\n      color: #ffca3d;\r\n      font-size: .8rem; }\r\n    .fly-game-view-ui .fly-scrore-list .fly-score-title {\r\n      display: -webkit-box;\r\n      -webkit-box-align: center;\r\n      -webkit-box-pack: center;\r\n      -webkit-box-orient: horizontal;\r\n      width: 90%;\r\n      margin: .3rem auto;\r\n      line-height: 30px;\r\n      border-bottom: 1px solid #999; }\r\n      .fly-game-view-ui .fly-scrore-list .fly-score-title li {\r\n        text-align: center;\r\n        color: #999; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(1) {\r\n          width: 25%; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(2) {\r\n          width: 50%; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(3) {\r\n          width: 25%; }\r\n    .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul {\r\n      width: 90%;\r\n      margin: 0 auto; }\r\n      .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li {\r\n        display: -webkit-box;\r\n        -webkit-box-align: center;\r\n        -webkit-box-pack: center;\r\n        -webkit-box-orient: horizontal; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div {\r\n          text-align: center;\r\n          height: 30px;\r\n          line-height: 30px; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(1) {\r\n            width: 25%;\r\n            font-style: italic;\r\n            color: #00a1d9; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(2) {\r\n            width: 50%; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(3) {\r\n            width: 25%; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1) {\r\n          font-size: .8rem;\r\n          height: 50px;\r\n          color: #ff4242; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1) div:first-of-type {\r\n            color: #ff4242; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2) {\r\n          font-size: .7rem;\r\n          height: 40px;\r\n          color: #ff6138; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2) div:first-of-type {\r\n            color: #ff6138; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3) {\r\n          font-size: .6rem;\r\n          height: 40px;\r\n          color: #ffca3d; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3) div:first-of-type {\r\n            color: #ffca3d; }\r\n  .fly-game-view-ui .g-rule {\r\n    position: absolute;\r\n    right: 0;\r\n    top: .5rem;\r\n    background: rgba(255, 255, 255, 0.8);\r\n    padding: 7px 10px;\r\n    border-bottom-left-radius: 14px;\r\n    border-top-left-radius: 14px;\r\n    text-align: center; }\r\n  .fly-game-view-ui .g-rank {\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    width: 7rem;\r\n    margin: 2rem auto 0;\r\n    color: #fff; }\r\n    .fly-game-view-ui .g-rank div:nth-of-type(1) {\r\n      margin-right: .5rem; }\r\n      .fly-game-view-ui .g-rank div:nth-of-type(1) span.g-big {\r\n        font-size: .6rem;\r\n        color: #00fffc; }\r\n    .fly-game-view-ui .g-rank div:nth-of-type(2) {\r\n      border: 1px solid #a9a9a9;\r\n      padding: 1px 10px;\r\n      border-radius: 0.8rem;\r\n      position: relative; }\r\n      .fly-game-view-ui .g-rank div:nth-of-type(2):before {\r\n        content: '';\r\n        position: absolute;\r\n        width: 100%;\r\n        border-radius: 0.8rem;\r\n        height: 100%;\r\n        left: 0;\r\n        top: 0;\r\n        box-shadow: 0 0 10px rgba(169, 169, 169, 0.8), 0 0 10px rgba(169, 169, 169, 0.2) inset; }\r\n    .fly-game-view-ui .g-rank .g-ball {\r\n      width: .5rem;\r\n      display: inline-block; }\r\n    .fly-game-view-ui .g-rank .g-score {\r\n      font-size: .6rem;\r\n      color: #ffcc00; }\r\n    .fly-game-view-ui .g-rank .g-line {\r\n      display: inline-block;\r\n      -webkit-transform: scaleX(0.2);\r\n      transform: scaleX(0.2);\r\n      position: relative;\r\n      top: -2px; }\r\n    .fly-game-view-ui .g-rank .g-text {\r\n      position: relative;\r\n      top: -2px; }\r\n  .fly-game-view-ui .g-info {\r\n    width: 6rem;\r\n    color: #fff;\r\n    background: rgba(255, 255, 255, 0.3);\r\n    line-height: 30px;\r\n    border-radius: 0.3rem;\r\n    padding: 0 1px;\r\n    text-align: center;\r\n    margin: .4rem auto;\r\n    position: relative; }\r\n    .fly-game-view-ui .g-info img {\r\n      width: .6rem;\r\n      margin-top: .2rem;\r\n      position: absolute;\r\n      -webkit-animation: info 1s 50 ease-out alternate;\r\n      animation: info 1s 50 ease-out alternate; }\r\n  .fly-game-view-ui .g-cards-C {\r\n    width: 7.8rem;\r\n    margin: 0 auto;\r\n    -webkit-transform-style: preserve-3d;\r\n    transform-style: preserve-3d;\r\n    perspective: 800px;\r\n    -webkit-perspective: 800px; }\r\n    .fly-game-view-ui .g-cards-C .g-cards-item {\r\n      float: left;\r\n      width: 2.2rem;\r\n      -webkit-transform-style: preserve-3d;\r\n      transform-style: preserve-3d;\r\n      perspective: 800px;\r\n      -webkit-perspective: 800px;\r\n      height: 3.8rem;\r\n      margin: .2rem;\r\n      box-sizing: border-box;\r\n      position: relative;\r\n      backface-visibility: hidden; }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n+1) {\r\n        -webkit-transform: translate3d(2.6rem, -17rem, 0);\r\n        transform: translate3d(2.6rem, -17rem, 0); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n-1) {\r\n        -webkit-transform: translate3d(0, -17rem, 0);\r\n        transform: translate3d(0, -17rem, 0); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n) {\r\n        -webkit-transform: translate3d(-2.6rem, -17rem, 0);\r\n        transform: translate3d(-2.6rem, -17rem, 0); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item.show {\r\n        -webkit-transform: translate3d(0, 0, 0);\r\n        transform: translate3d(0, 0, 0);\r\n        -webkit-transition: 0.2s;\r\n        transition: 0.2s; }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item.selected:before {\r\n        content: '';\r\n        position: absolute;\r\n        width: 100%;\r\n        height: 100%;\r\n        left: 0;\r\n        top: 0;\r\n        z-index: 1000;\r\n        border: 1px solid #49cefa;\r\n        border-radius: 2px;\r\n        box-sizing: border-box;\r\n        box-shadow: 0 0 10px 2px #49cefa; }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item.active {\r\n        -webkit-transform: rotateY(180deg);\r\n        transform: rotateY(180deg); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item > div {\r\n        backface-visibility: hidden;\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        z-index: 1; }\r\n        .fly-game-view-ui .g-cards-C .g-cards-item > div:nth-of-type(2) {\r\n          z-index: 0;\r\n          -webkit-transform: translate3d(0, 0, -1px) rotateY(180deg);\r\n          transform: translate3d(0, 0, -1px) rotateY(180deg); }\r\n          .fly-game-view-ui .g-cards-C .g-cards-item > div:nth-of-type(2) img:nth-of-type(2) {\r\n            position: absolute;\r\n            left: 15%;\r\n            top: 20%;\r\n            width: 70%;\r\n            -webkit-transform: translate3d(0, -50%, 0);\r\n            transform: translate3d(0, -50%, 0); }\r\n          .fly-game-view-ui .g-cards-C .g-cards-item > div:nth-of-type(2) .g-portrait-img {\r\n            position: absolute;\r\n            left: 0;\r\n            top: 50%;\r\n            width: 2rem;\r\n            height: 2rem;\r\n            border-radius: 50%;\r\n            -webkit-transform: translate3d(0, -50%, 0);\r\n            transform: translate3d(0, -50%, 0);\r\n            overflow: hidden; }\r\n  .fly-game-view-ui .g-choose-btn {\r\n    width: 4rem;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    position: absolute;\r\n    bottom: 1.5rem;\r\n    color: #fff;\r\n    background: #999;\r\n    border: 1px solid #fff;\r\n    border-radius: 15px;\r\n    left: 3rem; }\r\n    .fly-game-view-ui .g-choose-btn.active {\r\n      -webkit-transform: scale(0.97);\r\n      transform: scale(0.97); }\r\n      .fly-game-view-ui .g-choose-btn.active:before {\r\n        content: \"\";\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        width: 100%;\r\n        border-radius: 15px;\r\n        height: 100%;\r\n        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); }\r\n  .fly-game-view-ui .g-tigger-list {\r\n    width: 8rem;\r\n    height: 1rem;\r\n    left: 1rem;\r\n    position: absolute;\r\n    bottom: .2rem;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal; }\r\n    .fly-game-view-ui .g-tigger-list li {\r\n      width: 1rem;\r\n      height: 1rem;\r\n      background: #fff;\r\n      margin: 0 .1rem;\r\n      border-radius: 4px; }\r\n  .fly-game-view-ui .g-result {\r\n    position: absolute;\r\n    width: 8rem;\r\n    height: 80vh;\r\n    left: 1rem;\r\n    top: 10vh;\r\n    z-index: 100;\r\n    display: none;\r\n    -webkit-transition: -webkit-transform 0.5s;\r\n    transition: transform 0.5s;\r\n    -webkit-transform: translate3d(0, 0, 10px) scale(0.3);\r\n    transform: translate3d(0, 0, 10px) scale(0.3);\r\n    display: none; }\r\n    .fly-game-view-ui .g-result.active {\r\n      -webkit-transition-timing-function: cubic-bezier(0.49, 1.52, 0.38, 0.84);\r\n      transition-timing-function: cubic-bezier(0.49, 1.52, 0.38, 0.84);\r\n      -webkit-transform: translate3d(0, 0, 10px) scale(1);\r\n      transform: translate3d(0, 0, 10px) scale(1); }\r\n    .fly-game-view-ui .g-result .g-right {\r\n      width: 1.8rem;\r\n      position: absolute;\r\n      right: .6rem;\r\n      top: .1rem;\r\n      z-index: 10; }\r\n    .fly-game-view-ui .g-result .g-look {\r\n      position: absolute;\r\n      width: 100%;\r\n      bottom: 1rem; }\r\n    .fly-game-view-ui .g-result .g-portrait {\r\n      width: 4rem;\r\n      position: relative;\r\n      margin: 1.5rem auto .2rem; }\r\n      .fly-game-view-ui .g-result .g-portrait .g-portrait-bg {\r\n        width: 2.83rem;\r\n        height: 2.73rem;\r\n        position: absolute;\r\n        border-radius: 60px;\r\n        border-bottom-left-radius: 46px;\r\n        border-bottom-right-radius: 40px;\r\n        left: .56rem;\r\n        top: .7rem; }\r\n    .fly-game-view-ui .g-result .g-tigger-name {\r\n      width: 100%;\r\n      text-align: center;\r\n      font-size: .5rem; }\r\n    .fly-game-view-ui .g-result .g-tigger-info {\r\n      width: 7rem;\r\n      height: 100px;\r\n      margin: 0 auto; }\r\n      .fly-game-view-ui .g-result .g-tigger-info tr td {\r\n        vertical-align: top; }\r\n        .fly-game-view-ui .g-result .g-tigger-info tr td a {\r\n          color: #222; }\r\n        .fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(1) {\r\n          width: 1.8rem;\r\n          color: #222;\r\n          text-align: center; }\r\n        .fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(2) {\r\n          color: #330000; }\r\n    .fly-game-view-ui .g-result article {\r\n      -webkit-transform-style: preserve-3d;\r\n      transform-style: preserve-3d;\r\n      perspective: 800px;\r\n      -webkit-perspective: 800px;\r\n      -webkit-transition: -webkit-transform 0.2s;\r\n      transition: transform 0.2s;\r\n      height: 100%; }\r\n      .fly-game-view-ui .g-result article.active {\r\n        -webkit-transform: rotateY(0deg);\r\n        transform: rotateY(0deg);\r\n        -webkit-transition-timing-function: cubic-bezier(0, 1.05, 0.61, 0.97);\r\n        transition-timing-function: cubic-bezier(0, 1.05, 0.61, 0.97); }\r\n      .fly-game-view-ui .g-result article .g-back {\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        z-index: 0;\r\n        -webkit-transform: translate3d(0, 0, -1px) rotateY(180deg);\r\n        transform: translate3d(0, 0, -1px) rotateY(180deg); }\r\n      .fly-game-view-ui .g-result article .g-result-C {\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        -webkit-transform: translate3d(0, 0, 1px);\r\n        transform: translate3d(0, 0, 1px); }\r\n\r\n@-webkit-keyframes info {\r\n  to {\r\n    -webkit-transform: translate3d(0, 10px, 0);\r\n    transform: translate3d(0, 10px, 0); } }\r\n@media all and (max-height: 460px) {\r\n  .fly-game-view-ui .g-result {\r\n    height: 88vh;\r\n    top: 6vh; }\r\n\r\n  .r-main-ui .r-content-C {\r\n    height: 100vh !important; } }\r\n\r\n/*# sourceMappingURL=gameview.css.map */\r\n", ""]);
+	exports.push([module.id, ".g-message{position:absolute;height:30px;line-height:30px;text-align:center;left:50%;padding:0 2px;top:2rem;color:#fff;border-radius:5px;-webkit-transform:translate3d(-50%, -4rem, 0);transform:translate3d(-50%, -4rem, 0);opacity:0;-webkit-transition:.2s;transition:.2s;background:#777;z-index:100000}.g-message:before{content:\"\";position:absolute;left:0;top:0;width:100%;height:100%;box-shadow:0 0 20px rgba(255,255,240,0.4);border-radius:5px}.g-message.active{-webkit-transform:translate3d(-50%, 0, 0);transform:translate3d(-50%, 0, 0);opacity:1}.fly-game-view-ui{width:100%;height:100%;position:absolute;left:0;top:0;z-index:-1;opacity:0;-webkit-transition:1s;transition:1s}.fly-game-view-ui.show{z-index:1;opacity:1}.fly-game-view-ui .g-top-bg{position:absolute;left:0;top:0}.fly-game-view-ui .fly-scrore-list{opacity:0;-webkit-transform:translate3d(0, -100%, 0);transform:translate3d(0, -100%, 0);-webkit-transition:.3s;transition:.3s;position:fixed;z-index:9999;left:0;top:0;width:100%;color:#fff;height:100%;background:rgba(0,0,0,0.9)}.fly-game-view-ui .fly-scrore-list.active{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);opacity:1}.fly-game-view-ui .fly-scrore-list h2{height:30px;line-height:30px;color:#Fff;font-size:.8rem;text-align:right;padding-right:10px}.fly-game-view-ui .fly-scrore-list h3{font-weight:normal;text-align:center;color:#ffca3d;font-size:.8rem}.fly-game-view-ui .fly-scrore-list .fly-score-title{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal;width:90%;margin:.3rem auto;line-height:30px;border-bottom:1px solid #999}.fly-game-view-ui .fly-scrore-list .fly-score-title li{text-align:center;color:#999}.fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(1){width:25%}.fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(2){width:50%}.fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(3){width:25%}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul{width:90%;margin:0 auto}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div{text-align:center;height:30px;line-height:30px}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(1){width:25%;font-style:italic;color:#00a1d9}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(2){width:50%}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(3){width:25%}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1){font-size:.8rem;height:50px;color:#ff4242}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1) div:first-of-type{color:#ff4242}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2){font-size:.7rem;height:40px;color:#ff6138}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2) div:first-of-type{color:#ff6138}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3){font-size:.6rem;height:40px;color:#ffca3d}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3) div:first-of-type{color:#ffca3d}.fly-game-view-ui .g-rule{position:absolute;right:0;top:.5rem;background:rgba(255,255,255,0.8);padding:7px 10px;border-bottom-left-radius:14px;border-top-left-radius:14px;text-align:center}.fly-game-view-ui .g-rank{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal;width:7rem;margin:2rem auto 0;color:#fff}.fly-game-view-ui .g-rank div:nth-of-type(1){margin-right:.5rem}.fly-game-view-ui .g-rank div:nth-of-type(1) span.g-big{font-size:.6rem;color:#00fffc}.fly-game-view-ui .g-rank div:nth-of-type(2){border:1px solid #a9a9a9;padding:1px 10px;border-radius:.8rem;position:relative}.fly-game-view-ui .g-rank div:nth-of-type(2):before{content:'';position:absolute;width:100%;border-radius:.8rem;height:100%;left:0;top:0;box-shadow:0 0 10px rgba(169,169,169,0.8),0 0 10px rgba(169,169,169,0.2) inset}.fly-game-view-ui .g-rank .g-ball{width:.5rem;display:inline-block}.fly-game-view-ui .g-rank .g-score{font-size:.6rem;color:#ffcc00}.fly-game-view-ui .g-rank .g-line{display:inline-block;-webkit-transform:scaleX(0.2);transform:scaleX(0.2);position:relative;top:-2px}.fly-game-view-ui .g-rank .g-text{position:relative;top:-2px}.fly-game-view-ui .g-info{width:6rem;color:#fff;background:rgba(255,255,255,0.3);line-height:30px;border-radius:.3rem;padding:0 1px;text-align:center;margin:.4rem auto;position:relative}.fly-game-view-ui .g-info img{width:.6rem;margin-top:.2rem;position:absolute;-webkit-animation:info 1s 50 ease-out alternate;animation:info 1s 50 ease-out alternate}.fly-game-view-ui .g-cards-C{width:7.8rem;margin:0 auto;position:relative;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;perspective:800px;-webkit-perspective:800px}.fly-game-view-ui .g-cards-C .g-cards-item{float:left;width:2.2rem;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;perspective:800px;-webkit-perspective:800px;height:3.8rem;margin:.2rem;box-sizing:border-box;position:relative;backface-visibility:hidden}.fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n+1){-webkit-transform:translate3d(2.6rem, -17rem, 0);transform:translate3d(2.6rem, -17rem, 0)}.fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n-1){-webkit-transform:translate3d(0, -17rem, 0);transform:translate3d(0, -17rem, 0)}.fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n){-webkit-transform:translate3d(-2.6rem, -17rem, 0);transform:translate3d(-2.6rem, -17rem, 0)}.fly-game-view-ui .g-cards-C .g-cards-item.show{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);-webkit-transition:.2s;transition:.2s}.fly-game-view-ui .g-cards-C .g-cards-item.selected:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;z-index:1000;border:1px solid #49cefa;border-radius:2px;box-sizing:border-box;box-shadow:0 0 10px 2px #49cefa}.fly-game-view-ui .g-cards-C .g-cards-item.active{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}.fly-game-view-ui .g-cards-C .g-cards-item>div{backface-visibility:hidden;position:absolute;left:0;top:0;z-index:1}.fly-game-view-ui .g-cards-C .g-cards-item>div:nth-of-type(2){z-index:0;-webkit-transform:translate3d(0, 0, -1px) rotateY(180deg);transform:translate3d(0, 0, -1px) rotateY(180deg)}.fly-game-view-ui .g-cards-C .g-cards-item>div:nth-of-type(2) img:nth-of-type(2){position:absolute;left:15%;top:20%;width:70%;-webkit-transform:translate3d(0, -50%, 0);transform:translate3d(0, -50%, 0)}.fly-game-view-ui .g-cards-C .g-cards-item>div:nth-of-type(2) .g-portrait-img{position:absolute;left:0;top:50%;width:2rem;height:2rem;border-radius:50%;-webkit-transform:translate3d(0, -50%, 0);transform:translate3d(0, -50%, 0);overflow:hidden}.fly-game-view-ui .g-choose-btn{width:4rem;height:30px;line-height:30px;text-align:center;position:absolute;bottom:1.5rem;color:#fff;background:#999;border:1px solid #fff;border-radius:15px;left:3rem}.fly-game-view-ui .g-choose-btn.active{-webkit-transform:scale(0.97);transform:scale(0.97)}.fly-game-view-ui .g-choose-btn.active:before{content:\"\";position:absolute;left:0;top:0;width:100%;border-radius:15px;height:100%;box-shadow:0 0 20px rgba(255,255,255,0.7)}.fly-game-view-ui .g-tigger-list{width:8rem;height:1rem;left:1rem;position:absolute;bottom:.2rem;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal}.fly-game-view-ui .g-tigger-list li{width:1rem;height:1rem;background:#fff;margin:0 .1rem;border-radius:4px}.fly-game-view-ui .g-result{position:absolute;width:8rem;height:80vh;left:1rem;top:10vh;z-index:100;display:none;-webkit-transition:-webkit-transform .5s;transition:transform .5s;-webkit-transform:translate3d(0, 0, 10px) scale(0.3);transform:translate3d(0, 0, 10px) scale(0.3);display:none}.fly-game-view-ui .g-result.active{-webkit-transition-timing-function:cubic-bezier(0.49, 1.52, 0.38, 0.84);transition-timing-function:cubic-bezier(0.49, 1.52, 0.38, 0.84);-webkit-transform:translate3d(0, 0, 10px) scale(1);transform:translate3d(0, 0, 10px) scale(1)}.fly-game-view-ui .g-result .g-right{width:1.8rem;position:absolute;right:.6rem;top:.1rem;z-index:10}.fly-game-view-ui .g-result .g-look{position:absolute;width:100%;bottom:1rem}.fly-game-view-ui .g-result .g-portrait{width:4rem;position:relative;margin:1.5rem auto .2rem}.fly-game-view-ui .g-result .g-portrait .g-portrait-bg{width:2.83rem;height:2.73rem;position:absolute;border-radius:60px;border-bottom-left-radius:46px;border-bottom-right-radius:40px;left:.56rem;top:.7rem}.fly-game-view-ui .g-result .g-tigger-name{width:100%;text-align:center;font-size:.5rem}.fly-game-view-ui .g-result .g-tigger-info{width:7rem;height:100px;margin:0 auto}.fly-game-view-ui .g-result .g-tigger-info tr td{vertical-align:top}.fly-game-view-ui .g-result .g-tigger-info tr td a{color:#222}.fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(1){width:1.8rem;color:#222;text-align:center}.fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(2){color:#330000}.fly-game-view-ui .g-result article{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;perspective:800px;-webkit-perspective:800px;-webkit-transition:-webkit-transform .2s;transition:transform .2s;height:100%}.fly-game-view-ui .g-result article.active{-webkit-transform:rotateY(0deg);transform:rotateY(0deg);-webkit-transition-timing-function:cubic-bezier(0, 1.05, 0.61, 0.97);transition-timing-function:cubic-bezier(0, 1.05, 0.61, 0.97)}.fly-game-view-ui .g-result article .g-back{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;-webkit-transform:translate3d(0, 0, -1px) rotateY(180deg);transform:translate3d(0, 0, -1px) rotateY(180deg)}.fly-game-view-ui .g-result article .g-result-C{position:absolute;left:0;top:0;width:100%;height:100%;-webkit-transform:translate3d(0, 0, 1px);transform:translate3d(0, 0, 1px)}@-webkit-keyframes info{to{-webkit-transform:translate3d(0, 10px, 0);transform:translate3d(0, 10px, 0)}}@media all and (max-height: 460px){.fly-game-view-ui .g-result{height:88vh;top:6vh}.r-main-ui .r-content-C{height:100vh !important}}\r\n/*# sourceMappingURL=gameview.css.map */\r\n", ""]);
 
 	// exports
 

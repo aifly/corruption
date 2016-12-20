@@ -15,6 +15,7 @@ class FlyGameView extends React.Component {
       score:0,//当前的得分
       ruleShow:false,
       currentData:{},
+      allCount:5,
       scoreClass:'',
       scoreData:[
         
@@ -66,7 +67,7 @@ class FlyGameView extends React.Component {
               <div className="g-rule" onTouchTap={this.showRule.bind(this)}>规则说明</div>
              
               <div className="g-rank">
-                  <div><span className="g-text">第</span> <span className="g-big">{'0'+this.state.iNow}</span> <span className="g-text">/ 6轮</span>
+                  <div><span className="g-text">第</span> <span className="g-big">{'0'+this.state.iNow}</span> <span className="g-text">/ {this.state.allCount}轮</span>
                   </div>
                   <div>
                       <span className="g-ball"><img src="./assets/images/ranking.png" alt=""/></span>
@@ -91,7 +92,7 @@ class FlyGameView extends React.Component {
                  })}
               </ul>
            
-              <ul className='g-tigger-list' ref='g-tigger-list'>
+              <ul className='g-tigger-list' ref='g-tigger-list' onTouchTap={this.order.bind(this)}>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
@@ -133,8 +134,8 @@ class FlyGameView extends React.Component {
                                    </tr>
                                 </tbody>                    
                             </table>
-                            {this.state.iNow < 6 && <FlyButton clickHandler={this.nextRound.bind(this)}></FlyButton>}
-                            {this.state.iNow>=6 &&<FlyButton  text='确 定' clickHandler={this.redirectToResult.bind(this)}></FlyButton>}  
+                            {this.state.iNow < this.state.allCount && <FlyButton clickHandler={this.nextRound.bind(this)}></FlyButton>}
+                            {this.state.iNow>=this.state.allCount &&<FlyButton  text='确 定' clickHandler={this.redirectToResult.bind(this)}></FlyButton>}  
                         </section>
                         <section className='g-back' style={{background:'url(./assets/images/card.png) no-repeat center center',backgroundSize:'contain'}}>
                             
@@ -161,6 +162,8 @@ class FlyGameView extends React.Component {
           </div>
       );
   }
+
+
 
  showRule(){
     let {obserable} = this.props;
@@ -214,10 +217,170 @@ class FlyGameView extends React.Component {
       });
   }
 
+  order(){
+
+    this.iNow = this.iNow === undefined ? 0 : this.iNow;
+    var index = ++this.iNow % 6;
+
+
+    // for(let i = 0 ; i < 6 ; i ++){
+    //         var iNow = (index+i) > 5 ? index+i - 6  :index+i;
+    //         var left = this.cardPosArr[iNow].left,
+    //             top = this.cardPosArr[iNow].top;
+
+    //         this.cardItems[i].style.left =  left +'px';
+//         this.cardItems[i].style.top =  top + 'px'  ;
+
+    //     }
+    switch(index) {
+      case 0:
+        for(var i = 0 ; i < 6 ;i++){
+          this.cardItems[i].style.left =  this.cardPosArr[i].left +'px';
+          this.cardItems[i].style.top =   this.cardPosArr[i].top + 'px';  
+        }
+        
+        break;
+      case 1:
+
+        this.cardItems[0].style.left =  this.cardPosArr[1].left +'px';
+        this.cardItems[0].style.top =   this.cardPosArr[1].top + 'px';
+
+        this.cardItems[1].style.left =  this.cardPosArr[2].left +'px';
+        this.cardItems[1].style.top =   this.cardPosArr[2].top + 'px';
+
+        this.cardItems[2].style.left =  this.cardPosArr[5].left +'px';
+        this.cardItems[2].style.top =   this.cardPosArr[5].top + 'px';
+
+        this.cardItems[3].style.left =  this.cardPosArr[0].left +'px';
+        this.cardItems[3].style.top =   this.cardPosArr[0].top + 'px';
+
+        this.cardItems[4].style.left =  this.cardPosArr[3].left +'px';
+        this.cardItems[4].style.top =   this.cardPosArr[3].top + 'px';
+
+        this.cardItems[5].style.left =  this.cardPosArr[4].left +'px';
+        this.cardItems[5].style.top =   this.cardPosArr[4].top + 'px';
+
+
+        
+        break;
+      case 2:
+
+        this.cardItems[0].style.left =  this.cardPosArr[2].left +'px';
+        this.cardItems[0].style.top =   this.cardPosArr[2].top + 'px';
+
+        this.cardItems[1].style.left =  this.cardPosArr[5].left +'px';
+        this.cardItems[1].style.top =   this.cardPosArr[5].top + 'px';
+
+        this.cardItems[2].style.left =  this.cardPosArr[4].left +'px';
+        this.cardItems[2].style.top =   this.cardPosArr[4].top + 'px';
+
+        this.cardItems[3].style.left =  this.cardPosArr[1].left +'px';
+        this.cardItems[3].style.top =   this.cardPosArr[1].top + 'px';
+
+        this.cardItems[4].style.left =  this.cardPosArr[0].left +'px';
+        this.cardItems[4].style.top =   this.cardPosArr[0].top + 'px';
+
+        this.cardItems[5].style.left =  this.cardPosArr[3].left +'px';
+        this.cardItems[5].style.top =   this.cardPosArr[3].top + 'px';
+ 
+
+        break;
+      case 3:
+        this.cardItems[0].style.left =  this.cardPosArr[5].left +'px';
+        this.cardItems[0].style.top =   this.cardPosArr[5].top + 'px';
+
+        this.cardItems[1].style.left =  this.cardPosArr[4].left +'px';
+        this.cardItems[1].style.top =   this.cardPosArr[4].top + 'px';
+
+        this.cardItems[2].style.left =  this.cardPosArr[3].left +'px';
+        this.cardItems[2].style.top =   this.cardPosArr[3].top + 'px';
+
+        this.cardItems[3].style.left =  this.cardPosArr[2].left +'px';
+        this.cardItems[3].style.top =   this.cardPosArr[2].top + 'px';
+
+        this.cardItems[4].style.left =  this.cardPosArr[1].left +'px';
+        this.cardItems[4].style.top =   this.cardPosArr[1].top + 'px';
+
+        this.cardItems[5].style.left =  this.cardPosArr[0].left +'px';
+        this.cardItems[5].style.top =   this.cardPosArr[0].top + 'px';
+        break;
+      case 4:
+        this.cardItems[0].style.left =  this.cardPosArr[4].left +'px';
+        this.cardItems[0].style.top =   this.cardPosArr[4].top + 'px';
+
+        this.cardItems[1].style.left =  this.cardPosArr[3].left +'px';
+        this.cardItems[1].style.top =   this.cardPosArr[3].top + 'px';
+
+        this.cardItems[2].style.left =  this.cardPosArr[0].left +'px';
+        this.cardItems[2].style.top =   this.cardPosArr[0].top + 'px';
+
+        this.cardItems[3].style.left =  this.cardPosArr[5].left +'px';
+        this.cardItems[3].style.top =   this.cardPosArr[5].top + 'px';
+
+        this.cardItems[4].style.left =  this.cardPosArr[2].left +'px';
+        this.cardItems[4].style.top =   this.cardPosArr[2].top + 'px';
+
+        this.cardItems[5].style.left =  this.cardPosArr[1].left +'px';
+        this.cardItems[5].style.top =   this.cardPosArr[1].top + 'px';
+        break;
+      case 5:
+        this.cardItems[0].style.left =  this.cardPosArr[3].left +'px';
+        this.cardItems[0].style.top =   this.cardPosArr[3].top + 'px';
+
+        this.cardItems[1].style.left =  this.cardPosArr[0].left +'px';
+        this.cardItems[1].style.top =   this.cardPosArr[0].top + 'px';
+
+        this.cardItems[2].style.left =  this.cardPosArr[1].left +'px';
+        this.cardItems[2].style.top =   this.cardPosArr[1].top + 'px';
+
+        this.cardItems[3].style.left =  this.cardPosArr[4].left +'px';
+        this.cardItems[3].style.top =   this.cardPosArr[4].top + 'px';
+
+        this.cardItems[4].style.left =  this.cardPosArr[5].left +'px';
+        this.cardItems[4].style.top =   this.cardPosArr[5].top + 'px';
+
+        this.cardItems[5].style.left =  this.cardPosArr[2].left +'px';
+        this.cardItems[5].style.top =   this.cardPosArr[2].top + 'px';
+        break;
+
+    }
+    
+
+  }
+  setLayout(){//布局转换。
+      var cardItems = this.refs['g-cards-C'].querySelectorAll('li');
+      this.cardItems = cardItems;
+      this.cardPosArr = [];
+      for(let i = 0 ; i < cardItems.length ; i ++){
+          cardItems[i].index = i;
+          var left = cardItems[i].offsetLeft,
+              top = cardItems[i].offsetTop;
+
+          this.cardPosArr.push({
+            left:left,
+            top:top
+          });
+
+          cardItems[i].style.left =  left +'px';
+          cardItems[i].style.top =  top + 'px';
+
+      }
+      for(let i = 0 ; i < cardItems.length ; i ++){
+          cardItems[i].style.position = 'absolute';
+          cardItems[i].style.margin = 0;
+      }
+  }
+
   componentDidMount() {
     this.dealCard();
+    this.setLayout();
 
     let {obserable} = this.props;
+
+    /*setInterval(()=>{
+        this.order();
+    },200)*/
+
 
 
 

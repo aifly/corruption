@@ -95,7 +95,7 @@ class IndexApp extends React.Component{
 		let {obserable} = this.props;
 		obserable.trigger({type:'startPlay'});
 		this.refs['fly-index-page'].classList.add('hide');
-
+		clearInterval(this.bgLoopTimer);
 	}
 	refreshCards(){
 		var cards = this.refs['fly-card-C'].querySelectorAll('figure'),
