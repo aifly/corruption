@@ -23024,7 +23024,7 @@
 				return _react2['default'].createElement(
 					'div',
 					{ style: style, className: 'fly-index-page hide', ref: 'fly-index-page' },
-					_react2['default'].createElement('audio', { ref: 'audio', src: './assets/music/doudizhu.mp3' }),
+					_react2['default'].createElement('audio', { ref: 'audio', src: './assets/music/doudizhu.ogg' }),
 					_react2['default'].createElement(
 						'div',
 						{ className: 'fly-2016' },
@@ -23102,10 +23102,14 @@
 					_this.refreshCards(); //翻牌
 				}, 500);
 
+				document.getElementById('audio').volume = .3;
+
 				var audio = this.refs['audio'];
 
+				audio.volume = .3;
+
 				this.bgLoopTimer = setInterval(function () {
-					//audio.play();
+					audio.play();
 					_this.refreshCards(); //翻牌
 				}, 10000);
 			}
@@ -23193,7 +23197,7 @@
 
 
 	// module
-	exports.push([module.id, ".fly-index-page {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  -webkit-transition: 1s;\r\n  transition: 1s; }\r\n  .fly-index-page.hide {\r\n    opacity: 0;\r\n    z-index: -1; }\r\n  .fly-index-page .fly-2016 {\r\n    position: absolute;\r\n    width: 3rem;\r\n    left: 3.5rem;\r\n    bottom: 2rem; }\r\n  .fly-index-page .fly-main-area {\r\n    position: relative; }\r\n    .fly-index-page .fly-main-area .fly-figure {\r\n      position: relative;\r\n      margin: 8vh auto 0;\r\n      width: 6rem;\r\n      height: 85vh;\r\n      border: 1px solid transparent; }\r\n      .fly-index-page .fly-main-area .fly-figure .fly-card-C {\r\n        height: 40vh;\r\n        width: 3rem;\r\n        margin: -.5rem auto;\r\n        position: relative;\r\n        -webkit-transform-style: preserve-3d;\r\n        transform-style: preserve-3d;\r\n        perspective: 800px;\r\n        -webkit-perspective: 800px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(1) {\r\n          left: -2px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(2) {\r\n          left: -1px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(3) {\r\n          left: 0px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(4) {\r\n          left: 1px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(5) {\r\n          left: 2px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(6) {\r\n          left: 3px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(7) {\r\n          left: 4px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(8) {\r\n          left: 5px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(9) {\r\n          left: 6px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(10) {\r\n          left: 7px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(11) {\r\n          left: 8px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(12) {\r\n          left: 9px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(13) {\r\n          left: 10px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(14) {\r\n          left: 11px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(15) {\r\n          left: 12px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(16) {\r\n          left: 13px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(17) {\r\n          left: 14px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(18) {\r\n          left: 15px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(19) {\r\n          left: 16px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(20) {\r\n          left: 17px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(21) {\r\n          left: 18px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(22) {\r\n          left: 19px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(23) {\r\n          left: 20px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(24) {\r\n          left: 21px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(25) {\r\n          left: 22px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(26) {\r\n          left: 23px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(27) {\r\n          left: 24px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(28) {\r\n          left: 25px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(29) {\r\n          left: 26px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(30) {\r\n          left: 27px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure {\r\n          position: absolute;\r\n          -webkit-transition: -webkit-transform 0.2s;\r\n          transition: transform 0.2s;\r\n          top: 0; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure.active {\r\n            -webkit-transform: translate3d(90px, 10px, 140px);\r\n            transform: translate3d(90px, 10px, 140px);\r\n            z-index: 2; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure img {\r\n            width: 3rem; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure .fly-tigger-ico {\r\n            position: absolute;\r\n            top: 1rem;\r\n            width: 2rem;\r\n            border-radius: 10px;\r\n            height: 1.5rem;\r\n            left: .5rem; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure .fly-tigger-name {\r\n            position: absolute;\r\n            top: 3rem;\r\n            left: 50%;\r\n            -webkit-transform: translate3d(-50%, 0, 0);\r\n            transform: translate3d(-50%, 0, 0); }\r\n      .fly-index-page .fly-main-area .fly-figure .fly-tigger {\r\n        width: 6rem;\r\n        margin: 1rem auto; }\r\n@-webkit-keyframes bg {\r\n  0% {\r\n    background-position: -200px 0; }\r\n  100% {\r\n    background-position: 200px 0; } }\r\n      .fly-index-page .fly-main-area .fly-figure .fly-begin-btn {\r\n        width: 3rem;\r\n        height: 1rem;\r\n        z-index: 2;\r\n        background: -webkit-linear-gradient(-30deg, rgba(255, 255, 255, 0) 40px, white 50px, white 60px, rgba(255, 255, 255, 0) 70px) -20px 0;\r\n        -webkit-background-clip: text;\r\n        -webkit-animation: bg linear 10s infinite;\r\n        margin: 0 auto;\r\n        position: relative;\r\n        line-height: 1rem;\r\n        text-align: center;\r\n        color: rgba(255, 255, 255, 0.3);\r\n        border: 1px solid rgba(255, 255, 255, 0.6);\r\n        border-radius: 10px;\r\n        position: relative;\r\n        -webkit-transition: 0.05s;\r\n        transition: 0.05s; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-begin-btn:before {\r\n          content: '';\r\n          position: absolute;\r\n          width: 100%;\r\n          height: 100%;\r\n          left: 0;\r\n          top: 0;\r\n          background: rgba(200, 72, 3, 0.6);\r\n          z-index: -1;\r\n          border-radius: 10px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-begin-btn.active {\r\n          -webkit-transform: scale(0.95);\r\n          transform: scale(0.95);\r\n          border-color: #c84803;\r\n          background: #fff;\r\n          color: #c84803; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-begin-btn.active:before {\r\n            content: '';\r\n            width: 100%;\r\n            height: 100%;\r\n            position: absolute;\r\n            left: 0;\r\n            top: 0;\r\n            border-radius: 10px;\r\n            box-shadow: 0 0 10px #c84803; }\r\n  .fly-index-page .fly-logo {\r\n    position: absolute;\r\n    width: 1.6rem;\r\n    bottom: .2rem;\r\n    left: 4.2rem; }\r\n\r\n@-webkit-keyframes refreshCard-1 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(41px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(41px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-2 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-42px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-42px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-3 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(43px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(43px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-4 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-44px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-44px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-5 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(45px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(45px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-6 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-46px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-46px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-7 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(47px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(47px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-8 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-48px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-48px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-9 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(49px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(49px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-10 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-50px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-50px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@media all and (max-height: 460px) {\r\n  .fly-index-page .fly-2016 {\r\n    bottom: 2rem;\r\n    z-index: 10; }\r\n  .fly-index-page .fly-main-area .fly-figure {\r\n    height: 70vh; }\r\n    .fly-index-page .fly-main-area .fly-figure .fly-begin-btn {\r\n      top: -1rem; } }\r\n\r\n/*# sourceMappingURL=index.css.map */\r\n", ""]);
+	exports.push([module.id, ".fly-index-page {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  -webkit-transition: 1s;\r\n  transition: 1s; }\r\n  .fly-index-page.hide {\r\n    opacity: 0;\r\n    z-index: -1; }\r\n  .fly-index-page .fly-2016 {\r\n    position: absolute;\r\n    width: 3rem;\r\n    left: 3.5rem;\r\n    bottom: 2rem; }\r\n  .fly-index-page .fly-main-area {\r\n    position: relative; }\r\n    .fly-index-page .fly-main-area .fly-figure {\r\n      position: relative;\r\n      margin: 8vh auto 0;\r\n      width: 6rem;\r\n      height: 85vh;\r\n      border: 1px solid transparent; }\r\n      .fly-index-page .fly-main-area .fly-figure .fly-card-C {\r\n        height: 40vh;\r\n        width: 3rem;\r\n        margin: -.5rem auto;\r\n        position: relative;\r\n        -webkit-transform-style: preserve-3d;\r\n        transform-style: preserve-3d;\r\n        perspective: 800px;\r\n        -webkit-perspective: 800px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(1) {\r\n          left: -2px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(2) {\r\n          left: -1px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(3) {\r\n          left: 0px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(4) {\r\n          left: 1px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(5) {\r\n          left: 2px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(6) {\r\n          left: 3px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(7) {\r\n          left: 4px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(8) {\r\n          left: 5px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(9) {\r\n          left: 6px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(10) {\r\n          left: 7px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(11) {\r\n          left: 8px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(12) {\r\n          left: 9px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(13) {\r\n          left: 10px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(14) {\r\n          left: 11px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(15) {\r\n          left: 12px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(16) {\r\n          left: 13px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(17) {\r\n          left: 14px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(18) {\r\n          left: 15px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(19) {\r\n          left: 16px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(20) {\r\n          left: 17px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(21) {\r\n          left: 18px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(22) {\r\n          left: 19px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(23) {\r\n          left: 20px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(24) {\r\n          left: 21px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(25) {\r\n          left: 22px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(26) {\r\n          left: 23px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(27) {\r\n          left: 24px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(28) {\r\n          left: 25px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(29) {\r\n          left: 26px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure:nth-of-type(30) {\r\n          left: 27px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-card-C figure {\r\n          position: absolute;\r\n          -webkit-transition: -webkit-transform 0.2s;\r\n          transition: transform 0.2s;\r\n          top: 0; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure.active {\r\n            -webkit-transform: translate3d(90px, 10px, 140px);\r\n            transform: translate3d(90px, 10px, 140px);\r\n            z-index: 2; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure img {\r\n            width: 3rem; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure .fly-tigger-ico {\r\n            position: absolute;\r\n            top: 1rem;\r\n            width: 2rem;\r\n            border-radius: 10px;\r\n            height: 1.5rem;\r\n            left: .5rem; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-card-C figure .fly-tigger-name {\r\n            position: absolute;\r\n            top: 3rem;\r\n            left: 50%;\r\n            -webkit-transform: translate3d(-50%, 0, 0);\r\n            transform: translate3d(-50%, 0, 0); }\r\n      .fly-index-page .fly-main-area .fly-figure .fly-tigger {\r\n        width: 6rem;\r\n        margin: 1rem auto; }\r\n@-webkit-keyframes bg {\r\n  0% {\r\n    background-position: -100px 0; }\r\n  100% {\r\n    background-position: 100px 0; } }\r\n      .fly-index-page .fly-main-area .fly-figure .fly-begin-btn {\r\n        width: 3rem;\r\n        height: 1rem;\r\n        z-index: 2;\r\n        background: -webkit-linear-gradient(-30deg, rgba(255, 255, 255, 0) 20px, white 40px, white 60px, rgba(255, 255, 255, 0) 80px) -20px 0;\r\n        -webkit-background-clip: text;\r\n        -webkit-animation: bg linear 2s infinite;\r\n        margin: 0 auto;\r\n        position: relative;\r\n        line-height: 1rem;\r\n        text-align: center;\r\n        color: rgba(255, 255, 255, 0.3);\r\n        border: 1px solid rgba(255, 255, 255, 0.6);\r\n        border-radius: 10px;\r\n        position: relative;\r\n        -webkit-transition: 0.05s;\r\n        transition: 0.05s; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-begin-btn:before {\r\n          content: '';\r\n          position: absolute;\r\n          width: 100%;\r\n          height: 100%;\r\n          left: 0;\r\n          top: 0;\r\n          background: rgba(200, 72, 3, 0.6);\r\n          z-index: -1;\r\n          border-radius: 10px; }\r\n        .fly-index-page .fly-main-area .fly-figure .fly-begin-btn.active {\r\n          -webkit-transform: scale(0.95);\r\n          transform: scale(0.95);\r\n          border-color: #c84803;\r\n          background: #fff;\r\n          color: #c84803; }\r\n          .fly-index-page .fly-main-area .fly-figure .fly-begin-btn.active:before {\r\n            content: '';\r\n            width: 100%;\r\n            height: 100%;\r\n            position: absolute;\r\n            left: 0;\r\n            top: 0;\r\n            border-radius: 10px;\r\n            box-shadow: 0 0 10px #c84803; }\r\n  .fly-index-page .fly-logo {\r\n    position: absolute;\r\n    width: 1.6rem;\r\n    bottom: .2rem;\r\n    left: 4.2rem; }\r\n\r\n@-webkit-keyframes refreshCard-1 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(41px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(41px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-2 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-42px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-42px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-3 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(43px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(43px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-4 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-44px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-44px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-5 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(45px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(45px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-6 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-46px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-46px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-7 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(47px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(47px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-8 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-48px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-48px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-9 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(49px, 0, 0) rotate(-3deg);\r\n    transform: translate3d(49px, 0, 0) rotate(-3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@-webkit-keyframes refreshCard-10 {\r\n  0% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  50% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(-50px, 0, 0) rotate(3deg);\r\n    transform: translate3d(-50px, 0, 0) rotate(3deg); }\r\n  100% {\r\n    -webkit-transform-origin: center center 0;\r\n    transform-origin: center center 0;\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); } }\r\n@media all and (max-height: 460px) {\r\n  .fly-index-page .fly-2016 {\r\n    bottom: 2rem;\r\n    z-index: 10; }\r\n  .fly-index-page .fly-main-area .fly-figure {\r\n    height: 70vh; }\r\n    .fly-index-page .fly-main-area .fly-figure .fly-begin-btn {\r\n      top: -1rem; } }\r\n\r\n/*# sourceMappingURL=index.css.map */\r\n", ""]);
 
 	// exports
 
@@ -23210,7 +23214,7 @@
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -23249,6 +23253,7 @@
 	      currentData: {},
 	      allCount: 5,
 	      scoreClass: '',
+	      checkpoint: 0,
 	      scoreData: []
 	    };
 	  }
@@ -23259,18 +23264,16 @@
 	      var _this = this;
 
 	      var cardsArr = [];
-	      for (var i = 0; i < 2; i++) {
+	      for (var i = 0; i < 1; i++) {
 
 	        cardsArr.push(tiggerData[Math.floor(Math.random() * (tiggerData.length - 1))]);
 	        //cardsArr.push('none');
 	      }
-	      for (var i = 0; i < 4; i++) {
+	      for (var i = 0; i < 5; i++) {
 	        cardsArr.push('none');
 	      }
 
-	      cardsArr = cardsArr.sort(function () {
-	        return .5 - Math.random() > 0;
-	      });
+	      // cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
 
 	      this.cardsArr = cardsArr;
 	      // console.log(cardsArr)
@@ -23282,6 +23285,7 @@
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'fly-game-view-ui', ref: 'fly-game-view-ui', style: style },
+	        _react2['default'].createElement('audio', { ref: 'orderAudio', src: './assets/music/da.ogg', loop: 'loop' }),
 	        _react2['default'].createElement(
 	          'section',
 	          { className: 'fly-scrore-list ' + this.state.scoreClass },
@@ -23444,7 +23448,6 @@
 	        _react2['default'].createElement(
 	          'ul',
 	          { className: 'g-tigger-list', ref: 'g-tigger-list', onTouchTap: this.order.bind(this) },
-	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
 	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
 	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
 	          _react2['default'].createElement('li', { style: { background: 'url(./assets/images/user.png)', backgroundSize: 'cover' } }),
@@ -23637,30 +23640,45 @@
 	  }, {
 	    key: 'nextRound',
 	    value: function nextRound() {
+	      var _this2 = this;
+
 	      //下一轮
-	      this.setState({
-	        iNow: this.state.iNow + 1,
-	        currentSelectCardIndex: -1,
-	        rightTigger: -1,
-	        currentData: {}
-	      });
-	      this.dealCard();
-	      this.start = false;
+	      this.closeAudio();
+	      this.refs['g-result'].classList.remove('active');
+
+	      setTimeout(function () {
+	        _this2.setState({
+	          iNow: _this2.state.iNow + 1,
+	          currentSelectCardIndex: -1,
+	          rightTigger: -1,
+	          currentData: {}
+	        });
+	        _this2.dealCard();
+	        _this2.start = false;
+	        _this2.ruffleCard();
+	      }, 500);
 	    }
 	  }, {
 	    key: 'lookTigger',
 	    value: function lookTigger() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      //查看老虎
-	      this.setState({
-	        currentData: this.cardsArr[this.state.rightTigger]
-	      }, function () {
-	        if (_this2.refs['g-result']) {
-	          _this2.refs['g-result'].style.display = 'block';
-	          _this2.refs['g-result'].classList.add('active');
-	        }
-	      });
+	      this.refs['g-result'].classList.remove('active');
+	      this.closeAudio();
+	      setTimeout(function () {
+	        _this3.setState({
+	          currentData: _this3.cardsArr[_this3.state.rightTigger]
+	        }, function () {
+	          if (_this3.refs['g-result']) {
+	            _this3.refs['g-result'].style.display = 'block';
+	            _this3.cardItems[_this3.state.rightTigger].classList.add('active');
+	            setTimeout(function () {
+	              _this3.refs['g-result'].classList.add('active');
+	            }, 500);
+	          }
+	        });
+	      }, 500);
 	    }
 	  }, {
 	    key: 'order',
@@ -23678,114 +23696,96 @@
 	      //         this.cardItems[i].style.top =  top + 'px'  ;
 
 	      //     }
-	      switch (index) {
-	        case 0:
-	          for (var i = 0; i < 6; i++) {
-	            this.cardItems[i].style.left = this.cardPosArr[i].left + 'px';
-	            this.cardItems[i].style.top = this.cardPosArr[i].top + 'px';
-	          }
+	      /* switch(index) {
+	         case 0:
+	           for(var i = 0 ; i < 6 ;i++){
+	             this.cardItems[i].style.left =  this.cardPosArr[i].left +'px';
+	             this.cardItems[i].style.top =   this.cardPosArr[i].top + 'px';  
+	           }
+	           
+	           break;
+	         case 1:
+	             this.cardItems[0].style.left =  this.cardPosArr[1].left +'px';
+	           this.cardItems[0].style.top =   this.cardPosArr[1].top + 'px';
+	             this.cardItems[1].style.left =  this.cardPosArr[2].left +'px';
+	           this.cardItems[1].style.top =   this.cardPosArr[2].top + 'px';
+	             this.cardItems[2].style.left =  this.cardPosArr[5].left +'px';
+	           this.cardItems[2].style.top =   this.cardPosArr[5].top + 'px';
+	             this.cardItems[3].style.left =  this.cardPosArr[0].left +'px';
+	           this.cardItems[3].style.top =   this.cardPosArr[0].top + 'px';
+	             this.cardItems[4].style.left =  this.cardPosArr[3].left +'px';
+	           this.cardItems[4].style.top =   this.cardPosArr[3].top + 'px';
+	             this.cardItems[5].style.left =  this.cardPosArr[4].left +'px';
+	           this.cardItems[5].style.top =   this.cardPosArr[4].top + 'px';
+	      
+	           
+	           break;
+	         case 2:
+	             this.cardItems[0].style.left =  this.cardPosArr[2].left +'px';
+	           this.cardItems[0].style.top =   this.cardPosArr[2].top + 'px';
+	             this.cardItems[1].style.left =  this.cardPosArr[5].left +'px';
+	           this.cardItems[1].style.top =   this.cardPosArr[5].top + 'px';
+	             this.cardItems[2].style.left =  this.cardPosArr[4].left +'px';
+	           this.cardItems[2].style.top =   this.cardPosArr[4].top + 'px';
+	             this.cardItems[3].style.left =  this.cardPosArr[1].left +'px';
+	           this.cardItems[3].style.top =   this.cardPosArr[1].top + 'px';
+	             this.cardItems[4].style.left =  this.cardPosArr[0].left +'px';
+	           this.cardItems[4].style.top =   this.cardPosArr[0].top + 'px';
+	             this.cardItems[5].style.left =  this.cardPosArr[3].left +'px';
+	           this.cardItems[5].style.top =   this.cardPosArr[3].top + 'px';
+	      
+	           break;
+	         case 3:
+	           this.cardItems[0].style.left =  this.cardPosArr[5].left +'px';
+	           this.cardItems[0].style.top =   this.cardPosArr[5].top + 'px';
+	             this.cardItems[1].style.left =  this.cardPosArr[4].left +'px';
+	           this.cardItems[1].style.top =   this.cardPosArr[4].top + 'px';
+	             this.cardItems[2].style.left =  this.cardPosArr[3].left +'px';
+	           this.cardItems[2].style.top =   this.cardPosArr[3].top + 'px';
+	             this.cardItems[3].style.left =  this.cardPosArr[2].left +'px';
+	           this.cardItems[3].style.top =   this.cardPosArr[2].top + 'px';
+	             this.cardItems[4].style.left =  this.cardPosArr[1].left +'px';
+	           this.cardItems[4].style.top =   this.cardPosArr[1].top + 'px';
+	             this.cardItems[5].style.left =  this.cardPosArr[0].left +'px';
+	           this.cardItems[5].style.top =   this.cardPosArr[0].top + 'px';
+	           break;
+	         case 4:
+	           this.cardItems[0].style.left =  this.cardPosArr[4].left +'px';
+	           this.cardItems[0].style.top =   this.cardPosArr[4].top + 'px';
+	             this.cardItems[1].style.left =  this.cardPosArr[3].left +'px';
+	           this.cardItems[1].style.top =   this.cardPosArr[3].top + 'px';
+	             this.cardItems[2].style.left =  this.cardPosArr[0].left +'px';
+	           this.cardItems[2].style.top =   this.cardPosArr[0].top + 'px';
+	             this.cardItems[3].style.left =  this.cardPosArr[5].left +'px';
+	           this.cardItems[3].style.top =   this.cardPosArr[5].top + 'px';
+	             this.cardItems[4].style.left =  this.cardPosArr[2].left +'px';
+	           this.cardItems[4].style.top =   this.cardPosArr[2].top + 'px';
+	             this.cardItems[5].style.left =  this.cardPosArr[1].left +'px';
+	           this.cardItems[5].style.top =   this.cardPosArr[1].top + 'px';
+	           break;
+	         case 5:
+	           this.cardItems[0].style.left =  this.cardPosArr[3].left +'px';
+	           this.cardItems[0].style.top =   this.cardPosArr[3].top + 'px';
+	             this.cardItems[1].style.left =  this.cardPosArr[0].left +'px';
+	           this.cardItems[1].style.top =   this.cardPosArr[0].top + 'px';
+	             this.cardItems[2].style.left =  this.cardPosArr[1].left +'px';
+	           this.cardItems[2].style.top =   this.cardPosArr[1].top + 'px';
+	             this.cardItems[3].style.left =  this.cardPosArr[4].left +'px';
+	           this.cardItems[3].style.top =   this.cardPosArr[4].top + 'px';
+	             this.cardItems[4].style.left =  this.cardPosArr[5].left +'px';
+	           this.cardItems[4].style.top =   this.cardPosArr[5].top + 'px';
+	             this.cardItems[5].style.left =  this.cardPosArr[2].left +'px';
+	           this.cardItems[5].style.top =   this.cardPosArr[2].top + 'px';
+	           break;
+	         }*/
 
-	          break;
-	        case 1:
+	      this.cardPosArr = this.cardPosArr.sort(function () {
+	        return .5 > Math.random();
+	      });
 
-	          this.cardItems[0].style.left = this.cardPosArr[1].left + 'px';
-	          this.cardItems[0].style.top = this.cardPosArr[1].top + 'px';
-
-	          this.cardItems[1].style.left = this.cardPosArr[2].left + 'px';
-	          this.cardItems[1].style.top = this.cardPosArr[2].top + 'px';
-
-	          this.cardItems[2].style.left = this.cardPosArr[5].left + 'px';
-	          this.cardItems[2].style.top = this.cardPosArr[5].top + 'px';
-
-	          this.cardItems[3].style.left = this.cardPosArr[0].left + 'px';
-	          this.cardItems[3].style.top = this.cardPosArr[0].top + 'px';
-
-	          this.cardItems[4].style.left = this.cardPosArr[3].left + 'px';
-	          this.cardItems[4].style.top = this.cardPosArr[3].top + 'px';
-
-	          this.cardItems[5].style.left = this.cardPosArr[4].left + 'px';
-	          this.cardItems[5].style.top = this.cardPosArr[4].top + 'px';
-
-	          break;
-	        case 2:
-
-	          this.cardItems[0].style.left = this.cardPosArr[2].left + 'px';
-	          this.cardItems[0].style.top = this.cardPosArr[2].top + 'px';
-
-	          this.cardItems[1].style.left = this.cardPosArr[5].left + 'px';
-	          this.cardItems[1].style.top = this.cardPosArr[5].top + 'px';
-
-	          this.cardItems[2].style.left = this.cardPosArr[4].left + 'px';
-	          this.cardItems[2].style.top = this.cardPosArr[4].top + 'px';
-
-	          this.cardItems[3].style.left = this.cardPosArr[1].left + 'px';
-	          this.cardItems[3].style.top = this.cardPosArr[1].top + 'px';
-
-	          this.cardItems[4].style.left = this.cardPosArr[0].left + 'px';
-	          this.cardItems[4].style.top = this.cardPosArr[0].top + 'px';
-
-	          this.cardItems[5].style.left = this.cardPosArr[3].left + 'px';
-	          this.cardItems[5].style.top = this.cardPosArr[3].top + 'px';
-
-	          break;
-	        case 3:
-	          this.cardItems[0].style.left = this.cardPosArr[5].left + 'px';
-	          this.cardItems[0].style.top = this.cardPosArr[5].top + 'px';
-
-	          this.cardItems[1].style.left = this.cardPosArr[4].left + 'px';
-	          this.cardItems[1].style.top = this.cardPosArr[4].top + 'px';
-
-	          this.cardItems[2].style.left = this.cardPosArr[3].left + 'px';
-	          this.cardItems[2].style.top = this.cardPosArr[3].top + 'px';
-
-	          this.cardItems[3].style.left = this.cardPosArr[2].left + 'px';
-	          this.cardItems[3].style.top = this.cardPosArr[2].top + 'px';
-
-	          this.cardItems[4].style.left = this.cardPosArr[1].left + 'px';
-	          this.cardItems[4].style.top = this.cardPosArr[1].top + 'px';
-
-	          this.cardItems[5].style.left = this.cardPosArr[0].left + 'px';
-	          this.cardItems[5].style.top = this.cardPosArr[0].top + 'px';
-	          break;
-	        case 4:
-	          this.cardItems[0].style.left = this.cardPosArr[4].left + 'px';
-	          this.cardItems[0].style.top = this.cardPosArr[4].top + 'px';
-
-	          this.cardItems[1].style.left = this.cardPosArr[3].left + 'px';
-	          this.cardItems[1].style.top = this.cardPosArr[3].top + 'px';
-
-	          this.cardItems[2].style.left = this.cardPosArr[0].left + 'px';
-	          this.cardItems[2].style.top = this.cardPosArr[0].top + 'px';
-
-	          this.cardItems[3].style.left = this.cardPosArr[5].left + 'px';
-	          this.cardItems[3].style.top = this.cardPosArr[5].top + 'px';
-
-	          this.cardItems[4].style.left = this.cardPosArr[2].left + 'px';
-	          this.cardItems[4].style.top = this.cardPosArr[2].top + 'px';
-
-	          this.cardItems[5].style.left = this.cardPosArr[1].left + 'px';
-	          this.cardItems[5].style.top = this.cardPosArr[1].top + 'px';
-	          break;
-	        case 5:
-	          this.cardItems[0].style.left = this.cardPosArr[3].left + 'px';
-	          this.cardItems[0].style.top = this.cardPosArr[3].top + 'px';
-
-	          this.cardItems[1].style.left = this.cardPosArr[0].left + 'px';
-	          this.cardItems[1].style.top = this.cardPosArr[0].top + 'px';
-
-	          this.cardItems[2].style.left = this.cardPosArr[1].left + 'px';
-	          this.cardItems[2].style.top = this.cardPosArr[1].top + 'px';
-
-	          this.cardItems[3].style.left = this.cardPosArr[4].left + 'px';
-	          this.cardItems[3].style.top = this.cardPosArr[4].top + 'px';
-
-	          this.cardItems[4].style.left = this.cardPosArr[5].left + 'px';
-	          this.cardItems[4].style.top = this.cardPosArr[5].top + 'px';
-
-	          this.cardItems[5].style.left = this.cardPosArr[2].left + 'px';
-	          this.cardItems[5].style.top = this.cardPosArr[2].top + 'px';
-	          break;
-
+	      for (var i = 0; i < 6; i++) {
+	        this.cardItems[i].style.left = this.cardPosArr[i].left + 'px';
+	        this.cardItems[i].style.top = this.cardPosArr[i].top + 'px';
 	      }
 	    }
 	  }, {
@@ -23816,37 +23816,96 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      this.dealCard();
 	      this.setLayout();
 
 	      var obserable = this.props.obserable;
 
-	      /*setInterval(()=>{
-	          this.order();
-	      },200)*/
-
 	      obserable.on('startPlay', function () {
-	        _this3.refs['fly-game-view-ui'].classList.add('show');
+	        //进入到游戏界面。背景音乐切换
+	        _this4.refs['fly-game-view-ui'].classList.add('show');
+	        _this4.ruffleCard();
+	        document.querySelector('#audio').src = './assets/music/Exciting.ogg';
 	      });
 
 	      obserable.on('replay', function () {
 	        //重新开始。
-	        _this3.refs['fly-game-view-ui'].classList.add('show');
-	        _this3.setState({
+	        _this4.refs['fly-game-view-ui'].classList.add('show');
+	        _this4.setState({
 	          currentSelectCardIndex: -1,
 	          isError: '',
 	          rightTigger: -1,
 	          iNow: 1, //当前是第几轮。
-	          score: 0, //当前的得分
 	          currentData: {}
 	        });
-	        for (var i = 0, len = _this3.smallTiggers.length; i < len; i++) {
-	          _this3.smallTiggers[i].style.background = 'url(./assets/images/user.png) no-repeat center';
-	          _this3.smallTiggers[i].style.backgroundSize = 'cover';
+	        for (var i = 0, len = _this4.smallTiggers.length; i < len; i++) {
+	          _this4.smallTiggers[i].style.background = 'url(./assets/images/user.png) no-repeat center';
+	          _this4.smallTiggers[i].style.backgroundSize = 'cover';
 	        }
+
+	        var iNow = 0;
+	        var timer = setInterval(function () {
+	          _this4.start = true;
+	          if (iNow < 6) {
+	            _this4.cardItems[iNow].classList.add('active');
+	            iNow++;
+	          } else {
+	            clearInterval(timer);
+	            _this4.ruffleCard();
+	          }
+	        }, 50);
 	      });
+	    }
+	  }, {
+	    key: 'changeAudio',
+	    value: function changeAudio() {
+	      var src = arguments.length <= 0 || arguments[0] === undefined ? './assets/music/da.ogg' : arguments[0];
+	      //切换音频
+	      this.refs['orderAudio'].src = src;
+	      this.refs['orderAudio'].play();
+	    }
+	  }, {
+	    key: 'closeAudio',
+	    value: function closeAudio() {
+	      this.refs['orderAudio'].pause();
+	    }
+	  }, {
+	    key: 'ruffleCard',
+	    value: function ruffleCard() {
+	      var _this5 = this;
+
+	      //洗牌
+
+	      var iNow = 0;
+	      var times = 0;
+	      var duration = 200;
+	      setTimeout(function () {
+	        var timer = setInterval(function () {
+	          _this5.start = true;
+	          if (iNow < 6) {
+	            _this5.cardItems[iNow].classList.remove('active');
+	            iNow++;
+	          } else {
+	            clearInterval(timer);
+	            var timer1 = setInterval(function () {
+	              times++;
+	              if (times === 1) {
+	                _this5.changeAudio();
+	              }
+	              if (times >= 3) {
+	                //Math.random()*5+
+	                clearInterval(timer1);
+	                _this5.start = false; //开始可以点了。
+	                _this5.closeAudio();
+	              }
+	              _this5.order();
+	            }, 500);
+	          }
+	          //
+	        }, duration);
+	      }, 300);
 	    }
 	  }, {
 	    key: 'dealCard',
@@ -23860,6 +23919,7 @@
 	      var t = setInterval(function () {
 	        if (cardItems[iNow]) {
 	          cardItems[iNow].classList.add('show');
+	          cardItems[iNow].classList.add('active');
 	          iNow++;
 	        } else {
 	          clearInterval(t);
@@ -23869,50 +23929,53 @@
 	  }, {
 	    key: 'selectedCard',
 	    value: function selectedCard(e) {
-	      var _this4 = this;
+	      var _this6 = this;
 
 	      if (!this.start) {
 	        this.start = true;
 	        this.setState({
 	          currentSelectCardIndex: e
 	        }, function () {
-	          _this4.smallTiggers = _this4.smallTiggers || _this4.refs['g-tigger-list'].querySelectorAll('li');
+	          _this6.smallTiggers = _this6.smallTiggers || _this6.refs['g-tigger-list'].querySelectorAll('li');
 
-	          var obj = _this4.refs['g-cards-C'].querySelectorAll('li')[_this4.state.currentSelectCardIndex];
+	          var obj = _this6.refs['g-cards-C'].querySelectorAll('li')[_this6.state.currentSelectCardIndex];
 
 	          obj && obj.classList.add('active');
 
 	          setTimeout(function () {
-	            _this4.setState({
-	              currentData: _this4.cardsArr[_this4.state.currentSelectCardIndex]
+	            _this6.setState({
+	              currentData: _this6.cardsArr[_this6.state.currentSelectCardIndex]
 	            }, function () {
 	              // console.log(this.state.currentSelectCardIndex)
 	              obj.classList.remove('active');
-	              if (_this4.refs['g-result']) {
-	                _this4.refs['g-result'].style.display = 'block';
+	              if (_this6.refs['g-result']) {
+	                _this6.refs['g-result'].style.display = 'block';
 	              }
-	              var index = _this4.state.currentSelectCardIndex;
+	              var index = _this6.state.currentSelectCardIndex;
 
-	              var cardC = _this4.refs['g-cards-C'];
+	              var cardC = _this6.refs['g-cards-C'];
 	              var PTop = cardC.offsetTop,
 	                  PLeft = cardC.offsetLeft;
 	              var target = cardC.querySelectorAll('li')[index];
-	              _this4.refs['g-result'].classList && _this4.refs['g-result'].classList.add('active');
-	              _this4.refs['g-result-C'].classList.add('active');
+	              _this6.refs['g-result'].classList && _this6.refs['g-result'].classList.add('active');
+	              _this6.refs['g-result-C'].classList.add('active');
 
-	              if (_this4.state.currentData && _this4.state.currentData.url) {
+	              if (_this6.state.currentData && _this6.state.currentData.url) {
 
-	                _this4.setState({ //答对，得分+5 轮数+1
-	                  score: _this4.state.score + 5
+	                _this6.setState({ //答对，得分+5 轮数+1
+	                  score: _this6.state.score + 5
 	                });
-	                _this4.smallTiggers[_this4.state.iNow - 1].style.background = 'url(' + _this4.state.currentData.url + ') no-repeat center';
-	                _this4.smallTiggers[_this4.state.iNow - 1].style.backgroundSize = 'cover';
+	                _this6.smallTiggers[_this6.state.iNow - 1].style.background = 'url(' + _this6.state.currentData.url + ') no-repeat center';
+	                _this6.smallTiggers[_this6.state.iNow - 1].style.backgroundSize = 'cover';
+
+	                _this6.changeAudio('./assets/music/right.ogg');
 	              } else {
 	                //没有选择到老虎
-	                _this4.cardsArr.map(function (item, i) {
+	                _this6.changeAudio('./assets/music/Lose.ogg');
+	                _this6.cardsArr.map(function (item, i) {
 
 	                  if (item && item.url) {
-	                    _this4.state.rightTigger = i;
+	                    _this6.state.rightTigger = i;
 	                  }
 	                });
 	              }
@@ -23966,7 +24029,7 @@
 
 
 	// module
-	exports.push([module.id, ".g-message{position:absolute;height:30px;line-height:30px;text-align:center;left:50%;padding:0 2px;top:2rem;color:#fff;border-radius:5px;-webkit-transform:translate3d(-50%, -4rem, 0);transform:translate3d(-50%, -4rem, 0);opacity:0;-webkit-transition:.2s;transition:.2s;background:#777;z-index:100000}.g-message:before{content:\"\";position:absolute;left:0;top:0;width:100%;height:100%;box-shadow:0 0 20px rgba(255,255,240,0.4);border-radius:5px}.g-message.active{-webkit-transform:translate3d(-50%, 0, 0);transform:translate3d(-50%, 0, 0);opacity:1}.fly-game-view-ui{width:100%;height:100%;position:absolute;left:0;top:0;z-index:-1;opacity:0;-webkit-transition:1s;transition:1s}.fly-game-view-ui.show{z-index:1;opacity:1}.fly-game-view-ui .g-top-bg{position:absolute;left:0;top:0}.fly-game-view-ui .fly-scrore-list{opacity:0;-webkit-transform:translate3d(0, -100%, 0);transform:translate3d(0, -100%, 0);-webkit-transition:.3s;transition:.3s;position:fixed;z-index:9999;left:0;top:0;width:100%;color:#fff;height:100%;background:rgba(0,0,0,0.9)}.fly-game-view-ui .fly-scrore-list.active{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);opacity:1}.fly-game-view-ui .fly-scrore-list h2{height:30px;line-height:30px;color:#Fff;font-size:.8rem;text-align:right;padding-right:10px}.fly-game-view-ui .fly-scrore-list h3{font-weight:normal;text-align:center;color:#ffca3d;font-size:.8rem}.fly-game-view-ui .fly-scrore-list .fly-score-title{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal;width:90%;margin:.3rem auto;line-height:30px;border-bottom:1px solid #999}.fly-game-view-ui .fly-scrore-list .fly-score-title li{text-align:center;color:#999}.fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(1){width:25%}.fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(2){width:50%}.fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(3){width:25%}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul{width:90%;margin:0 auto}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div{text-align:center;height:30px;line-height:30px}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(1){width:25%;font-style:italic;color:#00a1d9}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(2){width:50%}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(3){width:25%}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1){font-size:.8rem;height:50px;color:#ff4242}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1) div:first-of-type{color:#ff4242}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2){font-size:.7rem;height:40px;color:#ff6138}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2) div:first-of-type{color:#ff6138}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3){font-size:.6rem;height:40px;color:#ffca3d}.fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3) div:first-of-type{color:#ffca3d}.fly-game-view-ui .g-rule{position:absolute;right:0;top:.5rem;background:rgba(255,255,255,0.8);padding:7px 10px;border-bottom-left-radius:14px;border-top-left-radius:14px;text-align:center}.fly-game-view-ui .g-rank{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal;width:7rem;margin:2rem auto 0;color:#fff}.fly-game-view-ui .g-rank div:nth-of-type(1){margin-right:.5rem}.fly-game-view-ui .g-rank div:nth-of-type(1) span.g-big{font-size:.6rem;color:#00fffc}.fly-game-view-ui .g-rank div:nth-of-type(2){border:1px solid #a9a9a9;padding:1px 10px;border-radius:.8rem;position:relative}.fly-game-view-ui .g-rank div:nth-of-type(2):before{content:'';position:absolute;width:100%;border-radius:.8rem;height:100%;left:0;top:0;box-shadow:0 0 10px rgba(169,169,169,0.8),0 0 10px rgba(169,169,169,0.2) inset}.fly-game-view-ui .g-rank .g-ball{width:.5rem;display:inline-block}.fly-game-view-ui .g-rank .g-score{font-size:.6rem;color:#ffcc00}.fly-game-view-ui .g-rank .g-line{display:inline-block;-webkit-transform:scaleX(0.2);transform:scaleX(0.2);position:relative;top:-2px}.fly-game-view-ui .g-rank .g-text{position:relative;top:-2px}.fly-game-view-ui .g-info{width:6rem;color:#fff;background:rgba(255,255,255,0.3);line-height:30px;border-radius:.3rem;padding:0 1px;text-align:center;margin:.4rem auto;position:relative}.fly-game-view-ui .g-info img{width:.6rem;margin-top:.2rem;position:absolute;-webkit-animation:info 1s 50 ease-out alternate;animation:info 1s 50 ease-out alternate}.fly-game-view-ui .g-cards-C{width:7.8rem;margin:0 auto;position:relative;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;perspective:800px;-webkit-perspective:800px}.fly-game-view-ui .g-cards-C .g-cards-item{float:left;width:2.2rem;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;perspective:800px;-webkit-perspective:800px;height:3.8rem;margin:.2rem;box-sizing:border-box;position:relative;backface-visibility:hidden}.fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n+1){-webkit-transform:translate3d(2.6rem, -17rem, 0);transform:translate3d(2.6rem, -17rem, 0)}.fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n-1){-webkit-transform:translate3d(0, -17rem, 0);transform:translate3d(0, -17rem, 0)}.fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n){-webkit-transform:translate3d(-2.6rem, -17rem, 0);transform:translate3d(-2.6rem, -17rem, 0)}.fly-game-view-ui .g-cards-C .g-cards-item.show{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);-webkit-transition:.2s;transition:.2s}.fly-game-view-ui .g-cards-C .g-cards-item.selected:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;z-index:1000;border:1px solid #49cefa;border-radius:2px;box-sizing:border-box;box-shadow:0 0 10px 2px #49cefa}.fly-game-view-ui .g-cards-C .g-cards-item.active{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}.fly-game-view-ui .g-cards-C .g-cards-item>div{backface-visibility:hidden;position:absolute;left:0;top:0;z-index:1}.fly-game-view-ui .g-cards-C .g-cards-item>div:nth-of-type(2){z-index:0;-webkit-transform:translate3d(0, 0, -1px) rotateY(180deg);transform:translate3d(0, 0, -1px) rotateY(180deg)}.fly-game-view-ui .g-cards-C .g-cards-item>div:nth-of-type(2) img:nth-of-type(2){position:absolute;left:15%;top:20%;width:70%;-webkit-transform:translate3d(0, -50%, 0);transform:translate3d(0, -50%, 0)}.fly-game-view-ui .g-cards-C .g-cards-item>div:nth-of-type(2) .g-portrait-img{position:absolute;left:0;top:50%;width:2rem;height:2rem;border-radius:50%;-webkit-transform:translate3d(0, -50%, 0);transform:translate3d(0, -50%, 0);overflow:hidden}.fly-game-view-ui .g-choose-btn{width:4rem;height:30px;line-height:30px;text-align:center;position:absolute;bottom:1.5rem;color:#fff;background:#999;border:1px solid #fff;border-radius:15px;left:3rem}.fly-game-view-ui .g-choose-btn.active{-webkit-transform:scale(0.97);transform:scale(0.97)}.fly-game-view-ui .g-choose-btn.active:before{content:\"\";position:absolute;left:0;top:0;width:100%;border-radius:15px;height:100%;box-shadow:0 0 20px rgba(255,255,255,0.7)}.fly-game-view-ui .g-tigger-list{width:8rem;height:1rem;left:1rem;position:absolute;bottom:.2rem;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal}.fly-game-view-ui .g-tigger-list li{width:1rem;height:1rem;background:#fff;margin:0 .1rem;border-radius:4px}.fly-game-view-ui .g-result{position:absolute;width:8rem;height:80vh;left:1rem;top:10vh;z-index:100;display:none;-webkit-transition:-webkit-transform .5s;transition:transform .5s;-webkit-transform:translate3d(0, 0, 10px) scale(0.3);transform:translate3d(0, 0, 10px) scale(0.3);display:none}.fly-game-view-ui .g-result.active{-webkit-transition-timing-function:cubic-bezier(0.49, 1.52, 0.38, 0.84);transition-timing-function:cubic-bezier(0.49, 1.52, 0.38, 0.84);-webkit-transform:translate3d(0, 0, 10px) scale(1);transform:translate3d(0, 0, 10px) scale(1)}.fly-game-view-ui .g-result .g-right{width:1.8rem;position:absolute;right:.6rem;top:.1rem;z-index:10}.fly-game-view-ui .g-result .g-look{position:absolute;width:100%;bottom:1rem}.fly-game-view-ui .g-result .g-portrait{width:4rem;position:relative;margin:1.5rem auto .2rem}.fly-game-view-ui .g-result .g-portrait .g-portrait-bg{width:2.83rem;height:2.73rem;position:absolute;border-radius:60px;border-bottom-left-radius:46px;border-bottom-right-radius:40px;left:.56rem;top:.7rem}.fly-game-view-ui .g-result .g-tigger-name{width:100%;text-align:center;font-size:.5rem}.fly-game-view-ui .g-result .g-tigger-info{width:7rem;height:100px;margin:0 auto}.fly-game-view-ui .g-result .g-tigger-info tr td{vertical-align:top}.fly-game-view-ui .g-result .g-tigger-info tr td a{color:#222}.fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(1){width:1.8rem;color:#222;text-align:center}.fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(2){color:#330000}.fly-game-view-ui .g-result article{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;perspective:800px;-webkit-perspective:800px;-webkit-transition:-webkit-transform .2s;transition:transform .2s;height:100%}.fly-game-view-ui .g-result article.active{-webkit-transform:rotateY(0deg);transform:rotateY(0deg);-webkit-transition-timing-function:cubic-bezier(0, 1.05, 0.61, 0.97);transition-timing-function:cubic-bezier(0, 1.05, 0.61, 0.97)}.fly-game-view-ui .g-result article .g-back{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;-webkit-transform:translate3d(0, 0, -1px) rotateY(180deg);transform:translate3d(0, 0, -1px) rotateY(180deg)}.fly-game-view-ui .g-result article .g-result-C{position:absolute;left:0;top:0;width:100%;height:100%;-webkit-transform:translate3d(0, 0, 1px);transform:translate3d(0, 0, 1px)}@-webkit-keyframes info{to{-webkit-transform:translate3d(0, 10px, 0);transform:translate3d(0, 10px, 0)}}@media all and (max-height: 460px){.fly-game-view-ui .g-result{height:88vh;top:6vh}.r-main-ui .r-content-C{height:100vh !important}}\r\n/*# sourceMappingURL=gameview.css.map */\r\n", ""]);
+	exports.push([module.id, ".g-message {\r\n  position: absolute;\r\n  height: 30px;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  left: 50%;\r\n  padding: 0 2px;\r\n  top: 2rem;\r\n  color: #fff;\r\n  border-radius: 5px;\r\n  -webkit-transform: translate3d(-50%, -4rem, 0);\r\n  transform: translate3d(-50%, -4rem, 0);\r\n  opacity: 0;\r\n  -webkit-transition: 0.2s;\r\n  transition: 0.2s;\r\n  background: #777;\r\n  z-index: 100000; }\r\n  .g-message:before {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-shadow: 0 0 20px rgba(255, 255, 240, 0.4);\r\n    border-radius: 5px; }\r\n  .g-message.active {\r\n    -webkit-transform: translate3d(-50%, 0, 0);\r\n    transform: translate3d(-50%, 0, 0);\r\n    opacity: 1; }\r\n\r\n.fly-game-view-ui {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  z-index: -1;\r\n  opacity: 0;\r\n  -webkit-transition: 1s;\r\n  transition: 1s; }\r\n  .fly-game-view-ui.show {\r\n    z-index: 1;\r\n    opacity: 1; }\r\n  .fly-game-view-ui .g-top-bg {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0; }\r\n  .fly-game-view-ui .fly-scrore-list {\r\n    opacity: 0;\r\n    -webkit-transform: translate3d(0, -100%, 0);\r\n    transform: translate3d(0, -100%, 0);\r\n    -webkit-transition: 0.3s;\r\n    transition: 0.3s;\r\n    position: fixed;\r\n    z-index: 9999;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    color: #fff;\r\n    height: 100%;\r\n    background: rgba(0, 0, 0, 0.9); }\r\n    .fly-game-view-ui .fly-scrore-list.active {\r\n      -webkit-transform: translate3d(0, 0, 0);\r\n      transform: translate3d(0, 0, 0);\r\n      opacity: 1; }\r\n    .fly-game-view-ui .fly-scrore-list h2 {\r\n      height: 30px;\r\n      line-height: 30px;\r\n      color: #Fff;\r\n      font-size: .8rem;\r\n      text-align: right;\r\n      padding-right: 10px; }\r\n    .fly-game-view-ui .fly-scrore-list h3 {\r\n      font-weight: normal;\r\n      text-align: center;\r\n      color: #ffca3d;\r\n      font-size: .8rem; }\r\n    .fly-game-view-ui .fly-scrore-list .fly-score-title {\r\n      display: -webkit-box;\r\n      -webkit-box-align: center;\r\n      -webkit-box-pack: center;\r\n      -webkit-box-orient: horizontal;\r\n      width: 90%;\r\n      margin: .3rem auto;\r\n      line-height: 30px;\r\n      border-bottom: 1px solid #999; }\r\n      .fly-game-view-ui .fly-scrore-list .fly-score-title li {\r\n        text-align: center;\r\n        color: #999; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(1) {\r\n          width: 25%; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(2) {\r\n          width: 50%; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-score-title li:nth-of-type(3) {\r\n          width: 25%; }\r\n    .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul {\r\n      width: 90%;\r\n      margin: 0 auto; }\r\n      .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li {\r\n        display: -webkit-box;\r\n        -webkit-box-align: center;\r\n        -webkit-box-pack: center;\r\n        -webkit-box-orient: horizontal; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div {\r\n          text-align: center;\r\n          height: 30px;\r\n          line-height: 30px; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(1) {\r\n            width: 25%;\r\n            font-style: italic;\r\n            color: #00a1d9; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(2) {\r\n            width: 50%; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li div:nth-of-type(3) {\r\n            width: 25%; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1) {\r\n          font-size: .8rem;\r\n          height: 50px;\r\n          color: #ff4242; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(1) div:first-of-type {\r\n            color: #ff4242; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2) {\r\n          font-size: .7rem;\r\n          height: 40px;\r\n          color: #ff6138; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(2) div:first-of-type {\r\n            color: #ff6138; }\r\n        .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3) {\r\n          font-size: .6rem;\r\n          height: 40px;\r\n          color: #ffca3d; }\r\n          .fly-game-view-ui .fly-scrore-list .fly-scroll-C ul li:nth-of-type(3) div:first-of-type {\r\n            color: #ffca3d; }\r\n  .fly-game-view-ui .g-rule {\r\n    position: absolute;\r\n    right: 0;\r\n    top: .5rem;\r\n    background: rgba(255, 255, 255, 0.8);\r\n    padding: 7px 10px;\r\n    border-bottom-left-radius: 14px;\r\n    border-top-left-radius: 14px;\r\n    text-align: center; }\r\n  .fly-game-view-ui .g-rank {\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    width: 7rem;\r\n    margin: 2rem auto 0;\r\n    color: #fff; }\r\n    .fly-game-view-ui .g-rank div:nth-of-type(1) {\r\n      margin-right: .5rem; }\r\n      .fly-game-view-ui .g-rank div:nth-of-type(1) span.g-big {\r\n        font-size: .6rem;\r\n        color: #00fffc; }\r\n    .fly-game-view-ui .g-rank div:nth-of-type(2) {\r\n      border: 1px solid #a9a9a9;\r\n      padding: 1px 10px;\r\n      border-radius: 0.8rem;\r\n      position: relative; }\r\n      .fly-game-view-ui .g-rank div:nth-of-type(2):before {\r\n        content: '';\r\n        position: absolute;\r\n        width: 100%;\r\n        border-radius: 0.8rem;\r\n        height: 100%;\r\n        left: 0;\r\n        top: 0;\r\n        box-shadow: 0 0 10px rgba(169, 169, 169, 0.8), 0 0 10px rgba(169, 169, 169, 0.2) inset; }\r\n    .fly-game-view-ui .g-rank .g-ball {\r\n      width: .5rem;\r\n      display: inline-block; }\r\n    .fly-game-view-ui .g-rank .g-score {\r\n      font-size: .6rem;\r\n      color: #ffcc00; }\r\n    .fly-game-view-ui .g-rank .g-line {\r\n      display: inline-block;\r\n      -webkit-transform: scaleX(0.2);\r\n      transform: scaleX(0.2);\r\n      position: relative;\r\n      top: -2px; }\r\n    .fly-game-view-ui .g-rank .g-text {\r\n      position: relative;\r\n      top: -2px; }\r\n  .fly-game-view-ui .g-info {\r\n    width: 6rem;\r\n    color: #fff;\r\n    background: rgba(255, 255, 255, 0.3);\r\n    line-height: 30px;\r\n    border-radius: 0.3rem;\r\n    padding: 0 1px;\r\n    text-align: center;\r\n    margin: .4rem auto;\r\n    position: relative; }\r\n    .fly-game-view-ui .g-info img {\r\n      width: .6rem;\r\n      margin-top: .2rem;\r\n      position: absolute;\r\n      -webkit-animation: info 1s 50 ease-out alternate;\r\n      animation: info 1s 50 ease-out alternate; }\r\n  .fly-game-view-ui .g-cards-C {\r\n    width: 7.8rem;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    -webkit-transform-style: preserve-3d;\r\n    transform-style: preserve-3d;\r\n    perspective: 800px;\r\n    -webkit-perspective: 800px; }\r\n    .fly-game-view-ui .g-cards-C .g-cards-item {\r\n      float: left;\r\n      width: 2.2rem;\r\n      -webkit-transform-style: preserve-3d;\r\n      transform-style: preserve-3d;\r\n      perspective: 800px;\r\n      -webkit-perspective: 800px;\r\n      height: 3.8rem;\r\n      margin: .2rem;\r\n      box-sizing: border-box;\r\n      position: relative;\r\n      backface-visibility: hidden; }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n+1) {\r\n        -webkit-transform: translate3d(2.6rem, -17rem, 0);\r\n        transform: translate3d(2.6rem, -17rem, 0); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n-1) {\r\n        -webkit-transform: translate3d(0, -17rem, 0);\r\n        transform: translate3d(0, -17rem, 0); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item:nth-of-type(3n) {\r\n        -webkit-transform: translate3d(-2.6rem, -17rem, 0);\r\n        transform: translate3d(-2.6rem, -17rem, 0); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item.show {\r\n        -webkit-transform: translate3d(0, 0, 0);\r\n        transform: translate3d(0, 0, 0);\r\n        -webkit-transition: 0.2s;\r\n        transition: 0.2s; }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item.selected:before {\r\n        content: '';\r\n        position: absolute;\r\n        width: 100%;\r\n        height: 100%;\r\n        left: 0;\r\n        top: 0;\r\n        z-index: 1000;\r\n        border: 1px solid #49cefa;\r\n        border-radius: 2px;\r\n        box-sizing: border-box;\r\n        box-shadow: 0 0 10px 2px #49cefa; }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item.active {\r\n        -webkit-transform: rotateY(180deg);\r\n        transform: rotateY(180deg); }\r\n      .fly-game-view-ui .g-cards-C .g-cards-item > div {\r\n        backface-visibility: hidden;\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        z-index: 1; }\r\n        .fly-game-view-ui .g-cards-C .g-cards-item > div:nth-of-type(2) {\r\n          z-index: 0;\r\n          -webkit-transform: translate3d(0, 0, -1px) rotateY(180deg);\r\n          transform: translate3d(0, 0, -1px) rotateY(180deg); }\r\n          .fly-game-view-ui .g-cards-C .g-cards-item > div:nth-of-type(2) img:nth-of-type(2) {\r\n            position: absolute;\r\n            left: 15%;\r\n            top: 20%;\r\n            width: 70%;\r\n            -webkit-transform: translate3d(0, -50%, 0);\r\n            transform: translate3d(0, -50%, 0); }\r\n          .fly-game-view-ui .g-cards-C .g-cards-item > div:nth-of-type(2) .g-portrait-img {\r\n            position: absolute;\r\n            left: 0;\r\n            top: 50%;\r\n            width: 2rem;\r\n            height: 2rem;\r\n            border-radius: 50%;\r\n            -webkit-transform: translate3d(0, -50%, 0);\r\n            transform: translate3d(0, -50%, 0);\r\n            overflow: hidden; }\r\n  .fly-game-view-ui .g-choose-btn {\r\n    width: 4rem;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    position: absolute;\r\n    bottom: 1.5rem;\r\n    color: #fff;\r\n    background: #999;\r\n    border: 1px solid #fff;\r\n    border-radius: 15px;\r\n    left: 3rem; }\r\n    .fly-game-view-ui .g-choose-btn.active {\r\n      -webkit-transform: scale(0.97);\r\n      transform: scale(0.97); }\r\n      .fly-game-view-ui .g-choose-btn.active:before {\r\n        content: \"\";\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        width: 100%;\r\n        border-radius: 15px;\r\n        height: 100%;\r\n        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); }\r\n  .fly-game-view-ui .g-tigger-list {\r\n    width: 8rem;\r\n    height: 1rem;\r\n    left: 1rem;\r\n    position: absolute;\r\n    bottom: .2rem;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal; }\r\n    .fly-game-view-ui .g-tigger-list li {\r\n      width: 1rem;\r\n      height: 1rem;\r\n      background: #fff;\r\n      margin: 0 .1rem;\r\n      border-radius: 4px; }\r\n  .fly-game-view-ui .g-result {\r\n    position: absolute;\r\n    width: 8rem;\r\n    height: 80vh;\r\n    left: 1rem;\r\n    top: 10vh;\r\n    z-index: 100;\r\n    opacity: 0;\r\n    display: none;\r\n    -webkit-transition: 0.5s;\r\n    transition: 0.5s;\r\n    -webkit-transform: translate3d(0, 0, 10px) scale(0.3);\r\n    transform: translate3d(0, 0, 10px) scale(0.3);\r\n    display: none; }\r\n    .fly-game-view-ui .g-result.active {\r\n      opacity: 1;\r\n      -webkit-transition-timing-function: cubic-bezier(0.49, 1.52, 0.38, 0.84);\r\n      transition-timing-function: cubic-bezier(0.49, 1.52, 0.38, 0.84);\r\n      -webkit-transform: translate3d(0, 0, 10px) scale(1);\r\n      transform: translate3d(0, 0, 10px) scale(1); }\r\n    .fly-game-view-ui .g-result .g-right {\r\n      width: 1.8rem;\r\n      position: absolute;\r\n      right: .6rem;\r\n      top: .1rem;\r\n      z-index: 10; }\r\n    .fly-game-view-ui .g-result .g-look {\r\n      position: absolute;\r\n      width: 100%;\r\n      bottom: 1rem; }\r\n    .fly-game-view-ui .g-result .g-portrait {\r\n      width: 4rem;\r\n      position: relative;\r\n      margin: 1.5rem auto .2rem; }\r\n      .fly-game-view-ui .g-result .g-portrait .g-portrait-bg {\r\n        width: 2.83rem;\r\n        height: 2.73rem;\r\n        position: absolute;\r\n        border-radius: 60px;\r\n        border-bottom-left-radius: 46px;\r\n        border-bottom-right-radius: 40px;\r\n        left: .56rem;\r\n        top: .7rem; }\r\n    .fly-game-view-ui .g-result .g-tigger-name {\r\n      width: 100%;\r\n      text-align: center;\r\n      font-size: .5rem; }\r\n    .fly-game-view-ui .g-result .g-tigger-info {\r\n      width: 7rem;\r\n      height: 100px;\r\n      margin: 0 auto; }\r\n      .fly-game-view-ui .g-result .g-tigger-info tr td {\r\n        vertical-align: top; }\r\n        .fly-game-view-ui .g-result .g-tigger-info tr td a {\r\n          color: #222; }\r\n        .fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(1) {\r\n          width: 1.8rem;\r\n          color: #222;\r\n          text-align: center; }\r\n        .fly-game-view-ui .g-result .g-tigger-info tr td:nth-of-type(2) {\r\n          color: #330000; }\r\n    .fly-game-view-ui .g-result article {\r\n      -webkit-transform-style: preserve-3d;\r\n      transform-style: preserve-3d;\r\n      perspective: 800px;\r\n      -webkit-perspective: 800px;\r\n      -webkit-transition: -webkit-transform 0.2s;\r\n      transition: transform 0.2s;\r\n      height: 100%; }\r\n      .fly-game-view-ui .g-result article.active {\r\n        -webkit-transform: rotateY(0deg);\r\n        transform: rotateY(0deg);\r\n        -webkit-transition-timing-function: cubic-bezier(0, 1.05, 0.61, 0.97);\r\n        transition-timing-function: cubic-bezier(0, 1.05, 0.61, 0.97); }\r\n      .fly-game-view-ui .g-result article .g-back {\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        z-index: 0;\r\n        -webkit-transform: translate3d(0, 0, -1px) rotateY(180deg);\r\n        transform: translate3d(0, 0, -1px) rotateY(180deg); }\r\n      .fly-game-view-ui .g-result article .g-result-C {\r\n        position: absolute;\r\n        left: 0;\r\n        top: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        -webkit-transform: translate3d(0, 0, 1px);\r\n        transform: translate3d(0, 0, 1px); }\r\n\r\n@-webkit-keyframes info {\r\n  to {\r\n    -webkit-transform: translate3d(0, 10px, 0);\r\n    transform: translate3d(0, 10px, 0); } }\r\n@media all and (max-height: 460px) {\r\n  .fly-game-view-ui .g-result {\r\n    height: 88vh;\r\n    top: 6vh; }\r\n\r\n  .r-main-ui .r-content-C {\r\n    height: 100vh !important; } }\r\n\r\n/*# sourceMappingURL=gameview.css.map */\r\n", ""]);
 
 	// exports
 
@@ -24211,7 +24274,7 @@
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'r-restart' },
-	            _react2['default'].createElement(_buttonJsx2['default'], { clickHandler: this.restart.bind(this), text: '再玩一次', ico: './assets/images/fresh.png' })
+	            _react2['default'].createElement(_buttonJsx2['default'], { clickHandler: this.restart.bind(this), text: '继续下一关' })
 	          )
 	        )
 	      );
@@ -24424,7 +24487,7 @@
 	            _react2['default'].createElement(
 	              'div',
 	              { className: 'g-game-rule' },
-	              '每组6轮，每轮都有2张“老虎牌”和4张空牌，用户抽中老虎牌计5分，没抽中不计分。'
+	              '每组5轮，每轮都有2张“老虎牌”和4张空牌，用户抽中老虎牌计5分，没抽中不计分。'
 	            ),
 	            _react2['default'].createElement('div', { className: 'g-rule-line' }),
 	            _react2['default'].createElement(

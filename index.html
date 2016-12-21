@@ -7,7 +7,18 @@
     <script>
         document.querySelector('html').style.fontSize = document.documentElement.clientWidth / 10 + 'px';    
         document.addEventListener('touchmove',function(e){e.preventDefault()});
-        document.addEventListener('touchstart',function(e){e.preventDefault()});
+        var a=0;
+        document.addEventListener('touchstart',function(e){
+            if(e.target.nodeName !== 'INPUT'){
+                e.preventDefault();    
+            }
+            if(a===0){
+                document.getElementById('audio').play();    
+                a++;
+            }
+            
+        });    
+        
     </script>
 
     <style>
@@ -37,6 +48,13 @@
 
 <div id="fly-main">
 </div>
+
+
+<audio id="audio" src='/assets/music/Welcome.ogg' autoplay="autoplay"
+ loop='loop'></aud;
+ document.getElementById('audio').play();
+ io>    
+
 
 <script>
 
@@ -367,7 +385,7 @@ Vector2.rotate = function (p1, p2, theta) {
             }
             
              var src = 'http://localhost:3000/index.js';
-            if(window.location.href.indexOf('192.168.2.109')<=-1 || window.location.href.indexOf('localhost')<=-1){
+            if(window.location.href.indexOf('192.168.2.109')<=-1 || window.location.href.indexOf('http://localhost:8080')<=-1){
                 src = './assets/js/index.js?t='+new Date().getTime();
             }
             s.src= src;

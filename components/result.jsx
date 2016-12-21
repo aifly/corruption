@@ -50,7 +50,7 @@ class FlyResult extends React.Component {
       				<FlyButton clickHandler={this.sureShare.bind(this)} text='确定并分享'></FlyButton>
       			</div>
       			<div className='r-restart'>
-				    	<FlyButton clickHandler={this.restart.bind(this)} text='再玩一次' ico='./assets/images/fresh.png'></FlyButton>
+				    	<FlyButton clickHandler={this.restart.bind(this)} text='继续下一关' ></FlyButton>
       			</div>
       		</section>
       </div>

@@ -352,9 +352,11 @@
 		left:1rem ;
 		top:10vh;
 		z-index: 100;
+		opacity:0;
 		display:none;
-		@include transition_transform(.5s);
+		@include transition(.5s);
 		&.active{
+			opacity:1;
 			@include transitionTimingFunction(cubic-bezier(0.49, 1.52, 0.38, 0.84));
 			@include transform(translate3d(0,0,10px) scale(1));
 		}

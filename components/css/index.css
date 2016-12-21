@@ -120,16 +120,16 @@
         margin: 1rem auto; }
 @-webkit-keyframes bg {
   0% {
-    background-position: -200px 0; }
+    background-position: -100px 0; }
   100% {
-    background-position: 200px 0; } }
+    background-position: 100px 0; } }
       .fly-index-page .fly-main-area .fly-figure .fly-begin-btn {
         width: 3rem;
         height: 1rem;
         z-index: 2;
-        background: -webkit-linear-gradient(-30deg, rgba(255, 255, 255, 0) 40px, white 50px, white 60px, rgba(255, 255, 255, 0) 70px) -20px 0;
+        background: -webkit-linear-gradient(-30deg, rgba(255, 255, 255, 0) 20px, white 40px, white 60px, rgba(255, 255, 255, 0) 80px) -20px 0;
         -webkit-background-clip: text;
-        -webkit-animation: bg linear 10s infinite;
+        -webkit-animation: bg linear 2s infinite;
         margin: 0 auto;
         position: relative;
         line-height: 1rem;

@@ -17,6 +17,7 @@ class FlyGameView extends React.Component {
       currentData:{},
       allCount:5,
       scoreClass:'',
+      checkpoint:0,
       scoreData:[
         
       ]
@@ -26,16 +27,16 @@ class FlyGameView extends React.Component {
   render() {
 
       var cardsArr = [];
-      for(var i =0;i<2;i++){
+      for(var i =0;i<1;i++){
         
          cardsArr.push(tiggerData[Math.floor(Math.random()*(tiggerData.length-1))]);
          //cardsArr.push('none');
       }
-      for(var i=0;i<4;i++){
+      for(var i=0;i<5;i++){
          cardsArr.push('none');
       }
 
-      cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
+     // cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
 
       this.cardsArr = cardsArr;
      // console.log(cardsArr)
@@ -46,6 +47,7 @@ class FlyGameView extends React.Component {
       }
       return (
           <div className='fly-game-view-ui' ref='fly-game-view-ui' style={style}>
+              <audio ref='orderAudio' src='./assets/music/da.ogg' loop='loop'></audio>
               <section className={'fly-scrore-list '+ this.state.scoreClass}>
                   <h2 onTouchTap={()=>{this.setState({scoreClass:''})}}>&times;</h2>
                   <h3>游戏排名TOP10</h3>
@@ -93,7 +95,6 @@ class FlyGameView extends React.Component {
               </ul>
            
               <ul className='g-tigger-list' ref='g-tigger-list' onTouchTap={this.order.bind(this)}>
-                  <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
@@ -194,27 +195,39 @@ class FlyGameView extends React.Component {
   }
 
   nextRound(){//下一轮
-      this.setState({
-         iNow:this.state.iNow+1,
-         currentSelectCardIndex:-1,
-         rightTigger:-1,
-         currentData:{} 
-      });
-      this.dealCard();
-      this.start = false;
+      this.closeAudio();
+      this.refs['g-result'].classList.remove('active');
 
+       setTimeout(()=>{
+          this.setState({
+             iNow:this.state.iNow+1,
+             currentSelectCardIndex:-1,
+             rightTigger:-1,
+             currentData:{} 
+          });
+          this.dealCard();
+          this.start = false;
+          this.ruffleCard();
+       },500);
+     
   }
   
 
   lookTigger(){//查看老虎
-      this.setState({
-        currentData:this.cardsArr[this.state.rightTigger]
-      },()=>{
-        if(this.refs['g-result'] ){
-            this.refs['g-result'].style.display = 'block';
-            this.refs['g-result'].classList.add('active');
-        }
-      });
+      this.refs['g-result'].classList.remove('active');
+      this.closeAudio();
+      setTimeout(()=>{
+           this.setState({
+              currentData:this.cardsArr[this.state.rightTigger]
+            },()=>{
+              if(this.refs['g-result'] ){
+                  this.refs['g-result'].style.display = 'block';
+                  this.cardItems[this.state.rightTigger].classList.add('active');
+                  setTimeout(()=>{this.refs['g-result'].classList.add('active');},500);
+              }
+            });
+      },500)
+     
   }
 
   order(){
@@ -232,7 +245,7 @@ class FlyGameView extends React.Component {
 //         this.cardItems[i].style.top =  top + 'px'  ;
 
     //     }
-    switch(index) {
+   /* switch(index) {
       case 0:
         for(var i = 0 ; i < 6 ;i++){
           this.cardItems[i].style.left =  this.cardPosArr[i].left +'px';
@@ -343,7 +356,14 @@ class FlyGameView extends React.Component {
         this.cardItems[5].style.top =   this.cardPosArr[2].top + 'px';
         break;
 
-    }
+    }*/
+
+    this.cardPosArr = this.cardPosArr.sort(()=>{return .5>Math.random()});
+
+     for(var i = 0 ; i < 6 ;i++){
+        this.cardItems[i].style.left =  this.cardPosArr[i].left +'px';
+        this.cardItems[i].style.top =   this.cardPosArr[i].top + 'px';  
+      }
     
 
   }
@@ -377,15 +397,10 @@ class FlyGameView extends React.Component {
 
     let {obserable} = this.props;
 
-    /*setInterval(()=>{
-        this.order();
-    },200)*/
-
-
-
-
-    obserable.on('startPlay',()=>{
+    obserable.on('startPlay',()=>{//进入到游戏界面。背景音乐切换 
       this.refs['fly-game-view-ui'].classList.add('show');
+      this.ruffleCard();
+      document.querySelector('#audio').src='./assets/music/Exciting.ogg';
     })
 
     obserable.on('replay',()=>{//重新开始。
@@ -395,15 +410,73 @@ class FlyGameView extends React.Component {
           isError:'',
           rightTigger:-1,
           iNow:1,//当前是第几轮。
-          score:0,//当前的得分
           currentData:{}
       });
       for(var i = 0,len=this.smallTiggers.length;i<len;i++){
           this.smallTiggers[i].style.background = 'url(./assets/images/user.png) no-repeat center';
           this.smallTiggers[i].style.backgroundSize = 'cover';
       }
+
+      var iNow = 0;
+      var timer = setInterval(()=>{
+              this.start = true;
+              if(iNow < 6){
+                this.cardItems[iNow].classList.add('active');
+                iNow++;
+                
+              }
+              else{
+                clearInterval(timer);
+                this.ruffleCard();
+              }
+          },50);
+      
     });
   }
+
+  changeAudio(src='./assets/music/da.ogg'){//切换音频
+      this.refs['orderAudio'].src= src;
+      this.refs['orderAudio'].play();
+  }
+
+  closeAudio(){
+     this.refs['orderAudio'].pause(); 
+  }
+
+  ruffleCard(){//洗牌
+
+       var iNow = 0;
+       var times = 0 ;
+       var duration = 200;
+       setTimeout(()=>{
+           var timer = setInterval(()=>{
+              this.start = true;
+              if(iNow < 6){
+                this.cardItems[iNow].classList.remove('active');
+                iNow++;
+              }
+              else{
+                clearInterval(timer);
+                var timer1 = setInterval(()=>{
+                    times++;
+                    if(times===1){
+                      this.changeAudio();
+                    }
+                    if(times>=3){//Math.random()*5+
+                      clearInterval(timer1);
+                      this.start = false;//开始可以点了。
+                      this.closeAudio();
+                    }
+                    this.order();
+                },500)
+                
+              }
+             // 
+          },duration)
+       },300)
+
+  }
+
   dealCard(){//发牌
       var iNow = 0 ;
       var cardItems = this.refs['g-cards-C'].querySelectorAll('li');
@@ -413,6 +486,7 @@ class FlyGameView extends React.Component {
       var t = setInterval(()=>{
           if(cardItems[iNow]){
             cardItems[iNow].classList.add('show');
+            cardItems[iNow].classList.add('active');
             iNow++;  
           }
           else{
@@ -461,7 +535,10 @@ class FlyGameView extends React.Component {
                                   this.smallTiggers[this.state.iNow-1].style.background = 'url('+this.state.currentData.url+') no-repeat center';
                                   this.smallTiggers[this.state.iNow-1].style.backgroundSize = 'cover';
 
+                                  this.changeAudio('./assets/music/right.ogg');
+
                                 }else{//没有选择到老虎
+                                    this.changeAudio('./assets/music/Lose.ogg');
                                     this.cardsArr.map((item,i)=>{
 
                                         if(item && item.url){
