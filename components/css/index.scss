@@ -87,7 +87,7 @@
 			}
 			.fly-tigger{
 				width:6rem;
-				margin:1rem auto;
+				margin:0 auto .2rem;
 			}
 		 @-webkit-keyframes bg{
 					0%{
@@ -217,9 +217,12 @@
 			}
 			.fly-main-area{
 				.fly-figure{
+					.fly-tigger{
+						width:5rem;
+					}
 					height:70vh;
 					.fly-begin-btn{
-						top:-1rem;
+						top:0rem;
 					}	
 				}
 				

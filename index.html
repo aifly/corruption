@@ -50,7 +50,7 @@
 </div>
 
 
-<audio id="audio" src='/assets/music/Welcome.ogg' autoplay="autoplay"
+<audio id="audio" src='./assets/music/Welcome.ogg' autoplay="autoplay"
  loop='loop'></aud;
  document.getElementById('audio').play();
  io>    
@@ -384,10 +384,11 @@ Vector2.rotate = function (p1, p2, theta) {
                 isStop =  true;
             }
             
-             var src = 'http://localhost:3000/index.js';
+             /*var src = 'http://localhost:3000/index.js';
             if(window.location.href.indexOf('192.168.2.109')<=-1 || window.location.href.indexOf('http://localhost:8080')<=-1){
                 src = './assets/js/index.js?t='+new Date().getTime();
-            }
+            }*/
+            src = './assets/js/index.js?t=';
             s.src= src;
         });
 

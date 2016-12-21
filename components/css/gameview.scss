@@ -401,6 +401,44 @@
 			text-align: center;
 			font-size: .5rem;
 		}
+		.g-push-C{
+			width:80%;
+			margin:.6rem auto;
+			@include br(3px);
+			overflow:hidden;
+			h2{
+				@include displayBox(horizontal);
+				background:#fff;
+				height:1rem;
+				div{
+					color:#4a2423;
+					-webkit-box-flex:1;
+					&:nth-of-type(1){
+						width:30%;
+					}
+					&:nth-of-type(2){
+						text-align: right;
+						margin-right: .2rem;
+					}
+					span{
+						display:inline-block;margin-top:.06rem;margin-left: .1rem;
+						color:#297abc;
+						font-size: .3rem;
+					}
+					font-weight: normal;
+					font-size: .36rem;
+					img{width:.6rem;vertical-align: center;margin-left: .3rem;}
+				}
+			}
+			.g-push-content{
+				background:#ececec;
+				line-height: 20px;
+				padding:10px;
+				font-size: .3rem;
+				color:#4a2423;
+				a{color:inherit}
+			}
+		}
 		.g-tigger-info{
 			width:7rem;
 			height:100px;

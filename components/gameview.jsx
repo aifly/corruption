@@ -43,10 +43,10 @@ class FlyGameView extends React.Component {
 
       let style = {
           background: 'url(./assets/images/index-bg.jpg) no-repeat bottom center',
-          backgroundSize: 'cover'
+          backgroundSize: 'cover',
       }
       return (
-          <div className='fly-game-view-ui' ref='fly-game-view-ui' style={style}>
+          <div className='fly-game-view-ui ' ref='fly-game-view-ui' style={style}>
               <audio ref='orderAudio' src='./assets/music/da.ogg' loop='loop'></audio>
               <section className={'fly-scrore-list '+ this.state.scoreClass}>
                   <h2 onTouchTap={()=>{this.setState({scoreClass:''})}}>&times;</h2>
@@ -101,8 +101,8 @@ class FlyGameView extends React.Component {
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
                   <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
               </ul>
-              {this.state.currentData && this.state.currentData.url && 
-                  <div className='g-result' ref='g-result' style={{display:'none'}}>
+              {(this.state.currentData && this.state.currentData.url) && 
+                  <div className='g-result ' ref='g-result' style={{display:'none'}}>
                     <article ref='g-result-C'>
                          <section className="g-result-C"  style={{background:'url(./assets/images/result-bg.png) no-repeat center center',backgroundSize:'contain'}}>
                             {this.state.rightTigger<0 && <div className='g-right'><img src='./assets/images/right.png'/></div>}
@@ -113,28 +113,21 @@ class FlyGameView extends React.Component {
                             <div className='g-tigger-name'>
                               {this.state.currentData.name}
                             </div>
-                            <table className='g-tigger-info'>
-                                <tbody>
-                                   <tr>
-                                      <td>推送内容</td>
-                                      <td><a href='#'>{this.state.currentData.pushContent.length>30?this.state.currentData.pushContent.substring(0,30)+'...':this.state.currentData.pushContent}</a></td>
-                                   </tr>
-                                   <tr>
-                                      <td>时<span style={{opacity:0}}>时间</span>间</td>
-                                      <td><a href='#'>{this.state.currentData.date}</a></td>
-                                   </tr>
-                                   <tr>
-                                      <td>稿<span style={{opacity:0}}>时间</span>件</td>
-                                      <td><a href='#'>
-                                        {this.state.currentData.file.length>18?this.state.currentData.file.substring(0,18)+'...':this.state.currentData.file}
-                                      </a></td>
-                                   </tr>
-                                   <tr>
-                                      <td>时<span style={{opacity:0}}>时间</span>间</td>
-                                      <td><a href='#'>{this.state.currentData.date1}</a></td>
-                                   </tr>
-                                </tbody>                    
-                            </table>
+                            <div className='g-push-C'>
+                                <h2>
+                                  <div className='g-push-logo'>
+                                    <img src='./assets/images/logo.png'/>
+                                    <span>新华社</span>
+                                  </div>
+                                  <div className='g-push-date'>
+                                    {this.state.currentData.date}
+                                  </div>
+                                </h2>
+                                <div className='g-push-content'>
+                                    <a href='#'>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
+                                </div>
+                            </div>
+
                             {this.state.iNow < this.state.allCount && <FlyButton clickHandler={this.nextRound.bind(this)}></FlyButton>}
                             {this.state.iNow>=this.state.allCount &&<FlyButton  text='确 定' clickHandler={this.redirectToResult.bind(this)}></FlyButton>}  
                         </section>
