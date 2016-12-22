@@ -17,28 +17,44 @@ class FlyGameView extends React.Component {
       currentData:{},
       allCount:5,
       scoreClass:'',
-      checkpoint:0,
+      checkpoint:0,//关卡
+      bgSound:[
+        './assets/music/Normal.mp3',
+        './assets/music/Normal2.mp3',
+        './assets/music/Welcome.mp3'
+      ],
       scoreData:[
         
+      ],
+      tiggers:[
       ]
     }
+
+    this.updateCard = true;
   }
 
   render() {
 
-      var cardsArr = [];
-      for(var i =0;i<1;i++){
-        
-         cardsArr.push(tiggerData[Math.floor(Math.random()*(tiggerData.length-1))]);
-         //cardsArr.push('none');
-      }
-      for(var i=0;i<5;i++){
-         cardsArr.push('none');
-      }
+       this.cardsArr = this.cardsArr  || [];
+
+       if(this.updateCard){
+            this.updateCard = false;
+            this.cardsArr.length = 0;
+            for(var i =0;i<1;i++){
+               this.cardsArr.push(tiggerData[Math.floor(Math.random()*(tiggerData.length-1))]);
+               
+            }
+            for(var i=0;i<5;i++){
+               this.cardsArr.push('none');
+            }  
+       }
+      
 
      // cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
 
-      this.cardsArr = cardsArr;
+     
+
+
      // console.log(cardsArr)
 
       let style = {
@@ -47,7 +63,7 @@ class FlyGameView extends React.Component {
       }
       return (
           <div className='fly-game-view-ui ' ref='fly-game-view-ui' style={style}>
-              <audio ref='orderAudio' src='./assets/music/da.ogg' loop='loop'></audio>
+              <audio ref='orderAudio' src='./assets/music/da.mp3'></audio>
               <section className={'fly-scrore-list '+ this.state.scoreClass}>
                   <h2 onTouchTap={()=>{this.setState({scoreClass:''})}}>&times;</h2>
                   <h3>游戏排名TOP10</h3>
@@ -82,24 +98,24 @@ class FlyGameView extends React.Component {
                   <img src="./assets/images/hand.png" alt=""/>
               </div>
               <ul className="g-cards-C" ref='g-cards-C'>
-                 {cardsArr.map((item,i)=>{
+                 {this.cardsArr.map((item,i)=>{
                   return <li key={i} className={"g-cards-item  " +  (this.state.currentSelectCardIndex === i ? 'selected show  active':' show active')}  onTouchTap={this.selectedCard.bind(this,i)}>
                                 <div className=""><img src="./assets/images/card.png"/></div>
                                 <div className="back ">
                                   <img src="./assets/images/gy-bg.png"/>
                                   {item && item.name && <div className='g-portrait-img' style={{background:'url('+item.url+') no-repeat center',backgroundSize:'cover'}}></div>}
-                                  {item && item.name && <img src="./assets/images/right.png"/>}
+                                  {/*item && item.name && <img src="./assets/images/right.png"/>*/}
                                 </div>
                             </li>
                  })}
               </ul>
            
-              <ul className='g-tigger-list' ref='g-tigger-list' onTouchTap={this.order.bind(this)}>
-                  <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
-                  <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
-                  <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
-                  <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
-                  <li style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
+              <ul className='g-tigger-list' ref='g-tigger-list' onTouchTap={this.showTigger.bind(this)}>
+                  <li data-index='0' style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
+                  <li data-index='1' style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
+                  <li data-index='2' style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
+                  <li data-index='3' style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
+                  <li data-index='4' style={{background:'url(./assets/images/user.png)',backgroundSize:'cover'}}></li>
               </ul>
               {(this.state.currentData && this.state.currentData.url) && 
                   <div className='g-result ' ref='g-result' style={{display:'none'}}>
@@ -124,7 +140,7 @@ class FlyGameView extends React.Component {
                                   </div>
                                 </h2>
                                 <div className='g-push-content'>
-                                    <a href='#'>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
+                                    <a href={this.state.currentData.href}>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
                                 </div>
                             </div>
 
@@ -157,6 +173,21 @@ class FlyGameView extends React.Component {
       );
   }
 
+  showTigger(e){
+    var index =e.target.getAttribute('data-index')*1;
+    if(this.state.tiggers[index] && this.state.tiggers[index].url){
+        this.closeTiggerInfo = true;
+        this.setState({
+          currentData:this.state.tiggers[index]
+        },()=>{
+          
+          this.refs['g-result'].classList.add('active');
+          this.refs['g-result'].style.display = 'block';
+          this.refs['g-result-C'].classList.add('active');  
+        })
+        
+    }
+  }
 
 
  showRule(){
@@ -189,26 +220,34 @@ class FlyGameView extends React.Component {
 
   nextRound(){//下一轮
       this.closeAudio();
+      this.updateCard = true;
       this.refs['g-result'].classList.remove('active');
 
-       setTimeout(()=>{
+      if(!this.closeTiggerInfo){
+         setTimeout(()=>{
           this.setState({
              iNow:this.state.iNow+1,
              currentSelectCardIndex:-1,
              rightTigger:-1,
-             currentData:{} 
+             currentData:{}
           });
           this.dealCard();
           this.start = false;
           this.ruffleCard();
        },500);
-     
+      }
   }
   
 
   lookTigger(){//查看老虎
+      this.updateCard = false;
       this.refs['g-result'].classList.remove('active');
       this.closeAudio();
+       for(var i = 0 ; i < 6 ;i++){
+          if(this.cardItems[i].index ===0 ){
+              this.state.rightTigger = i;
+          }
+      }
       setTimeout(()=>{
            this.setState({
               currentData:this.cardsArr[this.state.rightTigger]
@@ -228,135 +267,19 @@ class FlyGameView extends React.Component {
     this.iNow = this.iNow === undefined ? 0 : this.iNow;
     var index = ++this.iNow % 6;
 
+    this.cardPosArr = this.cardPosArr.sort(()=>{
+        return Math.random()>.5 ? -1 : 1;
+    });
 
-    // for(let i = 0 ; i < 6 ; i ++){
-    //         var iNow = (index+i) > 5 ? index+i - 6  :index+i;
-    //         var left = this.cardPosArr[iNow].left,
-    //             top = this.cardPosArr[iNow].top;
-
-    //         this.cardItems[i].style.left =  left +'px';
-//         this.cardItems[i].style.top =  top + 'px'  ;
-
-    //     }
-   /* switch(index) {
-      case 0:
-        for(var i = 0 ; i < 6 ;i++){
-          this.cardItems[i].style.left =  this.cardPosArr[i].left +'px';
-          this.cardItems[i].style.top =   this.cardPosArr[i].top + 'px';  
-        }
-        
-        break;
-      case 1:
-
-        this.cardItems[0].style.left =  this.cardPosArr[1].left +'px';
-        this.cardItems[0].style.top =   this.cardPosArr[1].top + 'px';
-
-        this.cardItems[1].style.left =  this.cardPosArr[2].left +'px';
-        this.cardItems[1].style.top =   this.cardPosArr[2].top + 'px';
-
-        this.cardItems[2].style.left =  this.cardPosArr[5].left +'px';
-        this.cardItems[2].style.top =   this.cardPosArr[5].top + 'px';
-
-        this.cardItems[3].style.left =  this.cardPosArr[0].left +'px';
-        this.cardItems[3].style.top =   this.cardPosArr[0].top + 'px';
-
-        this.cardItems[4].style.left =  this.cardPosArr[3].left +'px';
-        this.cardItems[4].style.top =   this.cardPosArr[3].top + 'px';
-
-        this.cardItems[5].style.left =  this.cardPosArr[4].left +'px';
-        this.cardItems[5].style.top =   this.cardPosArr[4].top + 'px';
-
-
-        
-        break;
-      case 2:
-
-        this.cardItems[0].style.left =  this.cardPosArr[2].left +'px';
-        this.cardItems[0].style.top =   this.cardPosArr[2].top + 'px';
-
-        this.cardItems[1].style.left =  this.cardPosArr[5].left +'px';
-        this.cardItems[1].style.top =   this.cardPosArr[5].top + 'px';
-
-        this.cardItems[2].style.left =  this.cardPosArr[4].left +'px';
-        this.cardItems[2].style.top =   this.cardPosArr[4].top + 'px';
-
-        this.cardItems[3].style.left =  this.cardPosArr[1].left +'px';
-        this.cardItems[3].style.top =   this.cardPosArr[1].top + 'px';
-
-        this.cardItems[4].style.left =  this.cardPosArr[0].left +'px';
-        this.cardItems[4].style.top =   this.cardPosArr[0].top + 'px';
-
-        this.cardItems[5].style.left =  this.cardPosArr[3].left +'px';
-        this.cardItems[5].style.top =   this.cardPosArr[3].top + 'px';
  
-
-        break;
-      case 3:
-        this.cardItems[0].style.left =  this.cardPosArr[5].left +'px';
-        this.cardItems[0].style.top =   this.cardPosArr[5].top + 'px';
-
-        this.cardItems[1].style.left =  this.cardPosArr[4].left +'px';
-        this.cardItems[1].style.top =   this.cardPosArr[4].top + 'px';
-
-        this.cardItems[2].style.left =  this.cardPosArr[3].left +'px';
-        this.cardItems[2].style.top =   this.cardPosArr[3].top + 'px';
-
-        this.cardItems[3].style.left =  this.cardPosArr[2].left +'px';
-        this.cardItems[3].style.top =   this.cardPosArr[2].top + 'px';
-
-        this.cardItems[4].style.left =  this.cardPosArr[1].left +'px';
-        this.cardItems[4].style.top =   this.cardPosArr[1].top + 'px';
-
-        this.cardItems[5].style.left =  this.cardPosArr[0].left +'px';
-        this.cardItems[5].style.top =   this.cardPosArr[0].top + 'px';
-        break;
-      case 4:
-        this.cardItems[0].style.left =  this.cardPosArr[4].left +'px';
-        this.cardItems[0].style.top =   this.cardPosArr[4].top + 'px';
-
-        this.cardItems[1].style.left =  this.cardPosArr[3].left +'px';
-        this.cardItems[1].style.top =   this.cardPosArr[3].top + 'px';
-
-        this.cardItems[2].style.left =  this.cardPosArr[0].left +'px';
-        this.cardItems[2].style.top =   this.cardPosArr[0].top + 'px';
-
-        this.cardItems[3].style.left =  this.cardPosArr[5].left +'px';
-        this.cardItems[3].style.top =   this.cardPosArr[5].top + 'px';
-
-        this.cardItems[4].style.left =  this.cardPosArr[2].left +'px';
-        this.cardItems[4].style.top =   this.cardPosArr[2].top + 'px';
-
-        this.cardItems[5].style.left =  this.cardPosArr[1].left +'px';
-        this.cardItems[5].style.top =   this.cardPosArr[1].top + 'px';
-        break;
-      case 5:
-        this.cardItems[0].style.left =  this.cardPosArr[3].left +'px';
-        this.cardItems[0].style.top =   this.cardPosArr[3].top + 'px';
-
-        this.cardItems[1].style.left =  this.cardPosArr[0].left +'px';
-        this.cardItems[1].style.top =   this.cardPosArr[0].top + 'px';
-
-        this.cardItems[2].style.left =  this.cardPosArr[1].left +'px';
-        this.cardItems[2].style.top =   this.cardPosArr[1].top + 'px';
-
-        this.cardItems[3].style.left =  this.cardPosArr[4].left +'px';
-        this.cardItems[3].style.top =   this.cardPosArr[4].top + 'px';
-
-        this.cardItems[4].style.left =  this.cardPosArr[5].left +'px';
-        this.cardItems[4].style.top =   this.cardPosArr[5].top + 'px';
-
-        this.cardItems[5].style.left =  this.cardPosArr[2].left +'px';
-        this.cardItems[5].style.top =   this.cardPosArr[2].top + 'px';
-        break;
-
-    }*/
-
-    this.cardPosArr = this.cardPosArr.sort(()=>{return .5>Math.random()});
-
      for(var i = 0 ; i < 6 ;i++){
         this.cardItems[i].style.left =  this.cardPosArr[i].left +'px';
         this.cardItems[i].style.top =   this.cardPosArr[i].top + 'px';  
       }
+     
+ 
+
+      //this.state.rightTigger = i;
     
 
   }
@@ -390,10 +313,13 @@ class FlyGameView extends React.Component {
 
     let {obserable} = this.props;
 
+
+
+
     obserable.on('startPlay',()=>{//进入到游戏界面。背景音乐切换 
       this.refs['fly-game-view-ui'].classList.add('show');
       this.ruffleCard();
-      document.querySelector('#audio').src='./assets/music/Exciting.ogg';
+      document.querySelector('#audio').src='./assets/music/Exciting.mp3';
     })
 
     obserable.on('replay',()=>{//重新开始。
@@ -405,6 +331,17 @@ class FlyGameView extends React.Component {
           iNow:1,//当前是第几轮。
           currentData:{}
       });
+
+       this.state.checkpoint++;
+
+      if(this.state.checkpoint>2){
+        obserable.trigger({type:'removeEntryNext'});
+      }
+      else{
+        document.querySelector('#audio').src= this.state.bgSound[this.state.checkpoint-1];
+      }
+
+      this.state.tiggers.length = 0;//
       for(var i = 0,len=this.smallTiggers.length;i<len;i++){
           this.smallTiggers[i].style.background = 'url(./assets/images/user.png) no-repeat center';
           this.smallTiggers[i].style.backgroundSize = 'cover';
@@ -427,7 +364,13 @@ class FlyGameView extends React.Component {
     });
   }
 
-  changeAudio(src='./assets/music/da.ogg'){//切换音频
+  changeAudio(src='./assets/music/da.mp3',isLoop=true){//切换音频
+      if(isLoop){
+        this.refs['orderAudio'].loop= 'loop';
+      }
+      else{
+       this.refs['orderAudio'].loop= ''; 
+      }
       this.refs['orderAudio'].src= src;
       this.refs['orderAudio'].play();
   }
@@ -459,6 +402,7 @@ class FlyGameView extends React.Component {
                       clearInterval(timer1);
                       this.start = false;//开始可以点了。
                       this.closeAudio();
+                      
                     }
                     this.order();
                 },500)
@@ -492,6 +436,7 @@ class FlyGameView extends React.Component {
 
       if(!this.start){
           this.start = true;
+          this.closeTiggerInfo = false;
            this.setState({
               currentSelectCardIndex:e
             },()=>{
@@ -511,12 +456,8 @@ class FlyGameView extends React.Component {
                                   this.refs['g-result'].style.display = 'block'
 
                               }
-                              var index =this.state.currentSelectCardIndex;
-                              
-                              var cardC = this.refs['g-cards-C'];
-                                  var PTop = cardC.offsetTop,
-                                      PLeft =cardC.offsetLeft;
-                                  var target = cardC.querySelectorAll('li')[index];
+                                 var index =this.state.currentSelectCardIndex;
+                            
                                    this.refs['g-result'].classList && this.refs['g-result'].classList.add('active');
                                    this.refs['g-result-C'].classList.add('active');
                                  
@@ -528,16 +469,16 @@ class FlyGameView extends React.Component {
                                   this.smallTiggers[this.state.iNow-1].style.background = 'url('+this.state.currentData.url+') no-repeat center';
                                   this.smallTiggers[this.state.iNow-1].style.backgroundSize = 'cover';
 
-                                  this.changeAudio('./assets/music/right.ogg');
-
+                                  this.changeAudio('./assets/music/right.mp3',false);
+                                  this.state.tiggers.push(this.cardsArr[this.state.currentSelectCardIndex]);
                                 }else{//没有选择到老虎
-                                    this.changeAudio('./assets/music/Lose.ogg');
-                                    this.cardsArr.map((item,i)=>{
-
+                                    this.changeAudio('./assets/music/Lose.mp3',false);
+                                    this.state.tiggers.push(this.cardsArr[0]);
+                                    /*this.cardsArr.map((item,i)=>{
                                         if(item && item.url){
-                                            this.state.rightTigger = i;
+                                            //this.state.rightTigger = i;
                                         }
-                                  });
+                                  });*/
                               }  
                         });
                        },800);

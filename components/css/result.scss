@@ -60,15 +60,8 @@
 			width:51%;
 			margin:0 auto;
 			text-align: center;
-
-			font-size: .7rem;
-			span{
-				margin-right: .1rem;
-				display:inline-block;
-				font-size: 1.6rem;
-				color:#19396a;
-				font-family: Georgia;		
-			}
+			color:#19396a;
+			
 		}
 		.r-rank{
 			width:4rem;
@@ -132,5 +125,14 @@
 				}
 			}	
 		}
+	}
+
+	.r-mask{
+		@include pos(f);
+		width:100%;
+		height:100%;
+		left:0;
+		top:0;
+		z-index: 10000;
 	}
 }

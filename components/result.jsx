@@ -13,7 +13,10 @@ class FlyResult extends React.Component {
     this.state = {
     	showBoard:'',
     	score:'',
-    	error:''
+      showMask:false,
+    	error:'',
+      showNext:true //是否显示下一关按钮
+
     }
   }
 
@@ -26,7 +29,24 @@ class FlyResult extends React.Component {
       	  background: 'url(./assets/images/board-bg.png) no-repeat bottom center',
           backgroundSize: 'cover'
       }
-
+      var name = '正局级监察专员';
+      if(this.state.score<70){
+          name='副局级监察专员';
+      }
+      if(this.state.score<55){
+        name='正处级监察员';
+      }
+      if(this.state.score<35){
+        name='副处级监察员';
+      }
+      if(this.state.score<20){
+        name='主任科员';
+      }if(this.state.score<10){
+        name='副主任科员';
+      }
+      if(this.state.score<=5){
+        name='科员';
+      }
     return (
       <div className={'r-main-ui ' + this.state.showBoard} ref='r-main-ui' style={style}>
       		<div className={'g-message ' + this.state.error}>&times; 手机号码格式不正确！</div>
@@ -34,11 +54,14 @@ class FlyResult extends React.Component {
       		<section className='r-content-C' style={{background:'url(./assets/images/result-bg1.png) no-repeat center',backgroundSize:'contain'}}>
       			<h1></h1>
       			<h3>您一共翻出了{this.state.score/5}名违纪官员， </h3>
-      			<p>共计获的得分</p>
-      			<div className='r-score-C'><span>{this.state.score || 0}</span>分</div>
+      			<p>共计获的得</p>
+      			<div className='r-score-C'>{name}称号</div>
       			<div className='r-rank'>
       				<img src='./assets/images/paiming.png'/>
       			</div>
+            <div className='r-restart'>
+              {this.state.showNext && <FlyButton clickHandler={this.restart.bind(this)} text='继续下一关' ></FlyButton>}
+            </div>
       			<div className='r-tel'>
       				<input ref='phone' onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} type='text' placeholder='留下您的手机号' />
       			</div>
@@ -49,10 +72,9 @@ class FlyResult extends React.Component {
       			<div className='r-btn-group '>
       				<FlyButton clickHandler={this.sureShare.bind(this)} text='确定并分享'></FlyButton>
       			</div>
-      			<div className='r-restart'>
-				    	<FlyButton clickHandler={this.restart.bind(this)} text='继续下一关' ></FlyButton>
-      			</div>
+      			
       		</section>
+          {this.state.showMask && <div onTouchStart={()=>{this.setState({showMask:false})}} className='r-mask' style={{background:"url(./assets/images/arron1.png) no-repeat center top",backgroundSize:'cover'}}></div>}
       </div>
     );
   }
@@ -88,7 +110,10 @@ class FlyResult extends React.Component {
 	 }
 	 utilMethods.post('http://api.zmiti.com/v2/user/save_user_score/',(data)=>{
 		 setTimeout(()=>{
-		  	window.location.href = './share.html?score='+this.state.score;
+		  	//window.location.href = './share.html?score='+this.state.score;
+        this.setState({
+          showMask:true
+        })
 		  },100);	
 	 },{
 	 	setscore:this.state.score,
@@ -97,7 +122,7 @@ class FlyResult extends React.Component {
 	 });
   }
 
-  restart(){//重新开始 
+  restart(){//继续下一关。
   	let {obserable} = this.props;
   	obserable.trigger({
   		type:'replay'
@@ -108,6 +133,13 @@ class FlyResult extends React.Component {
   componentDidMount() {
 
   	let {obserable} = this.props;
+
+    obserable.on('removeEntryNext',()=>{
+      this.setState({
+        showNext:false
+      });
+    })
+
   	obserable.on('startResult',(data)=>{
 
   		this.refs['r-main-ui'].classList.add('show');

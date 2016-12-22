@@ -25,7 +25,7 @@ class IndexApp extends React.Component{
             backgroundSize:'cover'
         }
 		return <div style={style} className='fly-index-page hide' ref='fly-index-page'>
-			<audio ref='audio' src='./assets/music/doudizhu.ogg'></audio>
+			<audio ref='audio' src='./assets/music/doudizhu.mp3'></audio>
 			<div className='fly-2016'>
 				<img src='./assets/images/2016.png' data-src='./assets/images/2016.png'/>
 			</div>
@@ -81,7 +81,7 @@ class IndexApp extends React.Component{
 			this.refreshCards();//翻牌
 		},500);
 
-		document.getElementById('audio').volume  =.3;
+		document.getElementById('audio').volume  =.1;
 
 		var audio = this.refs['audio'];
 
@@ -90,6 +90,7 @@ class IndexApp extends React.Component{
 		this.bgLoopTimer = setInterval(()=>{
 				audio.play();
 				this.refreshCards();//翻牌
+
 		},10000);
 	}
 	gameStart(){
@@ -100,6 +101,7 @@ class IndexApp extends React.Component{
 		obserable.trigger({type:'startPlay'});
 		this.refs['fly-index-page'].classList.add('hide');
 		clearInterval(this.bgLoopTimer);
+
 	}
 	refreshCards(){
 		var cards = this.refs['fly-card-C'].querySelectorAll('figure'),

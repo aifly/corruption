@@ -265,6 +265,7 @@
 				}
 			}
 			backface-visibility: hidden;
+			
 			&.active{
 				@include transform(rotateY(180deg));
 
