@@ -81,16 +81,27 @@ class IndexApp extends React.Component{
 			this.refreshCards();//翻牌
 		},500);
 
-		document.getElementById('audio').volume  =.1;
+		//document.getElementById('audio').volume  =1;
 
 		var audio = this.refs['audio'];
 
 		audio.volume  =.3;
+		var startIndex = 0;
+		var isStartPlay = false;
+		this.refs['fly-index-page'].addEventListener('touchstart',()=>{
+			if(isStartPlay){
+				if(startIndex === 0 && audio.paused){
+					audio.play();
+				}
+				startIndex++;
+			}
+			
+		});
 
 		this.bgLoopTimer = setInterval(()=>{
+				isStartPlay = true;
 				audio.play();
 				this.refreshCards();//翻牌
-
 		},10000);
 	}
 	gameStart(){

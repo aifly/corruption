@@ -62,7 +62,7 @@ class FlyGameView extends React.Component {
           backgroundSize: 'cover',
       }
       return (
-          <div className='fly-game-view-ui ' ref='fly-game-view-ui' style={style}>
+          <div className='fly-game-view-ui ' onTouchStart={this.playAudio.bind(this)} ref='fly-game-view-ui' style={style}>
               <audio ref='orderAudio' src='./assets/music/da.mp3'></audio>
               <section className={'fly-scrore-list '+ this.state.scoreClass}>
                   <h2 onTouchTap={()=>{this.setState({scoreClass:''})}}>&times;</h2>
@@ -171,6 +171,14 @@ class FlyGameView extends React.Component {
               }
           </div>
       );
+  }
+
+  playAudio(){
+    if(this.start){
+      if(this.refs['orderAudio'].pause){
+        this.refs['orderAudio'].play();
+      }
+    }
   }
 
   showTigger(e){
@@ -373,6 +381,7 @@ class FlyGameView extends React.Component {
       }
       this.refs['orderAudio'].src= src;
       this.refs['orderAudio'].play();
+
   }
 
   closeAudio(){
