@@ -15,7 +15,7 @@ class FlyResult extends React.Component {
     	score:'',
       showMask:false,
     	error:'',
-      showNext:true //是否显示下一关按钮
+      showNext:false //是否显示下一关按钮
 
     }
   }
@@ -59,18 +59,21 @@ class FlyResult extends React.Component {
       			<div className='r-rank'>
       				<img src='./assets/images/paiming.png'/>
       			</div>
-            <div className='r-restart'>
-              {this.state.showNext && <FlyButton clickHandler={this.restart.bind(this)} text='继续下一关' ></FlyButton>}
+            
+            {!this.state.showNext&&<div className='r-tel'>
+              <input ref='phone' onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} type='text' placeholder='留下您的手机号' />
+            </div> }
+      			{!this.state.showNext &&<div className='r-mark'>
+              <span>参与100名幸运抽奖活动</span>
+              <span onTouchTap={this.showRule.bind(this)}>获奖说明</span>
+            </div> }
+      			
+             <div className='r-restart'>
+                {this.state.showNext && <FlyButton clickHandler={this.restart.bind(this)} text='继续下一关' ></FlyButton>}
             </div>
-      			<div className='r-tel'>
-      				<input ref='phone' onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} type='text' placeholder='留下您的手机号' />
-      			</div>
-      			<div className='r-mark'>
-      				<span>参与100名幸运抽奖活动</span>
-      				<span onTouchTap={this.showRule.bind(this)}>获奖说明</span>
-      			</div>
       			<div className='r-btn-group '>
-      				<FlyButton clickHandler={this.sureShare.bind(this)} text='确定并分享'></FlyButton>
+      				{/*<FlyButton clickHandler={this.sureShare.bind(this)} text='确定并分享'></FlyButton>*/}
+              <span onTouchTap={this.sureShare.bind(this)}>不玩了，分享给好友</span>
       			</div>
       			
       		</section>
@@ -94,6 +97,7 @@ class FlyResult extends React.Component {
   }
 
   sureShare(){//确定并分享、
+    document.title =  '';
   	var phone = this.refs['phone'].value;
   	 var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
 	 if (!reg.test(phone)) {

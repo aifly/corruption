@@ -248,8 +248,9 @@
 			}
 			&.show{
 				@include transform(translate3d(0,0,0));
-				@include transition(.2s);
+				@include transition(.8s);
 			}
+
 			&.selected{
 				&:before{
 					content:'';

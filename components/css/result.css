@@ -95,7 +95,13 @@
             transform: scale(0.8); }
     .r-main-ui .r-content-C .r-btn-group {
       width: 70%;
-      margin: 0 auto; }
+      margin: .5rem auto;
+      text-align: center; }
+      .r-main-ui .r-content-C .r-btn-group span {
+        color: #222;
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        display: inline-block; }
       .r-main-ui .r-content-C .r-btn-group .g-next {
         color: #393e46; }
     .r-main-ui .r-content-C .r-restart {

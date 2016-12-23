@@ -40,8 +40,13 @@ class FlyGameView extends React.Component {
        if(this.updateCard){
             this.updateCard = false;
             this.cardsArr.length = 0;
+            var indexArr = [];
+            tiggerData.map((item,i)=>{
+              indexArr.push(i);
+            });
             for(var i =0;i<1;i++){
-               this.cardsArr.push(tiggerData[Math.floor(Math.random()*(tiggerData.length-1))]);
+                var index = indexArr.splice(Math.floor(Math.random()*(indexArr.length-1)),1);
+               this.cardsArr.push(tiggerData[index]);
                
             }
             for(var i=0;i<5;i++){
@@ -51,11 +56,6 @@ class FlyGameView extends React.Component {
       
 
      // cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
-
-     
-
-
-     // console.log(cardsArr)
 
       let style = {
           background: 'url(./assets/images/index-bg.jpg) no-repeat bottom center',
@@ -175,7 +175,9 @@ class FlyGameView extends React.Component {
 
   playAudio(){
     if(this.start){
-      if(this.refs['orderAudio'].pause){
+      this.playIndex =this.playIndex ||  0;
+      if(this.refs['orderAudio'].pause && this.playIndex === 0){
+        this.playIndex =1;
         this.refs['orderAudio'].play();
       }
     }
@@ -340,8 +342,11 @@ class FlyGameView extends React.Component {
           currentData:{}
       });
 
-       this.state.checkpoint++;
+      this.state.checkpoint++;
 
+      for(var i = 0 ,len = this.cardItems.length;i<len;i++){
+           this.cardItems[i].style.WebkitTransitionDuration = (.8 - (this.state.checkpoint)*.2) + 's';
+      }
       if(this.state.checkpoint>2){
         obserable.trigger({type:'removeEntryNext'});
       }
@@ -414,12 +419,11 @@ class FlyGameView extends React.Component {
                       
                     }
                     this.order();
-                },500)
-                
+                },1000);
               }
              // 
           },duration)
-       },300)
+       },500)
 
   }
 

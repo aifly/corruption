@@ -231,8 +231,8 @@
       .fly-game-view-ui .g-cards-C .g-cards-item.show {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
-        -webkit-transition: 0.2s;
-        transition: 0.2s; }
+        -webkit-transition: 0.8s;
+        transition: 0.8s; }
       .fly-game-view-ui .g-cards-C .g-cards-item.selected:before {
         content: '';
         position: absolute;

@@ -105,7 +105,10 @@
 
 		.r-btn-group{
 			width:70%;
-			margin:0 auto;
+			margin:.5rem auto;
+			text-align: center;
+			span{color:#222;@include transform(scale(.8));display:inline-block}
+
 			.g-next{
 				color:#393e46;
 			}
