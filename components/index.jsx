@@ -11,6 +11,7 @@ class IndexApp extends React.Component{
 				background:'url(./assets/images/figure.png) no-repeat center top',
 				backgroundSize:'contain'
 			},
+			animated:'animated',
 			cardLen:10,
 			activeBtnClass:'',
 			tiggerInfo:[
@@ -28,6 +29,9 @@ class IndexApp extends React.Component{
 			<audio ref='audio' src='./assets/music/doudizhu.mp3'></audio>
 			<div className='fly-2016'>
 				<img src='./assets/images/2016.png' data-src='./assets/images/2016.png'/>
+			</div>
+			<div className={'fly-push '+ this.state.animated} ref='fly-push'>
+				<img src='./assets/images/push.png' data-src='./assets/images/push.png'/>
 			</div>
 			<section className='fly-main-area'>
 
@@ -56,8 +60,11 @@ class IndexApp extends React.Component{
 					<section className="fly-tigger">
 						<img src="./assets/images/hu.png" alt=""/>
 					</section>
-					<section onTouchStart={this.gamePrepare.bind(this)} onTouchEnd={this.gameStart.bind(this)} className={"fly-begin-btn " + this.state.activeBtnClass}>
-						开始游戏
+					<section onTouchStart={this.gamePrepare.bind(this)} onTouchEnd={this.gameStart.bind(this)} className={"fly-begin-btn " + this.state.activeBtnClass} ref='fly-begin-btn'>
+						<div>
+							<span className='active'>开始游戏</span>
+							<span className='right'><img src='./assets/images/push-btn.png'/></span>
+						</div>
 					</section>
 				</section>
 			</section>
@@ -71,21 +78,71 @@ class IndexApp extends React.Component{
 			activeBtnClass:'active'
 		});
 	}
+
+	btnAnimate(i,spans){
+		
+		if(i===0){
+			spans[0].classList.add('left');
+			spans[0].classList.remove('active');
+			spans[1].classList.add('active');
+			spans[1].classList.remove('right');
+			spans[1].classList.add('animated');
+			setTimeout(()=>{
+				spans[0].classList.remove('left');
+				spans[0].classList.add('right');
+
+			},300)
+		}else{
+			spans[1].classList.add('left');
+			spans[1].classList.remove('active');
+			spans[0].classList.add('active');
+			spans[0].classList.remove('right');
+			spans[1].classList.remove('animated');
+			setTimeout(()=>{
+				spans[1].classList.remove('left');
+				spans[1].classList.add('right');
+				
+			},300)
+		}
+		
+
+	}
+
 	componentDidMount() {
+		var ii =0 ;
+		var spanC =this.refs['fly-begin-btn'].querySelector('div');
+		var spans = spanC.querySelectorAll('span');
+		this.btnTimer = setInterval(()=>{
+			this.btnAnimate(ii++%2,spans);
+		},3000);
 		this.state.tiggerInfo = tiggerData.concat([]);
 		this.state.tiggerInfo.length >9 && (this.state.tiggerInfo.length = 9);
 		this.state.tiggerInfo.push({});
 		this.forceUpdate();
 		this.refs['fly-index-page'].classList.remove('hide');
+
+
 		setTimeout(()=>{
 			this.refreshCards();//翻牌
-		},500);
+		},1000);
 
-		//document.getElementById('audio').volume  =1;
+
+
+		this.refs['fly-push'].addEventListener('webkitAnimationEnd',()=>{
+			this.setState({animated:''});	
+		});
+
+		
+		document.getElementById('audio').addEventListener('canplaythrough',()=>{
+			document.getElementById('audio').volume  = .1;	
+		})
 
 		var audio = this.refs['audio'];
 
-		audio.volume  =.3;
+		audio.addEventListener('canplaythrough',()=>{
+			audio.volume  =0.1;				
+		})
+
 		var startIndex = 0;
 		var isStartPlay = false;
 		this.refs['fly-index-page'].addEventListener('touchstart',()=>{
@@ -102,6 +159,7 @@ class IndexApp extends React.Component{
 				isStartPlay = true;
 				audio.play();
 				this.refreshCards();//翻牌
+				this.setState({animated:'animated'});
 		},10000);
 	}
 	gameStart(){
@@ -112,6 +170,7 @@ class IndexApp extends React.Component{
 		obserable.trigger({type:'startPlay'});
 		this.refs['fly-index-page'].classList.add('hide');
 		clearInterval(this.bgLoopTimer);
+		clearInterval(this.btnTimer);
 
 	}
 	refreshCards(){

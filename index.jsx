@@ -16,6 +16,9 @@ injectTapEventPlugin();
 class App extends React.Component{
     constructor(option){
         super(...option);
+        this.state = {
+            audioClose:false
+        }
     }
 
     componentWillMount() {
@@ -27,6 +30,7 @@ class App extends React.Component{
             obserable
         }
         return <div>
+            <div className="voice" onTouchStart={this.toggleVoice.bind(this)}>声音/{this.state.audioClose?'开':'关'}</div>    
             <IndexApp {...data}></IndexApp>
             <FlyGameView {...data}></FlyGameView>
             <FlyResult {...data}></FlyResult>
@@ -38,6 +42,20 @@ class App extends React.Component{
              
             */}
         </div>
+    }
+
+    toggleVoice(){
+        
+        var audios = document.querySelectorAll('audio');
+        this.closeAudio =!this.closeAudio ;
+        this.setState({
+            audioClose:this.closeAudio
+        })
+        for(var i = 0,len = audios.length;i<len;i++){
+            audios[i].muted = this.closeAudio;
+        }
+
+
     }
 }
 

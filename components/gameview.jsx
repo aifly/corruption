@@ -10,6 +10,7 @@ class FlyGameView extends React.Component {
     this.state = {
       currentSelectCardIndex:-1,
       isError:'',
+      pushAnimate:'',
       rightTigger:-1,
       iNow:1,//当前是第几轮。
       score:0,//当前的得分
@@ -17,7 +18,7 @@ class FlyGameView extends React.Component {
       currentData:{},
       allCount:5,
       scoreClass:'',
-      checkpoint:0,//关卡
+      checkpoint:1,//关卡
       bgSound:[
         './assets/music/Normal.mp3',
         './assets/music/Normal2.mp3',
@@ -46,8 +47,7 @@ class FlyGameView extends React.Component {
             });
             for(var i =0;i<1;i++){
                 var index = indexArr.splice(Math.floor(Math.random()*(indexArr.length-1)),1);
-               this.cardsArr.push(tiggerData[index]);
-               
+               this.cardsArr.push(tiggerData[index[0]]);               
             }
             for(var i=0;i<5;i++){
                this.cardsArr.push('none');
@@ -55,7 +55,9 @@ class FlyGameView extends React.Component {
        }
       
 
-     // cardsArr = cardsArr.sort(()=>{return .5 - Math.random() > 0})
+      /*this.cardsArr = this.cardsArr.sort(()=>{
+        return Math.random()>.5 ? -1 : 1;
+      });*/
 
       let style = {
           background: 'url(./assets/images/index-bg.jpg) no-repeat bottom center',
@@ -130,7 +132,7 @@ class FlyGameView extends React.Component {
                               {this.state.currentData.name}
                             </div>
                             <div className='g-push-C'>
-                                <h2>
+                                <h2 className={this.state.pushAnimate ? 'active':''}>
                                   <div className='g-push-logo'>
                                     <img src='./assets/images/logo.png'/>
                                     <span>新华社</span>
@@ -139,8 +141,8 @@ class FlyGameView extends React.Component {
                                     {this.state.currentData.date}
                                   </div>
                                 </h2>
-                                <div className='g-push-content'>
-                                    <a href={this.state.currentData.href}>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
+                                <div className={'g-push-content '+ this.state.pushAnimate}>
+                                    <a target='_blank' href={this.state.currentData.href}>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
                                 </div>
                             </div>
 
@@ -176,7 +178,7 @@ class FlyGameView extends React.Component {
   playAudio(){
     if(this.start){
       this.playIndex =this.playIndex ||  0;
-      if(this.refs['orderAudio'].pause && this.playIndex === 0){
+      if(this.refs['orderAudio'].pause && this.playIndex === 0 && /ios/.test(navigator.userAgent)){
         this.playIndex =1;
         this.refs['orderAudio'].play();
       }
@@ -188,7 +190,8 @@ class FlyGameView extends React.Component {
     if(this.state.tiggers[index] && this.state.tiggers[index].url){
         this.closeTiggerInfo = true;
         this.setState({
-          currentData:this.state.tiggers[index]
+          currentData:this.state.tiggers[index],
+          pushAnimate:'animate'
         },()=>{
           
           this.refs['g-result'].classList.add('active');
@@ -226,6 +229,18 @@ class FlyGameView extends React.Component {
       obserable.trigger({type:'startResult',data:this.state.score});
       this.refs['fly-game-view-ui'].classList.remove('show');
        this.start = false;
+
+      setTimeout(()=>{
+          this.setState({//答对，得分+5 轮数+1
+            pushAnimate:''
+          });
+       },2000);
+
+      if(this.state.checkpoint>2){
+        obserable.trigger({
+           type:'showDesignation'
+        });
+      }
   }
 
   nextRound(){//下一轮
@@ -233,6 +248,13 @@ class FlyGameView extends React.Component {
       this.updateCard = true;
       this.refs['g-result'].classList.remove('active');
 
+      setTimeout(()=>{
+          this.setState({//答对，得分+5 轮数+1
+            pushAnimate:''
+          });
+       },2000);
+
+   
       if(!this.closeTiggerInfo){
          setTimeout(()=>{
           this.setState({
@@ -260,12 +282,16 @@ class FlyGameView extends React.Component {
       }
       setTimeout(()=>{
            this.setState({
-              currentData:this.cardsArr[this.state.rightTigger]
+              currentData:this.cardsArr[this.state.rightTigger],
+              pushAnimate:''
             },()=>{
               if(this.refs['g-result'] ){
                   this.refs['g-result'].style.display = 'block';
                   this.cardItems[this.state.rightTigger].classList.add('active');
-                  setTimeout(()=>{this.refs['g-result'].classList.add('active');},500);
+                  setTimeout(()=>{
+                    this.refs['g-result'].classList.add('active');
+                    this.setState({pushAnimate:'animate'})
+                  },500);
               }
             });
       },500)
@@ -323,9 +349,6 @@ class FlyGameView extends React.Component {
 
     let {obserable} = this.props;
 
-
-
-
     obserable.on('startPlay',()=>{//进入到游戏界面。背景音乐切换 
       this.refs['fly-game-view-ui'].classList.add('show');
       this.ruffleCard();
@@ -334,6 +357,7 @@ class FlyGameView extends React.Component {
 
     obserable.on('replay',()=>{//重新开始。
       this.refs['fly-game-view-ui'].classList.add('show');
+      this.updateCard = true;
       this.setState({
           currentSelectCardIndex:-1,
           isError:'',
@@ -345,13 +369,14 @@ class FlyGameView extends React.Component {
       this.state.checkpoint++;
 
       for(var i = 0 ,len = this.cardItems.length;i<len;i++){
-           this.cardItems[i].style.WebkitTransitionDuration = (.8 - (this.state.checkpoint)*.2) + 's';
+
+           this.cardItems[i].style.WebkitTransitionDuration = (.8 - (this.state.checkpoint-1)*.2) + 's';
       }
       if(this.state.checkpoint>2){
         obserable.trigger({type:'removeEntryNext'});
       }
       else{
-        document.querySelector('#audio').src= this.state.bgSound[this.state.checkpoint-1];
+        document.querySelector('#audio').src= this.state.bgSound[this.state.checkpoint-2];
       }
 
       this.state.tiggers.length = 0;//
@@ -464,7 +489,7 @@ class FlyGameView extends React.Component {
                             currentData:this.cardsArr[this.state.currentSelectCardIndex]
                           },()=>{
                              // console.log(this.state.currentSelectCardIndex)
-                              obj.classList.remove('active');
+                              //obj.classList.remove('active');
                               if(this.refs['g-result']){
                                   this.refs['g-result'].style.display = 'block'
 
@@ -478,12 +503,14 @@ class FlyGameView extends React.Component {
                                   
                                    this.setState({//答对，得分+5 轮数+1
                                       score:this.state.score+5,
+                                      pushAnimate:'animate'
                                    });
                                   this.smallTiggers[this.state.iNow-1].style.background = 'url('+this.state.currentData.url+') no-repeat center';
                                   this.smallTiggers[this.state.iNow-1].style.backgroundSize = 'cover';
 
                                   this.changeAudio('./assets/music/right.mp3',false);
                                   this.state.tiggers.push(this.cardsArr[this.state.currentSelectCardIndex]);
+
                                 }else{//没有选择到老虎
                                     this.changeAudio('./assets/music/Lose.mp3',false);
                                     this.state.tiggers.push(this.cardsArr[0]);

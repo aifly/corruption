@@ -16,7 +16,7 @@ export default class FlyRule extends Component {
               <div className='g-rule-body'>
                 <h2 className='g-rule-title'>规则说明</h2>
                 <h2 className='g-game-rule-t'><i>游戏规则:</i></h2>
-                <div className='g-game-rule'>每组5轮，每轮都有2张“老虎牌”和4张空牌，用户抽中老虎牌计5分，没抽中不计分。</div>
+                <div className='g-game-rule'>每组5轮，每轮都有1张“老虎牌”和5张空牌，用户抽中老虎牌计5分，没抽中不计分。</div>
                 <div className='g-rule-line'></div>
                 <h2 className='g-game-draw-title'><i>抽奖规则:</i></h2>
                 <div className='g-game-draw-content'> 2016年12月25日从所有参加游戏的玩家中随机抽取100名</div>

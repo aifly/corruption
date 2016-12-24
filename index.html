@@ -7,6 +7,7 @@
 
    
     <style>
+
     .fly-loading-C{position:absolute;left:0;top:0;width:100%;height:100%;
             background:url(./assets/images/loading-bg.jpg) no-repeat center center;
             background-size:cover;
@@ -32,9 +33,22 @@
             overflow: hidden;
     }
     #loading{border-radius: 10px;position: absolute;left:0;top:0;}
+    .voice{
+            position:fixed;
+            right: 0;
+            top: 2rem;
+            background: rgba(255,255,255,0.8);
+            padding: 7px 10px;
+            border-bottom-left-radius: 14px;
+            border-top-left-radius: 14px;
+            text-align: center;
+            z-index: 100;
+            font-size:.4rem;
+    }
     </style>
 </head>
 <body style="overflow: hidden;">
+<div style="opacity:0;z-index: -1;position: fixed;left:-100%;"><img src="./assets/images/300.jpg" alt='2016年以来的反腐弹窗推送'></div>
 
 <div class="fly-loading-C">
     <div class="fly-loading-canvas">
@@ -57,7 +71,7 @@
         document.addEventListener('touchmove',function(e){e.preventDefault()});
         var a=0;
         document.addEventListener('touchstart',function(e){
-            if(e.target.nodeName !== 'INPUT'){
+            if(e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'A'){
                 e.preventDefault();    
             }
             if(a===0){
@@ -117,6 +131,7 @@
             './assets/images/index-top.png',
             './assets/images/loading-bg.jpg',
             './assets/images/logo.png',
+            './assets/images/chenghao.png',
             './assets/images/none.png',
             './assets/images/board-bg.png',
             './assets/images/hand.png',
