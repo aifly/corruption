@@ -31,24 +31,17 @@ class FlyResult extends React.Component {
       	  background: 'url(./assets/images/board-bg.png) no-repeat bottom center',
           backgroundSize: 'cover'
       }
-      var name = '正局级监察专员';
+      var name = '中央纪委干部';
       if(this.state.score<70){
-          name='副局级监察专员';
+          name='省纪委干部';
       }
       if(this.state.score<55){
-        name='正处级监察员';
+        name='市纪委干部';
       }
-      if(this.state.score<35){
-        name='副处级监察员';
+      if(this.state.score<25){
+        name='县纪委干部';
       }
-      if(this.state.score<20){
-        name='主任科员';
-      }if(this.state.score<10){
-        name='副主任科员';
-      }
-      if(this.state.score<=5){
-        name='科员';
-      }
+     
     return (
       <div className={'r-main-ui  ' + this.state.showBoard} ref='r-main-ui' style={style}>
       		<div className={'g-message ' + this.state.error}>&times; 手机号码格式不正确！</div>
@@ -173,23 +166,15 @@ class FlyResult extends React.Component {
 
   setTitle(){
 
-      var name = '正局级监察专员';
+      var name = '中央纪委干部';
       if(this.state.score<70){
-          name='副局级监察专员';
+          name='省纪委干部';
       }
       if(this.state.score<55){
-        name='正处级监察员';
+        name='市纪委干部';
       }
-      if(this.state.score<35){
-        name='副处级监察员';
-      }
-      if(this.state.score<20){
-        name='主任科员';
-      }if(this.state.score<10){
-        name='副主任科员';
-      }
-      if(this.state.score<=5){
-        name='科员';
+      if(this.state.score<25){
+        name='县纪委干部';
       }
 
       var title = '您一共翻出了'+(this.state.score/5)+'名违纪官员， 共计获的得' + name + '称号';
