@@ -84,7 +84,7 @@ class FlyGameView extends React.Component {
                   </div>
               </section>
               <img className='g-top-bg' src='./assets/images/index-top.png'/>
-              <div className="g-rule" onTouchTap={this.showRule.bind(this)}>规则说明</div>
+              {/*<div className="g-rule" onTouchTap={this.showRule.bind(this)}>规则说明</div>*/}
              
               <div className="g-rank">
                   <div><span className="g-text">第</span> <span className="g-big">{'0'+this.state.iNow}</span> <span className="g-text">/ {this.state.allCount}轮</span>

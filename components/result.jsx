@@ -50,7 +50,7 @@ class FlyResult extends React.Component {
                       <span>{name}</span>
                       <img src='./assets/images/chenghao.png'/>
                     </div>}
-          {this.state.showDialog && <div className='r-dialog'>
+          {/*this.state.showDialog && <div className='r-dialog'>
               <section>
                 <h1 onTouchTap={()=>{this.setState({showDialog:false})}}>&times;</h1>
                 <div>输入手机号</div>
@@ -66,7 +66,7 @@ class FlyResult extends React.Component {
                   </aside>
                 </div>
               </section>
-          </div>}
+          </div>*/}
       		<section className='r-content-C' style={{background:'url(./assets/images/result-bg1.png) no-repeat center',backgroundSize:'contain'}}>
       			<h1></h1>
       			<h3>您一共翻出了{this.state.score/5}名违纪官员， </h3>
@@ -78,11 +78,11 @@ class FlyResult extends React.Component {
             {
               !this.state.showNext && <div><FlyButton text="分 享" clickHandler={this.shareTimeline.bind(this)}></FlyButton></div>
             }
-      			{!this.state.showNext &&<div className='r-mark'>
+      			{/*!this.state.showNext &&<div className='r-mark'>
               <span>参与100名幸运抽奖活动</span>
               <span onTouchTap={()=>{this.setState({showDialog:true})}}>立即前往>></span>
               <span onTouchTap={this.showRule.bind(this)}>获奖说明</span>
-            </div> }
+            </div> */}
 
             {
               !this.state.showNext && <div><FlyButton text="再玩一轮" ico='./assets/images/fresh.png' clickHandler={()=>{window.location.href=window.location.href}}></FlyButton></div>
