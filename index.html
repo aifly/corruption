@@ -35,15 +35,25 @@
     #loading{border-radius: 10px;position: absolute;left:0;top:0;}
     .voice{
             position:fixed;
-            right: 0;
+            right:.3rem;
             top: 2rem;
-            background: rgba(255,255,255,0.8);
-            padding: 7px 10px;
-            border-bottom-left-radius: 14px;
-            border-top-left-radius: 14px;
+            padding:5px;
+            border:1px solid #fff;
             text-align: center;
             z-index: 100;
+            width:.6rem;
+
             font-size:.4rem;
+            background: rgba(127,127,127,.8);
+            border-radius: 50%;
+    }
+    .voice.active{
+        -webkit-animation: rotation 2s infinite linear;
+    }
+    @-webkit-keyframes rotation{
+        to{
+            -webkit-transform:rotate(360deg);
+        }
     }
     </style>
 </head>
@@ -143,6 +153,9 @@
             './assets/images/shadow.png',
             './assets/images/user.png',
             './assets/images/2016.png',
+            './assets/images/push.png',
+            './assets/images/push-btn.png',
+            './assets/images/music.png',
             './assets/images/arron1.png'
         ];
 

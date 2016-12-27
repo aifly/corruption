@@ -30,7 +30,9 @@ class App extends React.Component{
             obserable
         }
         return <div>
-            <div className="voice" onTouchStart={this.toggleVoice.bind(this)}>声音/{this.state.audioClose?'开':'关'}</div>    
+            <div className={"voice "+ (this.state.audioClose?'':'active')} onTouchStart={this.toggleVoice.bind(this)}>
+                <img src='./assets/images/music.png'/>
+            </div>    
             <IndexApp {...data}></IndexApp>
             <FlyGameView {...data}></FlyGameView>
             <FlyResult {...data}></FlyResult>
