@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no'/>
-    <title>2016年以来的反腐弹窗推送</title>
-
-   
+    <title>邀请你来PUSH贪官</title>
     <style>
-
     .fly-loading-C{position:absolute;left:0;top:0;width:100%;height:100%;
             background:url(./assets/images/loading-bg.jpg) no-repeat center center;
             background-size:cover;
@@ -66,6 +63,7 @@
         <canvas id="loading"></canvas>
     </div>
     <div class='l-loading-scale' id='l-loading-scale'></div>
+    <canvas id='canvas'></canvas>
 </div>
 
 <div id="fly-main">
@@ -178,7 +176,7 @@
                     document.body.appendChild(s);
                     s.onload = function(){
                         scale.innerHTML = '100%';
-                        document.querySelector('.fly-loading-C').classList.add('hide');
+                    //document.querySelector('.fly-loading-C').classList.add('hide');
                     }
                     
                      /*var src = 'http://localhost:3000/index.js';
@@ -226,6 +224,8 @@
         var viewWidth = document.documentElement.clientWidth,
             viewHeight = document.documentElement.clientHeight;
             var canvas = document.getElementById('loading');
+            var canvas1=document.getElementById('canvas');
+            canvas1.width = document.documentElement.clientWidth;
         canvas.width =69;// viewWidth;
         canvas.height =69;// viewHeight;
         return{viewWidth:canvas.width,viewHeight:canvas.height};
