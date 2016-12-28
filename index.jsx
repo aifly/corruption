@@ -61,7 +61,7 @@ class App extends React.Component{
                         audios[i].muted = false;    
                     }
                 }
-            },1000)
+            },1);
            this.a++;
         }
     }
