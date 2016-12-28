@@ -71,6 +71,14 @@
 </div>
 
 
+<audio id="" src='./assets/music/da.mp3'></audio>    
+<audio id="" src='./assets/music/Exciting.mp3'></audio>    
+<audio id="lose" src='./assets/music/Lose.mp3'></audio>    
+<audio id="right" src='./assets/music/right.mp3'></audio>    
+<audio id="" src='./assets/music/Normal.mp3'></audio>    
+<audio id="" src='./assets/music/Normal2.mp3'></audio>    
+
+
 <audio id="audio" src='./assets/music/Welcome.mp3' 
  loop='loop' autoplay="autoplay"></audio>    
 
@@ -83,7 +91,7 @@
                 e.preventDefault();    
             }
             if(a===0){
-                document.getElementById('audio').play();    
+                document.getElementById('audio').play();
                 a++;
             }
             
@@ -111,22 +119,6 @@
         var ang = - 90;
         context.fillStyle = '#000';
 
-        var audioArr = [
-            './assets/music/da.mp3',
-            './assets/music/doudizhu.mp3',
-            './assets/music/Exciting.mp3',
-            './assets/music/Lose.mp3',
-            './assets/music/right.mp3',
-            './assets/music/Normal.mp3',
-            './assets/music/da.mp3',
-            './assets/music/Normal2.mp3',
-            './assets/music/Welcome.mp3'
-        ];
-
-        audioArr.forEach(function(item,i){
-            var audio = new Audio();
-            audio.src = item;
-        });
 
          var arr = [
             './assets/images/card.png',

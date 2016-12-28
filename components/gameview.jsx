@@ -41,12 +41,14 @@ class FlyGameView extends React.Component {
        if(this.updateCard){
             this.updateCard = false;
             this.cardsArr.length = 0;
-            var indexArr = [];
-            tiggerData.map((item,i)=>{
-              indexArr.push(i);
+            this.indexArr =this.indexArr || [];
+
+            this.indexArr.length<=0 && tiggerData.map((item,i)=>{
+              this.indexArr.push(i);
             });
             for(var i =0;i<1;i++){
-                var index = indexArr.splice(Math.floor(Math.random()*(indexArr.length-1)),1);
+                var index = this.indexArr.splice(Math.floor(Math.random()*(this.indexArr.length-1)),1);
+                
                this.cardsArr.push(tiggerData[index[0]]);               
             }
             for(var i=0;i<5;i++){
@@ -236,7 +238,7 @@ class FlyGameView extends React.Component {
           });
        },2000);
 
-      if(this.state.checkpoint>2){
+      if(this.state.checkpoint>3){
         obserable.trigger({
            type:'showDesignation'
         });
@@ -372,7 +374,7 @@ class FlyGameView extends React.Component {
 
            this.cardItems[i].style.WebkitTransitionDuration = (.8 - (this.state.checkpoint-1)*.2) + 's';
       }
-      if(this.state.checkpoint>2){
+      if(this.state.checkpoint>3){
         obserable.trigger({type:'removeEntryNext'});
       }
       else{
@@ -508,11 +510,13 @@ class FlyGameView extends React.Component {
                                   this.smallTiggers[this.state.iNow-1].style.background = 'url('+this.state.currentData.url+') no-repeat center';
                                   this.smallTiggers[this.state.iNow-1].style.backgroundSize = 'cover';
 
-                                  this.changeAudio('./assets/music/right.mp3',false);
+                                  //this.changeAudio('./assets/music/right.mp3',false);
+                                  document.getElementById('right').play();
                                   this.state.tiggers.push(this.cardsArr[this.state.currentSelectCardIndex]);
 
                                 }else{//没有选择到老虎
-                                    this.changeAudio('./assets/music/Lose.mp3',false);
+                                    //this.changeAudio('./assets/music/Lose.mp3',false);
+                                    document.getElementById('lose').play();
                                     this.state.tiggers.push(this.cardsArr[0]);
                                     /*this.cardsArr.map((item,i)=>{
                                         if(item && item.url){

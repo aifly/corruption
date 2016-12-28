@@ -29,7 +29,7 @@ class App extends React.Component{
         let data ={
             obserable
         }
-        return <div>
+        return <div onTouchStart={this.touchstart.bind(this)}>
             <div className={"voice "+ (this.state.audioClose?'':'active')} onTouchStart={this.toggleVoice.bind(this)}>
                 <img src='./assets/images/music.png'/>
             </div>    
@@ -44,6 +44,26 @@ class App extends React.Component{
              
             */}
         </div>
+    }
+    touchstart(){
+        this.a = this.a || 1;
+        if(this.a===1){
+            console.log(a);
+            var audios = document.querySelectorAll('audio');
+            for(var i = 0,len = audios.length;i<len;i++){
+                if(audios[i].getAttribute('id')!=='audio'){
+                    audios[i].muted = true;    
+                }
+            }        
+            setTimeout(()=>{
+                for(var i = 0,len = audios.length;i<len;i++){
+                    if(audios[i].getAttribute('id')!=='audio'){
+                        audios[i].muted = false;    
+                    }
+                }
+            },1000)
+           this.a++;
+        }
     }
 
     toggleVoice(){

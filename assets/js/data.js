@@ -18,7 +18,7 @@ var tiggerData = [
 		href:'http://t.cn/R4XFp1O'
 	},{
 		url:'./assets/images/lh-6.jpg',
-		name:'艾宝俊',
+		name:'周来振',
 		pushContent:"上海市原市委常委、副市长艾宝俊，中国民用航空局原党组成员、副局长周来振严重违纪被开除党籍和公职。",
 		date:'2016/1/19',
 		file:'上海市原市委常委、副市长艾宝俊等被“双开”',
@@ -27,7 +27,7 @@ var tiggerData = [
 	},{
 		url:'./assets/images/lh-7.jpg',
 		name:'龚清概',
-		pushContent:"中共中央台湾工作办公室、国务院台湾事务办公室副主任龚清概涉嫌严重违纪，目前正接受组织调查。",
+		pushContent:"国台办副主任龚清概涉嫌严重违纪接受组织调查",
 		date:'2016/1/19',
 		file:'国台办副主任龚清概涉嫌严重违纪接受组织调查',
 		date1:'2016/1/19 11:24:54',
@@ -35,7 +35,7 @@ var tiggerData = [
 	},{
 		url:'./assets/images/lh-8.jpg',
 		name:'王保安',
-		pushContent:"国家统计局党组书记、局长王保安涉嫌严重违纪，目前正接受组织调查。 ",
+		pushContent:"国家统计局党组书记、局长王保安涉嫌严重违纪接受组织调查 ",
 		date:'2016/1/26',
 		file:'国家统计局局长王保安涉嫌严重违纪接受调查',
 		date1:'2016/1/26 18:40:00',
@@ -87,7 +87,7 @@ var tiggerData = [
 		date:'2016/3/30',
 		file:'海南省人大常委会原副主任张力夫被开除党籍 ',
 		date1:'2016/3/30 10:44:57',
-		href:'http://t.cn/RqZ1V9s'
+		href:'http://xhpfm.mobile.zhongguowangshi.com/v300/newshare/717774?channel=weixin'
 	},{
 		url:'./assets/images/lh-25.jpg',
 		name:'冀文林',
@@ -111,7 +111,7 @@ var tiggerData = [
 		date:'2016/4/6',
 		file:'辽宁省委常委、政法委书记苏宏章接受组织调查',
 		date1:'2016/4/6 16:09:11',
-		href:'http://t.cn/Rq4eFTD'
+		href:'http://t.cn/Rt4QL5J'
 	},{
 		url:'./assets/images/lh-29.jpg',
 		name:'陈家记',
@@ -128,7 +128,7 @@ var tiggerData = [
 		date:'2016/4/9',
 		file:'四川省原副省长李成云接受组织调查  ',
 		date1:'2016/4/9 22:00:30',
-		href:'http://t.cn/RqVxeVn'
+		href:'http://t.cn/RtbrWtd'
 	},{
 		url:'./assets/images/lh-33.jpg',
 		name:'张越',
@@ -136,7 +136,7 @@ var tiggerData = [
 		date:'2016/4/16',
 		file:'河北省委常委、政法委书记张越接受组织调查',
 		date1:'2016/4/16 18:49:59',
-		href:'http://t.cn/Rqa9dbj'
+		href:'http://t.cn/RttcrQw'
 	},{
 		url:'./assets/images/lh-34.jpg',
 		name:'刘志庚',
@@ -160,7 +160,7 @@ var tiggerData = [
 		date:'2016/5/24',
 		file:'安徽省副省长杨振超接受组织调查  ',
 		date1:'2016/5/24 18:02:10',
-		href:'http://t.cn/R5Z0pgE'
+		href:'http://t.cn/RtbrWId'
 	},{
 		url:'./assets/images/lh-41.jpg',
 		name:'李云峰',
@@ -168,7 +168,7 @@ var tiggerData = [
 		date:'2016/5/30',
 		file:'江苏省委常委、副省长李云峰接受组织调查  ',
 		date1:'2016/5/30 15:59:52',
-		href:'http://t.cn/R5yRz2a'
+		href:'http://xhpfm.mobile.zhongguowangshi.com/v300/newshare/862135?channel=weixin'
 	},{
 		url:'./assets/images/lh-44.jpg',
 		name:'姚中民',
@@ -176,7 +176,7 @@ var tiggerData = [
 		date:'2016/6/6',
 		file:'国开行原监事长姚中民严重违纪接受组织调查 ',
 		date1:'2016/6/6 14:59:49',
-		href:'http://t.cn/R5trtVM'
+		href:'http://xhpfm.mobile.zhongguowangshi.com/v300/newshare/879334?channel=weixin'
 	},{
 		url:'./assets/images/lh-46.jpg',
 		name:'周滨',
@@ -210,4 +210,13 @@ var tiggerData = [
 		date1:'2016/7/11 18:18:50',
 		href:'http://t.cn/R5egDwa'
 	}
+	/*,{
+		url:'./assets/images/lh-80.jpg',
+		name:'田建荣',
+		pushContent:"新疆生产建设兵团党委常委田建荣涉嫌严重违纪，目前正接受组织调查。",
+		date:'2016/7/11',
+		file:'新疆生产建设兵团党委常委田建荣接受组织调查',
+		date1:'2016/7/11 18:18:50',
+		href:'http://t.cn/RIRgc23'
+	}*/
 ];
