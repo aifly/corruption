@@ -17,13 +17,13 @@ var tiggerData = [
 		date1:'2016/1/5 12:04:56',
 		href:'http://t.cn/R4XFp1O'
 	},{
-		url:'./assets/images/lh-6.jpg',
-		name:'周来振',
+		url:'./assets/images/lh-81.jpg',
+		name:'艾宝俊',
 		pushContent:"上海市原市委常委、副市长艾宝俊，中国民用航空局原党组成员、副局长周来振严重违纪被开除党籍和公职。",
-		date:'2016/1/19',
-		file:'上海市原市委常委、副市长艾宝俊等被“双开”',
-		date1:'2016/1/19 11:47:19',
-		href:'http://t.cn/R4HncZN'
+		date:'2016/1/9',
+		file:'上海市原市委常委、副市长艾宝俊等被“双开”  ',
+		date1:'2016/1/9 18:18:50',
+		href:'http://xhpfm.mobile.zhongguowangshi.com:8091/v200/newshare/551149'
 	},{
 		url:'./assets/images/lh-7.jpg',
 		name:'龚清概',
@@ -112,15 +112,7 @@ var tiggerData = [
 		file:'辽宁省委常委、政法委书记苏宏章接受组织调查',
 		date1:'2016/4/6 16:09:11',
 		href:'http://t.cn/Rt4QL5J'
-	},{
-		url:'./assets/images/lh-29.jpg',
-		name:'陈家记',
-		pushContent:"广东省人大常务委员会委员、财经委主任委员陈家记涉嫌严重违纪，正在接受组织调查。",
-		date:'2016/4/8',
-		file:'广东省人大常委、财经委主任委员陈家记接受调查 ',
-		date1:'2016/4/8 19:23:03',
-		href:'http://t.cn/Rq51YsJ'
-	}, 
+	},
 	{
 		url:'./assets/images/lh-30.jpg',
 		name:'李成云',
@@ -145,14 +137,6 @@ var tiggerData = [
 		file:'广东原副省长刘志庚被开除党籍 长期搞迷信活动   ',
 		date1:'',
 		href:'http://t.cn/RGvVz8r'
-	},{
-		url:'./assets/images/lh-35.jpg',
-		name:'孔令中',
-		pushContent:"贵州省政协党组成员、副主席孔令中因严重违纪受到留党察看一年、行政撤职处分，降为正厅级非领导职务。",
-		date:'2016/4/19',
-		file:'贵州省政协副主席孔令中被降为正厅级非领导职务  ',
-		date1:'2016/4/19 16:39:53',
-		href:'http://t.cn/RqKB7FD'
 	},{
 		url:'./assets/images/lh-40.jpg',
 		name:'杨振超',

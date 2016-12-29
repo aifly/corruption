@@ -46,7 +46,7 @@ class App extends React.Component{
         </div>
     }
     touchstart(){
-        this.a = this.a || 1;
+       /* this.a = this.a || 1;
         if(this.a===1){
             console.log(a);
             var audios = document.querySelectorAll('audio');
@@ -63,7 +63,7 @@ class App extends React.Component{
                 }
             },1);
            this.a++;
-        }
+        }*/
     }
 
     toggleVoice(){
