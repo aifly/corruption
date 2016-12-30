@@ -23,7 +23,7 @@ var tiggerData = [
 		date:'2016/1/9',
 		file:'上海市原市委常委、副市长艾宝俊等被“双开”  ',
 		date1:'2016/1/9 18:18:50',
-		href:'http://xhpfm.mobile.zhongguowangshi.com:8091/v200/newshare/551149'
+		href:'http://xhpfm.mobile.zhongguowangshi.com/v200/newshare/551149'
 	},{
 		url:'./assets/images/lh-7.jpg',
 		name:'龚清概',

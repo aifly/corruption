@@ -17,6 +17,7 @@ class FlyGameView extends React.Component {
       ruleShow:false,
       currentData:{},
       allCount:5,
+      currentHref:'',
       scoreClass:'',
       checkpoint:1,//关卡
       bgSound:[
@@ -32,6 +33,14 @@ class FlyGameView extends React.Component {
     }
 
     this.updateCard = true;
+  }
+
+  showIframe(e){//
+      e.preventDefault();
+      this.setState({
+        currentHref:e.target.href
+      })
+      return false;
   }
 
   render() {
@@ -67,6 +76,10 @@ class FlyGameView extends React.Component {
       }
       return (
           <div className='fly-game-view-ui ' onTouchStart={this.playAudio.bind(this)} ref='fly-game-view-ui' style={style}>
+              {this.state.currentHref && <div className='showframe'>
+                  <iframe frameBorder={0} src={this.state.currentHref} width={window.innerWidth} height={window.innerHeight}></iframe>
+                  <div className='g-continue' onTouchTap={()=>{this.setState({currentHref:''})}}>继续游戏</div>
+              </div>}
               <audio ref='orderAudio' src='./assets/music/da.mp3'></audio>
               <section className={'fly-scrore-list '+ this.state.scoreClass}>
                   <h2 onTouchTap={()=>{this.setState({scoreClass:''})}}>&times;</h2>
@@ -144,7 +157,7 @@ class FlyGameView extends React.Component {
                                   </div>
                                 </h2>
                                 <div className={'g-push-content '+ this.state.pushAnimate}>
-                                    <a target='_blank' href={this.state.currentData.href}>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
+                                    <a target='_blank' href={this.state.currentData.href}  onTouchTap={this.showIframe.bind(this)}>{this.state.currentData.pushContent.lenght>33?this.state.currentData.pushContent.substring(0,33)+'...':this.state.currentData.pushContent}</a>
                                 </div>
                             </div>
 

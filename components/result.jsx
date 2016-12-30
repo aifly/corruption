@@ -177,7 +177,7 @@ class FlyResult extends React.Component {
         name='县纪委干部';
       }
 
-      var title = '您一共翻出了'+(this.state.score/5)+'名违纪官员， 共计获的得' + name + '称号';
+      var title = '您一共翻出了'+(this.state.score/5)+'名违纪官员，可以当' + name ;
 
       document.title = title;
   }
