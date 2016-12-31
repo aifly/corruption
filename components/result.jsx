@@ -70,7 +70,7 @@ class FlyResult extends React.Component {
       		<section className='r-content-C' style={{background:'url(./assets/images/result-bg1.png) no-repeat center',backgroundSize:'contain'}}>
       			<h1></h1>
       			<h3>您一共翻出了{this.state.score/5}名违纪官员， </h3>
-      			<p>可以当</p>
+      			<p>荣升为</p>
       			<div className='r-score-C'>{name}</div>
       			<div className='r-rank'>
       				<img src='./assets/images/paiming.png'/>
@@ -177,7 +177,7 @@ class FlyResult extends React.Component {
         name='县纪委干部';
       }
 
-      var title = '您一共翻出了'+(this.state.score/5)+'名违纪官员，可以当' + name ;
+      var title = '您一共翻出了'+(this.state.score/5)+'名违纪官员，荣升为' + name;
 
       document.title = title;
   }
