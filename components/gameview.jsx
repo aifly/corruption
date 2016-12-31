@@ -17,6 +17,7 @@ class FlyGameView extends React.Component {
       ruleShow:false,
       currentData:{},
       allCount:5,
+      showLoading:false,
       currentHref:'',
       scoreClass:'',
       checkpoint:1,//关卡
@@ -38,13 +39,21 @@ class FlyGameView extends React.Component {
   showIframe(e){//
       e.preventDefault();
       this.setState({
-        currentHref:e.target.href
-      })
+        currentHref:e.target.href,
+        showLoading:true
+      });
+      
       return false;
+  }
+  load(){
+    this.refs['g-result'].style.display='none';
+    this.refs['g-cards-C'].style.display='none';
+    this.setState({
+      showLoading:false
+    });
   }
 
   render() {
-
        this.cardsArr = this.cardsArr  || [];
 
        if(this.updateCard){
@@ -77,9 +86,11 @@ class FlyGameView extends React.Component {
       return (
           <div className='fly-game-view-ui ' onTouchStart={this.playAudio.bind(this)} ref='fly-game-view-ui' style={style}>
               {this.state.currentHref && <div className='showframe'>
-                  <iframe frameBorder={0} src={this.state.currentHref} width={window.innerWidth} height={window.innerHeight}></iframe>
-                  <div className='g-continue' onTouchTap={()=>{this.setState({currentHref:''})}}>继续游戏</div>
+                  <iframe frameBorder={0} onLoad={this.load.bind(this)} src={this.state.currentHref} width={window.innerWidth} height={window.innerHeight}></iframe>
+                  <div className='g-continue' onTouchTap={()=>{this.setState({currentHref:''});this.refs['g-result'].style.display='block';this.refs['g-cards-C'].style.display='block';}}>继续游戏</div>
+
               </div>}
+
               <audio ref='orderAudio' src='./assets/music/da.mp3'></audio>
               <section className={'fly-scrore-list '+ this.state.scoreClass}>
                   <h2 onTouchTap={()=>{this.setState({scoreClass:''})}}>&times;</h2>
@@ -137,6 +148,7 @@ class FlyGameView extends React.Component {
               {(this.state.currentData && this.state.currentData.url) && 
                   <div className='g-result ' ref='g-result' style={{display:'none'}}>
                     <article ref='g-result-C'>
+                        {this.state.showLoading && <div className='g-loading'><span>加载中,请稍候...</span></div>}
                          <section className="g-result-C"  style={{background:'url(./assets/images/result-bg.png) no-repeat center center',backgroundSize:'contain'}}>
                             {this.state.rightTigger<0 && <div className='g-right'><img src='./assets/images/right.png'/></div>}
                             <div className='g-portrait'>
@@ -163,6 +175,7 @@ class FlyGameView extends React.Component {
 
                             {this.state.iNow < this.state.allCount && <FlyButton clickHandler={this.nextRound.bind(this)}></FlyButton>}
                             {this.state.iNow>=this.state.allCount &&<FlyButton  text='确 定' clickHandler={this.redirectToResult.bind(this)}></FlyButton>}  
+                        }
                         </section>
                         <section className='g-back' style={{background:'url(./assets/images/card.png) no-repeat center center',backgroundSize:'contain'}}>
                             
